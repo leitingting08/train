@@ -1,0 +1,14 @@
+/*
+* @Author: Administrator
+* @Date:   2017-11-11 12:01:54
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-11-11 12:06:12
+*/
+.nav{background: #eee;height: 30px;line-height: 30px;}
+/*用户部分*/
+.nav .user{float: left;}
+.nav .user .link{margin-right: 5px;}
+.nav .user.login{display: none;}
+/*导航链接部分*/
+.nav .nav-list{float: right;}
+.nav .nav-list .nav-item{display: inline-block;margin-left: 5px;}
