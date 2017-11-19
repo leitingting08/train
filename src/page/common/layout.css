@@ -2,7 +2,7 @@
 /* @Author: Administrator
 * @Date:   2017-11-10 21:35:34
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-11-11 12:10:44
+* @Last Modified time: 2017-11-19 09:46:48
 */
 
 /*css reset*/
@@ -16,7 +16,10 @@ input[type='checkbox']{cursor: pointer;}
 /*定宽布局*/
 .w{width: 1080px;margin: 0 auto;position: relative;overflow: hidden;}
 .large .w{width: 1600px;}
-
+/*panel*/
+.panel{margin-left:100px;padding: 10px;margin-bottom: 10px;background: #fff;}
+.panel .panel-title{padding: 10px;font-size:14px;color: #666;font-weight: bold;border-bottom: 1px solid #eee;}
+.panel .panel-body{padding: 10px;overflow: hidden;}
 /*全局通用样式*/
 /*隐藏类*/
 .hide{display: none;}
