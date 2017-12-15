@@ -3,7 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import Vuex from 'vuex'
+// import vuexI18n from 'vuex-i18n'
 
+// Vue.use(VueResource)
+// Vue.use(Vuex)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
