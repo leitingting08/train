@@ -8,19 +8,26 @@
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r">北京</div></flexbox-item>
       </flexbox>
-      <calendar @on-change="onChange" v-model="showCalender" :title="('2月12日')" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
+      <calendar @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
       <div class="filter">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
+        <x-button type="primary" action-type="button">开始搜索</x-button>
+        <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </group>
+    <group>
+      <cell :title="('欧洲火车票')" is-link></cell>
+    </group>
+    <vMenu></vMenu>
   </div>
 </template>
 
 <script>
 import vSwiper from '@/components/header/swiper';
 import vTab from '@/components/header/v-tab';
-import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon} from 'vux';
+import vMenu from '@/components/footer/v-menu'
+import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
 export default {
   name:'trainQuery',
   data (){
@@ -30,7 +37,7 @@ export default {
       onlySeeGD:false
     }
   },
-  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon},
+  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu},
   methods:{
     onChange(val){
       console.log('on change', val)
@@ -40,7 +47,9 @@ export default {
 </script>
 
 <style lang="less">
+@import "../assets/css/base.less";
 @yellow:#FFC300;
+@orange:#ff6600;
 @grey:#d9d9d9;
 .train-query{
   .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
@@ -51,9 +60,29 @@ export default {
 		}
 		.r{text-align: right;padding:0.4rem 0.2rem;}
 	}
-  .filter{padding:0.3rem 0.2rem;border-top:1px solid @grey;}
-  .vux-check-icon{width:49%
-    // :nth-child(2){text-align: right;}
+  .vux-calendar{padding:0.2rem 0;
+    &:before{left:0.2rem;right:0.2rem}
+    &:after{content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left:0.2rem;right:0.2rem;}
+    .vux-cell-value{color: #333;margin-right: 4.5rem;}
+  }
+  .filter{padding:0.3rem 0.2rem;
+    &:before{.border1px}
+  .vux-check-icon{width:49%}
+  .weui-btn_primary{background: @orange;margin:0.2rem 0;}
+  .history{color:#666;margin-right: 0.2rem;}
+  .clearHistory{color: #333;}
   }
 }
 </style>
