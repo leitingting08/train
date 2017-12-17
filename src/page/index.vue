@@ -3,7 +3,7 @@
   	<vSwiper></vSwiper>
   	<vTab></vTab>
   	<group>
-  	  <flexbox>
+  	  <flexbox class="train-q">
         <flexbox-item><div class="flex-demo l">杭州</div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r">北京</div></flexbox-item>
@@ -53,7 +53,7 @@ export default {
 @grey:#d9d9d9;
 .train-query{
   .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
-	.vux-flexbox{
+	.train-q{
 		.l{text-align: left;padding:0.4rem 0.2rem;}
 		.c{text-align: center;
            .change-icon{display: inline-block;width:0.6rem;height:0.6rem;background: url(../assets/img/icon/change_icon.png) no-repeat center;background-size:contain;}
