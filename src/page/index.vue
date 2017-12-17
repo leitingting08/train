@@ -17,7 +17,9 @@
       </div>
     </group>
     <group>
-      <cell :title="('欧洲火车票')" is-link></cell>
+      <cell is-link class="eTicket">
+        <span slot="title"><i class="fa fa-train"></i><span style="vertical-align:middle;">{{('欧洲火车票')}}</span></span>
+      </cell>
     </group>
     <vMenu></vMenu>
   </div>
@@ -83,6 +85,10 @@ export default {
   .weui-btn_primary{background: @orange;margin:0.2rem 0;}
   .history{color:#666;margin-right: 0.2rem;}
   .clearHistory{color: #333;}
+  }
+  .eTicket{padding:0.2rem;
+    p{margin:0;}
+    i{margin-right: 0.2rem;}
   }
 }
 </style>
