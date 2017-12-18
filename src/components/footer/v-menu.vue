@@ -1,6 +1,6 @@
 <template>
     <div class="menu">
-        <flexbox>
+      <flexbox>
         <flexbox-item><div class="flex-demo l"><i class="fa fa-bullseye"></i>12306</div></flexbox-item>
         <flexbox-item><div class="flex-demo c1"><i class="fa fa-clock-o"></i>预约购票</div></flexbox-item>
         <flexbox-item><div class="flex-demo c2"><i class="fa fa-commenting-o"></i>在线客服</div></flexbox-item>

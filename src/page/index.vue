@@ -80,7 +80,7 @@ export default {
     .vux-cell-value{color: #333;margin-right: 4.5rem;}
   }
   .filter{padding:0.3rem 0.2rem;
-    &:before{.border1px}
+    &:before{.top1px}
   .vux-check-icon{width:49%}
   .weui-btn_primary{background: @orange;margin:0.2rem 0;}
   .history{color:#666;margin-right: 0.2rem;}
