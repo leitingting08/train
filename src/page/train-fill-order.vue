@@ -50,16 +50,21 @@
    	  	</div>
    	  </div>
    </div>
+   <group>
+   	<x-switch :title="('送票上门')"></x-switch>
+   </group>
+   <payMenu></payMenu>
 </div>
 </template>
 
 <script>
 import vTitle from '@/components/header/v-title'
+import payMenu from '@/components/footer/pay-menu'
 import trainInfo from '@/components/common/train-info'
-import {Group,Cell,CheckIcon,XInput} from 'vux'
+import {Group,Cell,CheckIcon,XInput,XSwitch} from 'vux'
 
 export default{
-	components:{Group,Cell,trainInfo,vTitle,CheckIcon,XInput},
+	components:{Group,Cell,trainInfo,vTitle,CheckIcon,XInput,XSwitch,payMenu},
 	data(){
 		return{
 			noTicket:false
@@ -74,6 +79,7 @@ export default{
 @orange:#ff6600;
 @bg-grey:#fcf8e3;
 @border-grey:#faebcc;
+.col999{color: #999;}
 .orange{color: @orange;}
 .font20{font-size: 0.2rem;}
 .font30{font-size: 0.3rem;}
