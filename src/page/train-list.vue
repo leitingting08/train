@@ -3,6 +3,7 @@
         <vTitle></vTitle>
         <timeCalender></timeCalender>
          <div class="lists">
+            <scroller lock-x>
             <div class="list">
                 <flexbox>
                     <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
@@ -66,6 +67,8 @@
                 </flexbox>
                 <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
             </div>
+            <!-- <load-more tip="loading"></load-more> -->
+            </scroller>
          </div>
         <vFilter></vFilter>
     </div>
@@ -75,9 +78,38 @@
 import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
-import {Flexbox, FlexboxItem} from 'vux'
+import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
 export default{
-    components:{vTitle,vFilter,timeCalender,Flexbox, FlexboxItem}
+    components:{vTitle,vFilter,timeCalender,Flexbox, FlexboxItem,Scroller,LoadMore },
+    data(){
+        return{
+            scrollTop:0,
+            onFetching:false,
+            bottomCount:5
+        }
+    },
+    // mounted(){
+    //    this.$nextTick(()=>{
+    //     // this.$refs.scrollerEvent.reset({top:0})
+    //    })
+    //    this.$refs.scrollerBottom.reset({top:0})
+    // },
+    methods:{
+        // onScrollButtom(){
+        //     if(this.onFetching){
+
+        //     }else{
+        //         this.onFetching = true
+        //         setTimeout(()=>{
+        //             this.bottomCount += 10
+        //             this.$nextTick(()=>{
+        //                 this.$refs.scrollerBottom.reset()
+        //             })
+        //             this.onFetching = false
+        //         },2000)
+        //     }
+        // }
+    }
 }
 
 </script>
@@ -91,7 +123,7 @@ export default{
 .orange{color: @orange;}
 .train-list{
     .v-title{position: fixed;top: 0;width: 100%;z-index: 100;}
-    .time-calender{position: fixed;top: 0.8rem;width: 100%;z-index: 100;}
+    .time-calender{position: fixed;top: 0.8rem;width: 100%;z-index: 99;}
   .lists{position: absolute;top: 1.6rem;width: 100%;
   .list{background: #fff;margin:0.1rem 0;
     .vux-flexbox{padding:0.2rem 0;
