@@ -68,6 +68,8 @@ export default{
 <style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
+@bg-grey:#fcf8e3;
+@border-grey:#faebcc;
 .orange{color: @orange;}
 .col999{color: #999;}
 .font20{font-size: 0.20rem;}
@@ -78,7 +80,7 @@ export default{
 		// .l{text-align: right;}
 		// .c{text-align: center;}
 		// .r{text-align: left;}}
-	.explain{background-color: #fcf8e3;border: 1px solid #faebcc;border-left:none;border-right:none;padding:0.1rem 0.2rem;}
+	.explain{background-color: @bg-grey;border: 1px solid @border-grey;border-left:none;border-right:none;padding:0.1rem 0.2rem;}
   }
   .seat-type{margin-top: 0.2rem;
     .time-calender{background-color: #fff;}
