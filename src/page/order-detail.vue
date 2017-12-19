@@ -41,6 +41,7 @@
     </div>
     <x-button plain>取消订单</x-button>
     <x-button plain class="con-service">联系客服Fliggy</x-button>
+    <div class="goto-pay font30">去付款<span class="font20">（￥92.5）</span></div>
 </div>
 </template>
 
@@ -72,7 +73,8 @@ export default {
 .font28{font-size: 0.28rem;}
 .font30{font-size: 0.3rem;}
 .order-datail{
-.train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0.2rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;
+	.v-title{position: fixed;top: 0;width: 100%;}
+.train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0.2rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;margin-top: 1.1rem;
     .l{text-align: left;}
     .c{text-align: center;
       .time-table{display: inline-block;width: 1.5rem;height: 0.55rem;background: url(../assets/img/icon/arrow.png) no-repeat center;background-size: contain;
@@ -83,7 +85,8 @@ export default {
     
   }
   .certi-info{background: #fff;margin: 0rem 0.2rem 0.2rem;padding: 0.2rem;border-radius: 3px;line-height: 0.5rem;
-  	.name{.ticket-type{border:1px solid #d8d8d8;border-radius: 3px;padding: 0 0.06rem;margin-left: 0.2rem;}}
+  	.name{overflow: hidden;
+      .ticket-type{border:1px solid #d8d8d8;border-radius: 3px;padding: 0 0.06rem;margin-left: 0.2rem;}}
     .price{float: right;}
   }
   .problem{background: #fff;padding: 0.2rem 0;
@@ -105,6 +108,7 @@ export default {
     }
   }
   .weui-btn {margin: 0.2rem 3%;width: 94%;}
-  .con-service{color: @orange;border:1px solid @orange;}
+  .con-service{color: @yellow;border:1px solid @yellow;margin-bottom: 1.1rem;}
+  .goto-pay{position: fixed;bottom: 0;width: 100%;background: @orange;height: 0.9rem;line-height: 0.9rem;text-align: center;color: #fff;}
 }
 </style>
