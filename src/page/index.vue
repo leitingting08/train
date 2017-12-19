@@ -32,6 +32,7 @@ import vMenu from '@/components/footer/v-menu'
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
 export default {
   name:'trainQuery',
+  // props:[title],
   data (){
     return {
       showCalender:'TODAY',

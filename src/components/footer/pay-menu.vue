@@ -36,7 +36,7 @@ export default {
    .flex-demo{text-align: center;position: relative;height: 1rem;
   }
   .l{position: relative;text-align: left;margin-left: 0.2rem;
-        .detail{position: absolute;top:0.2rem;right: 0.2rem;}
+        .detail{position: absolute;top:0.35rem;right: 0.2rem;}
         div{height: 0.4rem;}
         .price{padding-top: 0.1rem;}
     }

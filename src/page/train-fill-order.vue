@@ -18,7 +18,7 @@
    		<x-icon type="ios-close" size="22"></x-icon>
    		<span class="font30" style="margin-left:0.2rem;">雷婷婷</span><br/><span style="margin-left:0.7rem;">身份证  411523199907178888</span></div>
    	<!-- <div class="connect"><span>联系手机</span><input type="text" name="phonenumber" value="15888888888"><i class="fa fa-user-circle-o"></i></div> -->
-   	<x-input label-width="4em" :title='`<span style="${style}">联系手机</span>`' placeholder="用于接受确认短信"></x-input>
+   	<x-input label-width="4em" :title='`<span style="{style}">联系手机</span>`' placeholder="用于接受确认短信"></x-input>
    </div>
    <div class="select-seat">
    	  <div class="explain">所选座位余票不足时,将自动为您选择有票座位</div>
@@ -53,6 +53,10 @@
    <group>
    	<x-switch :title="('送票上门')"></x-switch>
    </group>
+   <div class="tips">
+   	<div class="font26">温馨提示</div>
+   	<div class="orange">*学生票、儿童票暂按成人价收取，出票后以实际票价为准，票款差额将原路退还到您的账户</div>
+   </div>
    <payMenu></payMenu>
 </div>
 </template>
@@ -82,6 +86,7 @@ export default{
 .col999{color: #999;}
 .orange{color: @orange;}
 .font20{font-size: 0.2rem;}
+.font26{font-size: 0.26rem;}
 .font30{font-size: 0.3rem;}
 .train-fill-order{
 	.weui-cells{margin-top: 0.2rem;}
@@ -128,6 +133,7 @@ export default{
      }
    }
    .weui-cell{&:before{border:none;}}
+   .tips{padding: 0.2rem;}
 }
 
 </style>

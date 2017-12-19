@@ -4,6 +4,8 @@ import trainQuery from '@/page/index'
 import trainList from '@/page/train-list'
 import bookTicket from '@/page/book-ticket'
 import trainFillOrder from '@/page/train-fill-order'
+import orderList from '@/page/order-list'
+import orderDetail from '@/page/order-detail'
 
 Vue.use(Router)
 
@@ -13,6 +15,8 @@ export default new Router({
     {path: '/',name: 'trainQuery',component: trainQuery},
     {path: '/trainList',name: 'trainList',component: trainList},
     {path: '/bookTicket',name: 'bookTicket',component: bookTicket},
-    {path: '/trainFillOrder',name: 'trainFillOrder',component: trainFillOrder}
+    {path: '/trainFillOrder',name: 'trainFillOrder',component: trainFillOrder},
+    {path: '/orderList',name: 'orderList',component: orderList},
+    {path: '/orderDetail',name: 'orderDetail',component: orderDetail}
   ]
 })
