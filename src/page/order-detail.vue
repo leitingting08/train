@@ -9,7 +9,7 @@
     <div class="train-info">
     <flexbox>
         <flexbox-item><div class="flex-demo l font30"><span>杭州东</span><br/><span>02:26</span><br/><span class="font20">12月25日 周一</span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"><span>G34</span><br/><span class="time-table"><span class="time">时刻表</span></span><br/><span class="font20">1小时26分</span></div></flexbox-item>
+        <flexbox-item><div class="flex-demo c"><span>G34</span><br/><stopList></stopList><span class="font20">1小时26分</span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r font30"><span>上海南</span><br/><span>04:14</span><br/><span class="font20">12月25日 周一</span></div></flexbox-item>
     </flexbox>
     </div>
@@ -18,11 +18,12 @@
 
 <script>
 import vTitle from '@/components/header/v-title'
+import stopList from '@/components/common/stop-list'
 // import trainInfo from '@/components/common/train-info'
 import {Flexbox, FlexboxItem} from 'vux'
 
 export default {
-	components:{vTitle,Flexbox, FlexboxItem},
+	components:{vTitle,Flexbox, FlexboxItem,stopList},
 	data(){
 		return{
 
