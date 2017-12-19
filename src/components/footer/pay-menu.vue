@@ -33,7 +33,7 @@ export default {
 .font30{font-size: 0.3rem;}
 .pay-menu{background: #fff;position: fixed;bottom: 0;width: 100%;
     .pay{background-color: @orange;}
-   .flex-demo{text-align: center;position: relative;height: 1rem;
+   .flex-demo{text-align: center;position: relative;height: 1rem;font-size: 0.26rem;
   }
   .l{position: relative;text-align: left;margin-left: 0.2rem;
         .detail{position: absolute;top:0.35rem;right: 0.2rem;}

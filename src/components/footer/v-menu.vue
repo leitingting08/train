@@ -24,7 +24,7 @@ export default {
 
 <style lang="less">
 .menu{background: #fff;position: fixed;bottom: 0;width: 100%;padding: 0.4rem 0 0.1rem;
-   .flex-demo{text-align: center;position: relative;
+   .flex-demo{text-align: center;position: relative;font-size: 0.26rem;
     i{position: absolute;bottom: 0.35rem;left: 45%}}
 
 }
