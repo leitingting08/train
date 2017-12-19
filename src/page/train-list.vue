@@ -94,7 +94,8 @@ export default{
         return{
             scrollTop:0,
             onFetching:false,
-            bottomCount:5
+            bottomCount:5,
+            
         }
     },
     // mounted(){
@@ -104,6 +105,9 @@ export default{
     //    this.$refs.scrollerBottom.reset({top:0})
     // },
     methods:{
+        // bookTicket(){
+        //     link:'bookTicket'
+        // }
         // onScrollButtom(){
         //     if(this.onFetching){
 

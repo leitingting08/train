@@ -19,10 +19,11 @@ import { XHeader,Popover} from 'vux'
 
 export default {
   name:'vTitle',
+  props:['title'],
   components: {XHeader,Popover},
   data(){
     return{
-      title:'杭州-北京'
+      // title:'杭州-北京'
     }
   },
   methods: {

@@ -4,21 +4,21 @@
   	<vTab></vTab>
   	<group>
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l">杭州</div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r">北京</div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity></trainCity></div></flexbox-item>
       </flexbox>
       <calendar @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
       <div class="filter">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
-        <x-button type="primary" action-type="button">开始搜索</x-button>
+        <x-button type="primary" action-type="button" link="trainList">开始搜索</x-button>
         <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </group>
     <group>
       <cell is-link class="eTicket">
-        <span slot="title"><i class="fa fa-train"></i><span style="vertical-align:middle;">{{('欧洲火车票')}}</span></span>
+        <span style="color:#333;margin-right:4.4rem;"><i class="fa fa-train"></i><span style="vertical-align:middle;">{{('欧洲火车票')}}</span></span>
       </cell>
     </group>
     <vMenu></vMenu>
@@ -29,18 +29,21 @@
 import vSwiper from '@/components/header/swiper';
 import vTab from '@/components/header/v-tab';
 import vMenu from '@/components/footer/v-menu'
+import trainCity from '@/components/cityselect/train-city'
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
 export default {
   name:'trainQuery',
-  // props:[title],
+  // props:['title'],
   data (){
     return {
       showCalender:'TODAY',
       studentTicket:false,
-      onlySeeGD:false
+      onlySeeGD:false,
+      // gocity:'北京',
+      // tocity:'杭州'
     }
   },
-  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu},
+  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   methods:{
     onChange(val){
       console.log('on change', val)
