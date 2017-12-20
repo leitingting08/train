@@ -2,7 +2,7 @@
   <div class="train-query">
   	<vSwiper></vSwiper>
   	<vTab></vTab>
-  	<group>
+  	<group class="con">
   	  <flexbox class="train-q">
         <flexbox-item><div class="flex-demo l"><trainCity></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
@@ -12,7 +12,7 @@
       <div class="filter">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
-        <x-button type="primary" action-type="button" link="trainList">开始搜索</x-button>
+        <x-button type="primary" action-type="button">开始搜索</x-button>
         <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </group>
@@ -59,6 +59,7 @@ export default {
 @grey:#d9d9d9;
 .train-query{
   .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
+  .con{
 	.train-q{
 		.l{text-align: left;padding:0.4rem 0.2rem;}
 		.c{text-align: center;
@@ -89,6 +90,7 @@ export default {
   .weui-btn_primary{background: @orange;margin:0.2rem 0;}
   .history{color:#666;margin-right: 0.2rem;}
   .clearHistory{color: #333;}
+    }
   }
   .eTicket{padding:0.2rem;
     p{margin:0;}
