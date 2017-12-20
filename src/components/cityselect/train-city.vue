@@ -9,7 +9,7 @@
 		            <span class="title">选择车站</span>
 		            <span class="vux-enter" @click="cityIsShow = false">取消</span>
 				</div>
-				<div class="city" v-show="!loadIsShow">
+				<div class="city">
 					<div class="search-wrapper">
 						 <input type="text"  placeholder="中文/拼音/首字母" @keyup="autoInput()"/>
 					</div>

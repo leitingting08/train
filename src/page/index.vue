@@ -28,8 +28,10 @@
 <script>
 import vSwiper from '@/components/header/swiper';
 import vTab from '@/components/header/v-tab';
-import vMenu from '@/components/footer/v-menu'
-import trainCity from '@/components/cityselect/train-city'
+import vMenu from '@/components/footer/v-menu';
+import trainCity from '@/components/cityselect/train-city';
+// import {getRecommend} from '@/api/recommend';
+// import {ERR_OK} from '@/api/config';
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
 export default {
   name:'trainQuery',
@@ -44,9 +46,18 @@ export default {
     }
   },
   components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
+  created(){
+      // this.getRecommend()
+      // console.log(this.getRecommend())
+  },
   methods:{
     onChange(val){
       console.log('on change', val)
+    },
+    _getRecommend(){
+      // getRecommend().then(res) =>{
+      //     console.log(res)
+      // }
     }
   }
 }
