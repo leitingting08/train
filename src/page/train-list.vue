@@ -4,14 +4,14 @@
         <timeCalender></timeCalender>
          <div class="lists">
             <scroller lock-x>
-            <div class="list">
+            <div class="list"><router-link to="./trainFillOrder">
                 <flexbox>
                     <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
                 </flexbox>
-                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div></router-link>
             </div>
             <div class="list">
                 <flexbox>

@@ -12,7 +12,7 @@
       <div class="filter">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
-        <x-button type="primary" action-type="button">开始搜索</x-button>
+        <router-link to="./trainList"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
         <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </group>
@@ -35,7 +35,6 @@ import trainCity from '@/components/cityselect/train-city';
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
 export default {
   name:'trainQuery',
-  // props:['title'],
   data (){
     return {
       showCalender:'TODAY',

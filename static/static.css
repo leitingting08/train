@@ -26,3 +26,4 @@ body{margin: 0;padding:0;}
 
 div,ul,li{margin:0;padding:0;list-style: none;}
 body{font-size:0.20rem;background-color: #eee;width:100%;}
+a{text-decoration: none;color: #333;}

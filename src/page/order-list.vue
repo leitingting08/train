@@ -3,7 +3,7 @@
 	<vTitle :title="('我的订单')"></vTitle>
     <oTab></oTab>
     <div class="list-wrapper">
-    	<div class="list">
+    	<div class="list"><router-link to="./orderDetail">
     		<div class="title"><span>友成票务</span><span class="yellow fr">预约成功</span></div>
     		
     			<i class="fa fa-train fa-2x"></i>
@@ -12,7 +12,7 @@
     			<div>K132 新空快速</div>
     			<div>出发时间 2017-10-08 19:05</div>
     		</div>
-    		<div class="delete-r"><span class="fr delete">删除订单</span></div>
+    		<div class="delete-r"><span class="fr delete">删除订单</span></div></router-link>
     	</div>
 
     	<div class="list">
