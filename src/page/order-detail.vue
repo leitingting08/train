@@ -1,6 +1,6 @@
 <template>
 <div class="order-datail">
-    <vTitle></vTitle>
+    <vTitle :title="('订单详情')"></vTitle>
     <div>
     	<div></div>
     	<div></div>

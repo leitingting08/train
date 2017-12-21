@@ -1,11 +1,11 @@
 <template>
   <div class="v-header">
-   <x-header :left-options="{backText: ''}">首页</x-header>
+     <vTitle/>
   </div>
 </template>
 
 <script>
-import {xHeader} from 'vux'
+import vTitle from './v-title'
 
 export default{
 	data(){
@@ -13,7 +13,7 @@ export default{
 
 		}
 	},
-	components:{xHeader}
+	components:{vTitle}
 }
 </script>
 

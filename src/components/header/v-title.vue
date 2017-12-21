@@ -3,7 +3,7 @@
 		<x-header :left-options="{backText: ''}" :right-options="{showMore: true}" class="btn btn-default">{{title}}</x-header>
 		<popover placement="bottom" style="margin: 20px;">
           <div slot="content" class="popover-demo-content">
-             <li><i class="fa fa-commenting-o" aria-hidden="true"></i>消息</li>
+             <li><i class="fa fa-commenting-o"</i>消息</li>
              <li><i class="fa fa-home"></i>首页</li>
              <li><i class="fa fa-headphones"></i>联系飞猪</li>
              <li><i class="fa fa-file-text-o"></i>我要反馈</li>
@@ -32,7 +32,10 @@ export default {
     },
     onHide () {
       console.log('on hide')
-    }
+    },
+    // goRouter(url){
+    //     this.$router.push(url);
+    // }
   }
 }
 </script>

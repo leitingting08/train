@@ -1,6 +1,6 @@
 <template>
 <div class="train-fill-order">
-	<vTitle></vTitle>
+	<vTitle :title="('12月25日 周一')"></vTitle>
 	<trainInfo></trainInfo>
 	<div class="seatType">
 		<div class="type font30"><span>二等座</span><span class="price"><span class="font20">￥</span>77.5</span></div>

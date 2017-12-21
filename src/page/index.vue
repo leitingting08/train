@@ -43,9 +43,11 @@ export default {
       onlySeeGD:false,
       // gocity:'北京',
       // tocity:'杭州'
+
     }
   },
-  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
+  components:{vSwiper,vTab,
+    Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
       // this.getRecommend()
       // console.log(this.getRecommend())
@@ -59,7 +61,17 @@ export default {
       //     console.log(res)
       // }
     }
-  }
+  },
+  // beforeRouteEnter(to,from,next){
+  //   let option={
+  //     headSwiper:true,
+  //     headTab:true,
+  //     headerTitle:false
+  //   }
+  //   next(vm=>{
+  //     vm.$store.commit('pubulicSetEvent',option);
+  //   })
+  // }
 }
 </script>
 

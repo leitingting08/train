@@ -47,8 +47,8 @@ export default{
 	},
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
-       this.loadCityList();
-      
+       this.stations = this.loadCityList();
+      console.log(this.stations)
 	},
 	// props:['cityname'],
 	data(){
@@ -67,11 +67,13 @@ export default{
 			this.cityIsShow=true;
 		},
 		loadCityList(){
+			var vm = this
 			axios.get('src/api/station-list.json')
 			.then((res)=>{
-				let Stations=[];
-				Stations.push(res.data.result);
-                Stations=Stations[0]
+				let citys=[];
+				citys.push(res.data.result);
+                citys=citys[0]
+                vm.Stations=citys
 			})
 			.catch((err)=>{
 				console.log(err);

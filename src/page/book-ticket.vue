@@ -1,6 +1,6 @@
 <template>
 <div class="book-ticket">
-   <vTitle></vTitle>
+   <vTitle :title="('12月25日 周一')"></vTitle>
     <div class="train-info">
         <!-- <flexbox>
             <flexbox-item><div class="flex-demo l font30"><span>杭州东</span><br/><span>02:26</span></div></flexbox-item>

@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'app',
-  // components:{vHeader},
+  components:{},
   data (){
   	return {
 

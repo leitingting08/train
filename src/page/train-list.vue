@@ -1,6 +1,6 @@
 <template>
     <div class="train-list">
-        <vTitle></vTitle>
+        <vTitle :title="('杭州-北京')"></vTitle>
         <timeCalender></timeCalender>
          <div class="lists">
             <scroller lock-x>

@@ -1,6 +1,6 @@
 <template>
 <div class="order-list">
-	<vTitle></vTitle>
+	<vTitle :title="('我的订单')"></vTitle>
     <oTab></oTab>
     <div class="list-wrapper">
     	<div class="list">
