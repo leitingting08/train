@@ -4,11 +4,11 @@
   	<vTab></vTab>
   	<form class="con">
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l"><trainCity></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity"></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><trainCity></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity"></trainCity></div></flexbox-item>
       </flexbox>
-      <calendar @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
+      <calendar :title="title" @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
       <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
@@ -40,8 +40,8 @@ export default {
       showCalender:'TODAY',
       studentTicket:false,
       onlySeeGD:false,
-      // gocity:'北京',
-      // tocity:'杭州'
+      gocity:'北京',
+      tocity:'杭州'
 
     }
   },

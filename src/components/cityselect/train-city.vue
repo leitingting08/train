@@ -45,6 +45,7 @@ const hot_city='热门'
 
 export default{
 	name:'train-city',
+	props:['cityName'],
 	directives:{
 		TransferDom
 	},
@@ -57,7 +58,6 @@ export default{
 	data(){
 		return{
 			// name:this.cityName
-			changeCityName:'杭州',
 			cityIsShow:false,
 			positions:['杭州'],
 			citys:[{'searchcitys':'杭州'}],
@@ -65,6 +65,12 @@ export default{
 			// listData:{},
 			Stations: []
 		}
+	},
+	computed:{
+        changeCityName(){
+        	this.name = this.cityname
+        	return this.name;
+        }
 	},
 	methods:{
 		showCityList(){
@@ -125,7 +131,7 @@ export default{
          		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;border:1px solid #d8d8d8;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
          		.po{border:1px solid @yellow;color: @yellow;}
          	}
-         	.name{background:#fff;width: 100%;height: 0.7rem;line-height:0.7rem;padding-left:0.2rem;
+         	.name{background:#fff;width: 100%;height: 0.8rem;line-height:0.8rem;padding-left:0.2rem;
          		border-top: 1px solid #eee;
          		&:last-child{border-bottom: 1px solid #eee;}
          	}
