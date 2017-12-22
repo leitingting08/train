@@ -41,6 +41,8 @@
 import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
 
+const hot_city='热门'
+
 export default{
 	name:'train-city',
 	directives:{
@@ -81,6 +83,16 @@ export default{
 				console.log(err);
 			})
 		},
+		nomalizeCity(list){
+			let map = {
+				hot:{
+					title: hot_city,
+					items:[]
+				}
+			}
+			const key = item.sta_ename.substr(0,1);
+			
+		},
 		selectCity(){
 			
 		}
@@ -103,7 +115,7 @@ export default{
        .vux-enter{float: right;}
        .title{margin-left:2.8rem;}
     }
-    .city{
+    .city{font-size: 0.28rem;
          .search-wrapper{
          	input{width: 91%;height: 0.5rem;border:1px solid #eee;padding-left: 0.2rem;border-radius: 3px;margin:0.2rem;}
          }
