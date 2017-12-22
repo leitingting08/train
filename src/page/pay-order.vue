@@ -10,9 +10,7 @@
       <div class="pay-price-wrap">
       	<div class="left payprice">支付金额&emsp;<span class="orange">￥100</span></div>
         <div class="pay-fee-detail">
-          <!-- <feeDetail :InsureFee="orderFeeDetail.InsureFee" :TripFee="orderFeeDetail.TripFee" :ServiceFee="orderFeeDetail.ServiceFee" :OrderFee="orderDetail.OrderFee"></feeDetail> -->
-          费用详情
-          <i class="fa fa-angle-right"></i>
+          <feeDetail></feeDetail>
         </div>
       </div>
     </div>
@@ -27,11 +25,12 @@
 
 <script>
 import vTitle from '@/components/header/v-title'
+import feeDetail from '@/components/common/fee-detail'
 import {Group,Checklist,XButton} from 'vux'
 
 export default{
   name:'orderPay',
-  components:{vTitle,Group,Checklist,XButton},
+  components:{vTitle,Group,Checklist,XButton,feeDetail},
   data(){
     return {
        payWayList: [ '<span class="alipay"></span>支付宝', '<span class="wxpay"></span>微信'],
