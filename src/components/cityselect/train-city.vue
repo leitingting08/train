@@ -80,6 +80,9 @@ export default{
 			.catch((err)=>{
 				console.log(err);
 			})
+		},
+		selectCity(){
+			
 		}
 	}
 	// computed:{

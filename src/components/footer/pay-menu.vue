@@ -7,7 +7,7 @@
             <span class="detail">明细<i class="fa fa-angle-down"></i></span>
             </div>
         </flexbox-item>
-        <flexbox-item class="pay"><div class="flex-demo r">去付款</div></flexbox-item>
+        <flexbox-item class="pay"><router-link to="./orderPay"><div class="flex-demo r">去付款</div></router-link></flexbox-item>
       </flexbox>
     </div>
 </template>
