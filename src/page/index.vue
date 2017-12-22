@@ -2,20 +2,20 @@
   <div class="train-query">
   	<vSwiper></vSwiper>
   	<vTab></vTab>
-  	<group class="con">
+  	<form class="con">
   	  <flexbox class="train-q">
         <flexbox-item><div class="flex-demo l"><trainCity></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r"><trainCity></trainCity></div></flexbox-item>
       </flexbox>
       <calendar @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
-      <div class="filter">
+      <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
         <router-link to="./trainList"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
         <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
-    </group>
+    </form>
     <group>
       <cell is-link class="eTicket">
         <span style="color:#333;margin-right:4.4rem;"><i class="fa fa-train"></i><span style="vertical-align:middle;">{{('欧洲火车票')}}</span></span>
@@ -79,15 +79,15 @@ export default {
 @yellow:#FFC300;
 @orange:#ff6600;
 @grey:#d9d9d9;
-.train-query{
+.train-query{font-size: 0.3rem;
   .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
-  .con{
+  .con{background: #fff;
 	.train-q{
-		.l{text-align: left;padding:0.4rem 0.2rem;}
+		.l{text-align: left;padding:0.4rem 0.3rem;}
 		.c{text-align: center;
            .change-icon{display: inline-block;width:0.6rem;height:0.6rem;background: url(../assets/img/icon/change_icon.png) no-repeat center;background-size:contain;}
 		}
-		.r{text-align: right;padding:0.4rem 0.2rem;}
+		.r{text-align: right;padding:0.4rem 0.3rem;}
 	}
   .vux-calendar{padding:0.2rem 0;
     &:before{left:0.2rem;right:0.2rem}
@@ -104,9 +104,9 @@ export default {
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
     left:0.2rem;right:0.2rem;}
-    .vux-cell-value{color: #333;margin-right: 4.5rem;}
+    .vux-cell-value{color: #333;margin-right: 4.7rem;}
   }
-  .filter{padding:0.3rem 0.2rem;
+  .fi{padding:0.3rem 0.2rem;
     &:before{.top1px}
   .vux-check-icon{width:49%}
   .weui-btn_primary{background: @orange;margin:0.2rem 0;}

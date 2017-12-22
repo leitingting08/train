@@ -13,21 +13,22 @@
 					<div class="search-wrapper">
 						 <input type="text"  placeholder="中文/拼音/首字母" @keyup="autoInput()"/>
 					</div>
-					<!-- <div class="auto-list-con">
-						<div class="list-name" v-for="item in autoData">{{item.stationName}}</div>
-					</div> -->
 					<div class="list-con">
-						<div class="tit">最近访问</div>
+						<div class="tit">定位</div>
+			            <div class="list-other">
+			                <span class="tag-name po" v-for="(city,index) in positions">{{city}}</span>
+			            </div>
+						<div class="tit">历史</div>
 			            <div class="list-other">
 			                <span class="tag-name" v-for="(city,index) in citys">{{city.searchcitys}}</span>
 			            </div>
-			            <div class="tit">热门车站</div>
+			            <div class="tit">热门城市</div>
 			            <div class="list-other">
 			                <span class="tag-name" v-for="(item,index) in hotcitys">{{item}}</span>
 			            </div>
-                        <div class="list-name" v-for="(item,index) in listData">
+                        <!-- <div class="list-name" v-for="(item,index) in listData"> -->
                               <div class="name" v-for="city in Stations">{{city.sta_name}}</div>
-                        </div>
+                        <!-- </div> -->
 					</div>
 				</div>
 			</div>
@@ -47,8 +48,8 @@ export default{
 	},
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
-       this.stations = this.loadCityList();
-      console.log(this.stations)
+       this.Stations = this.loadCityList();
+      console.log(this.Stations)
 	},
 	// props:['cityname'],
 	data(){
@@ -56,9 +57,10 @@ export default{
 			// name:this.cityName
 			changeCityName:'杭州',
 			cityIsShow:false,
+			positions:['杭州'],
 			citys:[{'searchcitys':'杭州'}],
-			hotcitys:['杭州','北京'],
-			listData:{},
+			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
+			// listData:{},
 			Stations: []
 		}
 	},
@@ -90,24 +92,29 @@ export default{
 </script>
 
 <style lang="less">
+@import "../../assets/css/base.less";
+@yellow:#FFC300;
+@orange:#ff6600;
 .vux-popup-dialog{
     .city-btns{padding: 0.2rem;background: #fff;overflow: hidden;font-size: 0.26rem;
-       .vux-enter{float: right}
+       .vux-enter{float: right;}
        .title{margin-left:2.8rem;}
     }
-
-    .city{padding: 0.2rem;
+    .city{
          .search-wrapper{
-         	input{width: 97%;height: 0.5rem;border:1px solid #999;padding-left: 0.2rem;border-radius: 3px;}
+         	input{width: 91%;height: 0.5rem;border:1px solid #eee;padding-left: 0.2rem;border-radius: 3px;margin:0.2rem;}
          }
-         .list-con{padding-top: 0.3rem;
-         	.list-other{
-         		.tag-name{display:inline-block;padding: 0.15rem 0.3rem;border:1px solid #d8d8d8;background: #fff;border-radius: 5px;margin:0.2rem 0.1rem;}
-         		.list-name{
-         			.name{display: inline-block;width: 100%;height: 0.6rem;}
-         		}
+         .list-con{
+         	.tit{padding-left: 0.2rem;margin: 0.2rem 0;}
+         	.list-other{margin-bottom: 0.2rem;
+         		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;border:1px solid #d8d8d8;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
+         		.po{border:1px solid @yellow;color: @yellow;}
          	}
-         }
+         	.name{background:#fff;width: 100%;height: 0.7rem;line-height:0.7rem;padding-left:0.2rem;
+         		border-top: 1px solid #eee;
+         		&:last-child{border-bottom: 1px solid #eee;}
+         	}
+        }
     }
 }
 </style>
