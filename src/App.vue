@@ -5,9 +5,10 @@
 </template>
 
 <script>
+import vTitle from '@/components/header/v-title'
 export default {
   name: 'app',
-  components:{},
+  components:{vTitle},
   data (){
   	return {
 

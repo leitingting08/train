@@ -89,6 +89,7 @@ import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
 import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
 export default{
+    name:'trainList',
     components:{vTitle,vFilter,timeCalender,Flexbox, FlexboxItem,Scroller,LoadMore },
     data(){
         return{
