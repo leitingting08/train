@@ -40,8 +40,9 @@
 <script>
 import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
+import {getStation,setStation} from '@/assets/js/storage_stations';
 
-const hot_city='热门'
+// const hot_city='热门'
 
 export default{
 	name:'train-city',
@@ -52,15 +53,13 @@ export default{
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
        this.Stations = this.loadCityList();
-      console.log(this.Stations)
 	},
-	// props:['cityname'],
 	data(){
 		return{
 			// name:this.cityName
 			cityIsShow:false,
 			positions:['杭州'],
-			citys:[{'searchcitys':'杭州'}],
+			citys:null,
 			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
 			// listData:{},
 			Stations: []
@@ -75,6 +74,8 @@ export default{
 	methods:{
 		showCityList(){
 			this.cityIsShow=true;
+			this.citys=getStation();
+			// console.log(getStation())
 		},
 		loadCityList(){
 			var vm = this
@@ -104,16 +105,10 @@ export default{
 			this.cityIsShow=false;
 			this.$emit('changeCityName',this.name);
 			//存放历史记录
-			// const option={cityname:this.name}
-			// setCity(option);
+			const option={searchcitys:this.name}
+			setStation(option);
 		}
 	}
-	// computed:{
- //    changeCityName(){
- //      this.name = this.cityName
- //      return this.name;
- //       }
- //    },
 }
 </script>
 
