@@ -20,14 +20,14 @@
 			            </div>
 						<div class="tit">历史</div>
 			            <div class="list-other">
-			                <span class="tag-name" v-for="(city,index) in citys">{{city.searchcitys}}</span>
+			                <span class="tag-name" v-for="(city,index) in citys" @click="selectCityName(city.searchcitys)">{{city.searchcitys}}</span>
 			            </div>
 			            <div class="tit">热门城市</div>
 			            <div class="list-other">
-			                <span class="tag-name" v-for="(item,index) in hotcitys">{{item}}</span>
+			                <span class="tag-name" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
 			            </div>
                         <!-- <div class="list-name" v-for="(item,index) in listData"> -->
-                              <div class="name" v-for="city in Stations">{{city.sta_name}}</div>
+                              <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
                         <!-- </div> -->
 					</div>
 				</div>
@@ -68,7 +68,7 @@ export default{
 	},
 	computed:{
         changeCityName(){
-        	this.name = this.cityname
+        	this.name = this.cityName
         	return this.name;
         }
 	},
@@ -99,8 +99,13 @@ export default{
 			const key = item.sta_ename.substr(0,1);
 			
 		},
-		selectCity(){
-			
+		selectCityName(val){
+			this.name=val;
+			this.cityIsShow=false;
+			this.$emit('changeCityName',this.name);
+			//存放历史记录
+			// const option={cityname:this.name}
+			// setCity(option);
 		}
 	}
 	// computed:{

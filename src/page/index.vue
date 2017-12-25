@@ -4,9 +4,9 @@
   	<vTab></vTab>
   	<form class="con">
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
       <calendar :title='title' @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
       <div class="fi">
@@ -55,10 +55,11 @@ export default {
     onChange(val){
       console.log('on change', val)
     },
-    _getRecommend(){
-      // getRecommend().then(res) =>{
-      //     console.log(res)
-      // }
+    changeGoCity(val){
+      this.gocity=val;
+    },
+    changeToCity(val){
+      this.tocity=val;
     }
   },
   // beforeRouteEnter(to,from,next){
