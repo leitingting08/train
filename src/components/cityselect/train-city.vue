@@ -59,7 +59,7 @@ export default{
 			// name:this.cityName
 			cityIsShow:false,
 			positions:['杭州'],
-			citys:null,
+			citys:[{'searchcitys':'杭州'}],
 			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
 			// listData:{},
 			Stations: []

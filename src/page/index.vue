@@ -5,7 +5,7 @@
   	<form class="con">
   	  <flexbox class="train-q">
         <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"><span class="change-icon"></span></div></flexbox-item>
+        <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
       <calendar :title='title' @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
@@ -60,6 +60,11 @@ export default {
     },
     changeToCity(val){
       this.tocity=val;
+    },
+    changeCity(){//交换城市
+      let temp = this.gocity;
+      this.gocity = this.tocity;
+      this.tocity = temp;
     }
   },
   // beforeRouteEnter(to,from,next){
