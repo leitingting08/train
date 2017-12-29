@@ -1,16 +1,17 @@
 export function setStation(data){
+    // console.log(data.searchcitys)
     let searchCity = sessionStorage.getItem('searchcitys');
     if(searchCity===null || 0){//第一次
-         let option=[{searchcitys:data.name}];
+         let option=[{searchcitys:data.searchcitys}];
          option = JSON.stringify(option);
          sessionStorage.setItem('searchcitys',option);
     }else{
     	searchCity = JSON.parse(searchCity);
     	let newSearchCity=[];
     	searchCity.forEach(item=>{
-            newSearchCity.push({searchcitys:item.name});
+            newSearchCity.push({searchcitys:item.searchcitys});
     	})
-    	let option={searchcitys:data.name};
+    	let option={searchcitys:data.searchcitys};
     	//数组去重
     	let flag=true;
         newSearchCity.forEach(f=>{
@@ -24,8 +25,7 @@ export function setStation(data){
         }
         newSearchCity = JSON.stringify(newSearchCity);
         sessionStorage.setItem('searchcitys',newSearchCity);
-        console.log(searchCity)
-        console.log(newSearchCity)
+        console.log(data)
     }
 }
 
