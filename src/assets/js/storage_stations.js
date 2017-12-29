@@ -1,5 +1,4 @@
 export function setStation(data){
-    // console.log(data.searchcitys)
     let searchCity = sessionStorage.getItem('searchcitys');
     if(searchCity===null || 0){//第一次
          let option=[{searchcitys:data.searchcitys}];
@@ -25,7 +24,6 @@ export function setStation(data){
         }
         newSearchCity = JSON.stringify(newSearchCity);
         sessionStorage.setItem('searchcitys',newSearchCity);
-        console.log(data)
     }
 }
 

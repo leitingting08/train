@@ -114,7 +114,9 @@ export default {
   }
   .fi{padding:0.3rem 0.2rem;
     &:before{.top1px}
-  .vux-check-icon{width:49%}
+  .vux-check-icon {width:49%;
+  .weui-icon-success:before,.weui-icon-success-circle:before {color: @yellow;}
+  }
   .weui-btn_primary{background: @orange;margin:0.2rem 0;}
   .history{color:#666;margin-right: 0.2rem;}
   .clearHistory{color: #333;}
@@ -124,5 +126,6 @@ export default {
     p{margin:0;}
     i{margin-right: 0.2rem;}
   }
+
 }
 </style>
