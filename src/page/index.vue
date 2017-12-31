@@ -12,7 +12,7 @@
       <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
-        <router-link to="./trainList"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
+        <router-link to="./trainList" @click="beginSearch"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
         <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
@@ -30,6 +30,7 @@ import vSwiper from '@/components/header/swiper';
 import vTab from '@/components/header/v-tab';
 import vMenu from '@/components/footer/v-menu';
 import trainCity from '@/components/cityselect/train-city';
+import {setHistory,getHistory} from '@/assets/js/storage_historySearch';
 // import {getRecommend} from '@/api/recommend';
 // import {ERR_OK} from '@/api/config';
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
@@ -50,6 +51,7 @@ export default {
   created(){
       // this.getRecommend()
       // console.log(this.getRecommend())
+
   },
   methods:{
     onChange(val){
@@ -65,6 +67,9 @@ export default {
       let temp = this.gocity;
       this.gocity = this.tocity;
       this.tocity = temp;
+    },
+    beginSearch(){
+      setHistory();
     }
   },
   // beforeRouteEnter(to,from,next){
