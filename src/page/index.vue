@@ -13,7 +13,7 @@
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
         <router-link to="./trainList" @click="beginSearch"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
-        <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
+        <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
     <group>
@@ -43,7 +43,8 @@ export default {
       onlySeeGD:false,
       title:'',
       gocity:'北京',
-      tocity:'杭州'
+      tocity:'杭州',
+      historys:[{'FromStation':'北京','ToStation':'杭州'}]
 
     }
   },
@@ -51,7 +52,8 @@ export default {
   created(){
       // this.getRecommend()
       // console.log(this.getRecommend())
-
+      console.log(this.setHistory())
+      // this.historys = this.getHistory()
   },
   methods:{
     onChange(val){
@@ -69,7 +71,12 @@ export default {
       this.tocity = temp;
     },
     beginSearch(){
-      setHistory();
+      // const option = {
+      //   FromStation:this.gocity;
+      //   ToStation:this.tocity;
+      // }
+      this.historys = getHistory();
+      console.log(this.historys)
     }
   },
   // beforeRouteEnter(to,from,next){

@@ -17,10 +17,10 @@ export function setHistory(data){
         });
         let option = {FromStation:data.FromStation,ToStation:data.ToStation};
         //数组去重
-        let flag = true;
-        newSearchHistory.forEach(i=>{
+        // let flag = true;
+        // newSearchHistory.forEach(i=>{
 
-        })
+        // })
         newSearchHistory.push(option);
         newSearchHistory = JSON.stringify(newSearchHistory);
         sessionStorage.setItem('searchHistory',newSearchHistory);
@@ -29,4 +29,5 @@ export function setHistory(data){
 
 export function getHistory(){
      let setHistory = JSON.parse(sessionStorage.getItem('searchHistory'));
+     return setHistory;
 }

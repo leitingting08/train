@@ -26,9 +26,7 @@
 			            <div class="list-other">
 			                <span class="tag-name" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
 			            </div>
-                        <!-- <div class="list-name" v-for="(item,index) in listData"> -->
-                              <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
-                        <!-- </div> -->
+                        <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
 					</div>
 				</div>
 			</div>
