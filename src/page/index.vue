@@ -52,7 +52,7 @@ export default {
   created(){
       // this.getRecommend()
       // console.log(this.getRecommend())
-      console.log(this.setHistory())
+      // console.log(this.setHistory())
       // this.historys = this.getHistory()
   },
   methods:{
@@ -75,8 +75,8 @@ export default {
       //   FromStation:this.gocity;
       //   ToStation:this.tocity;
       // }
-      this.historys = getHistory();
-      console.log(this.historys)
+      // this.historys = getHistory();
+      // console.log(this.historys)
     }
   },
   // beforeRouteEnter(to,from,next){

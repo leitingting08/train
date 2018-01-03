@@ -1,7 +1,7 @@
 <template>
 <div class="train-city">
 	<span class="text" @click="showCityList">{{changeCityName}}</span>
-	<div v-transfer-dom>
+	<div v-transfer-dom :id="fromToType==='from'?'fromId':'toId'">
 		<popup v-model="cityIsShow" position="left" width="100%">
 			<div class="container">
 				<div class="city-btns">
@@ -26,7 +26,12 @@
 			            <div class="list-other">
 			                <span class="tag-name" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
 			            </div>
-                        <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
+			            <!-- <div class="" v-if="item.length! == 0" v-for="(item,index) in listData">
+				            <div :id="index" :class="`v${index}`">{{index}}</div> -->
+	                        <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
+						<!-- </div> -->
+
+						<div v-for="(item,inedx) in listData" v-if="item.length !== 0" @click="loadCity(index)"></div>
 					</div>
 				</div>
 			</div>
@@ -44,7 +49,7 @@ import {getStation,setStation} from '@/assets/js/storage_stations';
 
 export default{
 	name:'train-city',
-	props:['cityName'],
+	props:['cityName','fromToType'],
 	directives:{
 		TransferDom
 	},
@@ -59,7 +64,7 @@ export default{
 			positions:['杭州'],
 			citys:[{'searchcitys':'杭州'}],
 			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
-			// listData:{},
+			listData:{},
 			Stations: []
 		}
 	},
@@ -105,6 +110,9 @@ export default{
 			//存放历史记录
 			const option={searchcitys:this.name}
 			setStation(option);
+		},
+		loadCity(index){
+			const id=`v${index}`;
 		}
 	}
 }
