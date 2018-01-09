@@ -88,11 +88,12 @@ export default{
 				citys.push(res.data.result);
                 citys=citys[0];
                 vm.Stations=citys;
+                console.log(citys)
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                  this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
                  citys.forEach((item,index)=>{
                  	// if(item.IsHot===1){
-                 	// 	this.hotcitys.push(item.StationName);
+                 	// 	this.hotcitys.push(item.sta_name);
                  	// }
                  	arrA_Z.forEach(i=>{
                  		
