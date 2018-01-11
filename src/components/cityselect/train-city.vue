@@ -132,7 +132,7 @@ export default{
 			setStation(option);
 		},
 		autoInput(){//输入框搜索
-            const str=event.target.value.toLocalLowerCase().replace(/\s/g,"");//搜索字符串去空格
+            const str=event.target.value.toLocaleLowerCase().replace(/\s/g,"");//搜索字符串去空格
             this.autoData.length=0;
             this.autoIsShow=true;
 
@@ -140,7 +140,7 @@ export default{
                 this.autoIsShow=false;
                 return;
             }
-            this.citys.forEach((item,index)=>{
+            this.Stations.forEach((item,index)=>{
             	const name=item.sta_name;
             	const ename=item.sta_ename || 's';
             	if(name.indexOf(str)>=0||ename.indexOf(str)>=0){
@@ -148,9 +148,9 @@ export default{
             	}
             })
             if(this.autoData.length===0){
-            	this,autoData.push({name:'暂不支持该城市'})
+            	this.autoData.push({name:'暂不支持该城市'})
             }
-            // document.getElementsByClassName('vux-popup-left')[0].scrollTop =0;
+            document.getElementsByClassName('vux-popup-left')[0].scrollTop =0;
 		}
 	}
 }
@@ -160,6 +160,7 @@ export default{
 @import "../../assets/css/base.less";
 @yellow:#FFC300;
 @orange:#ff6600;
+@grey:#d8d8d8;
 .vux-popup-dialog{
     .city-btns{padding: 0.2rem;background: #fff;overflow: hidden;font-size: 0.26rem;
        .vux-enter{float: right;}
@@ -180,6 +181,11 @@ export default{
          		border-top: 1px solid #eee;
          		&:last-child{border-bottom: 1px solid #eee;}
          	}
+        }
+        .auto-list-con{
+        	.list-name{padding:0.2rem;border-top:1px solid @grey;
+              &:last-child{border-bottom:1px solid @grey;}
+        	}
         }
     }
 }
