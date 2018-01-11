@@ -140,7 +140,7 @@ export default{
                 this.autoIsShow=false;
                 return;
             }
-            this.Stations.forEach((item,index)=>{
+            this.Stations.forEach((item,index)=>{ //模糊匹配
             	const name=item.sta_name;
             	const ename=item.sta_ename || 's';
             	if(name.indexOf(str)>=0||ename.indexOf(str)>=0){
@@ -148,7 +148,7 @@ export default{
             	}
             })
             if(this.autoData.length===0){
-            	this.autoData.push({name:'暂不支持该城市'})
+            	this.autoData.push({name:"暂不支持该城市"});
             }
             document.getElementsByClassName('vux-popup-left')[0].scrollTop =0;
 		}
