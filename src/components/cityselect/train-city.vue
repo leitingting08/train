@@ -20,7 +20,7 @@
                     </div>
                    
 					<!-- 城市列表内容 -->
-					<div class="list-con">
+					<div class="list-con" v-if="!autoIsShow">
 						<div class="tit">定位</div>
 			            <div class="list-other">
 			                <span class="tag-name po" v-for="(city,index) in positions">{{city}}</span>
@@ -171,7 +171,7 @@ export default{
          	input{width: 91%;height: 0.5rem;border:1px solid #eee;padding-left: 0.2rem;border-radius: 3px;margin:0.2rem;}
          }
          .list-con{
-         	.list-tit{position: fixed;right: 0;top: 2rem;overflow-y: scroll;height: 76%;}
+         	.list-tit{position: fixed;right: 0;top: 2rem;overflow-y: scroll;height: 76%;color: @yellow;}
          	.tit{padding-left: 0.2rem;margin: 0.2rem 0;}
          	.list-other{margin-bottom: 0.2rem;
          		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;border:1px solid #d8d8d8;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
