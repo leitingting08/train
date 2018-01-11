@@ -26,12 +26,15 @@
 			            <div class="list-other">
 			                <span class="tag-name" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
 			            </div>
-			            <!-- <div class="" v-if="item.length! == 0" v-for="(item,index) in listData">
-				            <div :id="index" :class="`v${index}`">{{index}}</div> -->
-	                        <div class="name" v-for="city in Stations" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
-						<!-- </div> -->
+			            <div class="list-tit">
+			              <div class="tit" v-for="(item,index) in listData" @click="localCity(index)">{{index}}</div>
+			            </div>
+			            <div class="" v-for="(item,index) in listData">
+				            <div :id="index" :class="`v${index}`">{{index}}</div>
+	                        <div class="name" v-for="city in item" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
+						</div>
 
-						<div v-for="(item,inedx) in listData" v-if="item.length !== 0" @click="loadCity(index)"></div>
+						<!-- <div v-for="(item,inedx) in listData" @click="loadCity(index)"></div> -->
 					</div>
 				</div>
 			</div>
@@ -88,15 +91,14 @@ export default{
 				citys.push(res.data.result);
                 citys=citys[0];
                 vm.Stations=citys;
-                console.log(citys)
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-                 this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
+                this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
                  citys.forEach((item,index)=>{
-                 	// if(item.IsHot===1){
-                 	// 	this.hotcitys.push(item.sta_name);
-                 	// }
                  	arrA_Z.forEach(i=>{
-                 		
+                 		if(item.sta_ename&&(item.sta_ename.substring(0, 1).toUpperCase() ===i)){
+			              this.listData[i].push(item);
+			              return false;
+            			}
                  	})
                  })
 			})
@@ -104,6 +106,15 @@ export default{
 				console.log(err);
 			})
 		},
+		localCity(index){
+	      const id = `v${index}`;
+	      if(this.fromToType==='from'){
+	        document.getElementById('fromId').firstChild.scrollTop = document.getElementsByClassName(id)[0].offsetTop-100;
+	      }
+	      if(this.fromToType==='to'){
+	        document.getElementById('toId').firstChild.scrollTop = document.getElementsByClassName(id)[1].offsetTop-100;
+	      }
+	    },
 		nomalizeCity(list){
 			let map = {
 				hot:{
@@ -121,9 +132,6 @@ export default{
 			//存放历史记录
 			const option={searchcitys:this.name}
 			setStation(option);
-		},
-		loadCity(index){
-			const id=`v${index}`;
 		}
 	}
 }
@@ -143,6 +151,7 @@ export default{
          	input{width: 91%;height: 0.5rem;border:1px solid #eee;padding-left: 0.2rem;border-radius: 3px;margin:0.2rem;}
          }
          .list-con{
+         	.list-tit{position: fixed;right: 0;top: 2rem;overflow-y: scroll;height: 76%;}
          	.tit{padding-left: 0.2rem;margin: 0.2rem 0;}
          	.list-other{margin-bottom: 0.2rem;
          		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;border:1px solid #d8d8d8;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
