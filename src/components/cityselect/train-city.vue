@@ -52,13 +52,13 @@ import {getStation,setStation} from '@/assets/js/storage_stations';
 
 export default{
 	name:'train-city',
-	props:['cityName','fromToType'],
+	props:['cityName','fromToType'],//把父组件的值传到子组件中
 	directives:{
 		TransferDom
 	},
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
-       this.Stations = this.loadCityList();
+       this.Stations = this.loadCityList(); //加载城市列表
 	},
 	data(){
 		return{
@@ -72,18 +72,17 @@ export default{
 		}
 	},
 	computed:{
-        changeCityName(){
+        changeCityName(){//选择了城市后，渲染到首页对应往返城市的地方
         	this.name = this.cityName
         	return this.name;
         }
 	},
 	methods:{
-		showCityList(){
+		showCityList(){ //获取历史选择过的城市
 			this.cityIsShow=true;
 			this.citys=getStation();
-			// console.log(getStation())
 		},
-		loadCityList(){
+		loadCityList(){ //点击首页的城市，加载城市列表
 			var vm = this
 			axios.get('src/api/station-list.json')
 			.then((res)=>{
@@ -106,7 +105,7 @@ export default{
 				console.log(err);
 			})
 		},
-		localCity(index){
+		localCity(index){ //点击右边字母索引，跳到对应的位置
 	      const id = `v${index}`;
 	      if(this.fromToType==='from'){
 	        document.getElementById('fromId').firstChild.scrollTop = document.getElementsByClassName(id)[0].offsetTop-100;
@@ -115,23 +114,16 @@ export default{
 	        document.getElementById('toId').firstChild.scrollTop = document.getElementsByClassName(id)[1].offsetTop-100;
 	      }
 	    },
-		nomalizeCity(list){
-			let map = {
-				hot:{
-					title: hot_city,
-					items:[]
-				}
-			}
-			const key = item.sta_ename.substr(0,1);
-			
-		},
-		selectCityName(val){
+		selectCityName(val){//点击选择城市，填入首页
 			this.name=val;
 			this.cityIsShow=false;
 			this.$emit('changeCityName',this.name);
 			//存放历史记录
 			const option={searchcitys:this.name}
 			setStation(option);
+		},
+		autoInput(){
+
 		}
 	}
 }
