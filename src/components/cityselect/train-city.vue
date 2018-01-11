@@ -10,9 +10,16 @@
 		            <span class="vux-enter" @click="cityIsShow = false">取消</span>
 				</div>
 				<div class="city">
+					<!-- 搜索框 -->
 					<div class="search-wrapper">
 						 <input type="text"  placeholder="中文/拼音/首字母" @keyup="autoInput()"/>
 					</div>
+					<!-- 搜索结果 -->
+                    <div class="auto-list-con" v-if="autoIsShow">
+                    	<div class="list-name" v-for="item in autoData" @click="selectCityName(item.sta_name)">{{item.sta_name}}</div>
+                    </div>
+                   
+					<!-- 城市列表内容 -->
 					<div class="list-con">
 						<div class="tit">定位</div>
 			            <div class="list-other">
@@ -68,7 +75,9 @@ export default{
 			citys:[{'searchcitys':'杭州'}],
 			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
 			listData:{},
-			Stations: []
+			Stations: [],
+			autoData:[],
+			autoIsShow:false
 		}
 	},
 	computed:{
@@ -122,8 +131,26 @@ export default{
 			const option={searchcitys:this.name}
 			setStation(option);
 		},
-		autoInput(){
+		autoInput(){//输入框搜索
+            const str=event.target.value.toLocalLowerCase().replace(/\s/g,"");//搜索字符串去空格
+            this.autoData.length=0;
+            this.autoIsShow=true;
 
+            if(str===''){//如果为空，不展示搜索结果面板
+                this.autoIsShow=false;
+                return;
+            }
+            this.citys.forEach((item,index)=>{
+            	const name=item.sta_name;
+            	const ename=item.sta_ename || 's';
+            	if(name.indexOf(str)>=0||ename.indexOf(str)>=0){
+            		this.autoData.push(item);
+            	}
+            })
+            if(this.autoData.length===0){
+            	this,autoData.push({name:'暂不支持该城市'})
+            }
+            // document.getElementsByClassName('vux-popup-left')[0].scrollTop =0;
 		}
 	}
 }
