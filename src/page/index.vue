@@ -44,16 +44,13 @@ export default {
       title:'',
       gocity:'北京',
       tocity:'杭州',
-      historys:[{'FromStation':'北京','ToStation':'杭州'}]
+      historys:[]
 
     }
   },
   components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
-      // this.getRecommend()
-      // console.log(this.getRecommend())
-      // console.log(this.setHistory())
-      // this.historys = this.getHistory()
+      this.historys = getHistory();
   },
   methods:{
     onChange(val){
@@ -71,12 +68,11 @@ export default {
       this.tocity = temp;
     },
     beginSearch(){
-      // const option = {
-      //   FromStation:this.gocity;
-      //   ToStation:this.tocity;
-      // }
-      // this.historys = getHistory();
-      // console.log(this.historys)
+      const option = {
+        FromStation:this.gocity,
+        ToStation:this.tocity
+      }
+      setHistory(option);
     }
   },
   // beforeRouteEnter(to,from,next){
