@@ -69,7 +69,11 @@ export default {
       this.tocity = temp;
     },
     beginSearch(){
-      setHistory();
+      let option = {
+        FromStation:this.gocity,
+        ToStation:this.tocity
+      }
+      setHistory(option);
     }
   },
   // beforeRouteEnter(to,from,next){

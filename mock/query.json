@@ -1,0 +1,11 @@
+{
+    "status":"0",
+    "msg":"",
+    "result":[
+        {
+            "productId":"10000001",
+            "productName":"XM6",
+            "productPrice":2499
+        },
+    ]
+}
