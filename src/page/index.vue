@@ -4,16 +4,18 @@
   	<vTab></vTab>
   	<form class="con">
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
       <calendar :title='title' @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
       <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
-        <router-link to="./trainList" @click="beginSearch"><x-button type="primary" action-type="button">开始搜索</x-button></router-link>
-        <span class="history">杭州-北京</span>  <span class="clearHistory">清除历史记录</span>
+        <!-- <router-link to="./trainList"> -->
+          <x-button type="primary" action-type="button" @click="goListRouter('trainList')">开始搜索</x-button>
+        <!-- </router-link> -->
+        <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
     <group>
@@ -43,15 +45,13 @@ export default {
       onlySeeGD:false,
       title:'',
       gocity:'北京',
-      tocity:'杭州'
-
+      tocity:'杭州',
+      historys:null
     }
   },
   components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
-      // this.getRecommend()
-      // console.log(this.getRecommend())
-
+      this.historys = getHistory();
   },
   methods:{
     onChange(val){
@@ -68,11 +68,20 @@ export default {
       this.gocity = this.tocity;
       this.tocity = temp;
     },
+<<<<<<< HEAD
     beginSearch(){
       let option = {
         FromStation:this.gocity,
         ToStation:this.tocity
       }
+=======
+    goListRouter(url){
+      const option = {
+        FromStation:this.gocity,
+        ToStation:this.tocity
+      }
+      this.$router.push({name:url,query:option})
+>>>>>>> a38b3da2c395b1dae998c00c55f713e384427782
       setHistory(option);
     }
   },
@@ -86,6 +95,11 @@ export default {
   //     vm.$store.commit('pubulicSetEvent',option);
   //   })
   // }
+  // var wait1000 = new Promise(function(resolve,reject){
+  //   setTimeout(resolve, 1000)
+  // }).then(function(){
+    
+  // })
 }
 </script>
 
@@ -135,6 +149,12 @@ export default {
     p{margin:0;}
     i{margin-right: 0.2rem;}
   }
-
+}
+.vux-popup-dialog{
+  .inline-calendar td.is-today, .inline-calendar td.is-today.is-disabled{color: @yellow;}
+  .inline-calendar td.current > span.vux-calendar-each-date{background-color: @yellow;}
+  .vux-prev-icon, .vux-next-icon{border:1px solid @yellow;}
+  .calendar-year > span, .calendar-month > span{width: 6px;overflow: hidden;}
+  .vux-popup-header-right{color: @yellow;}
 }
 </style>

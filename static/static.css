@@ -27,3 +27,5 @@ body{margin: 0;padding:0;}
 div,ul,li{margin:0;padding:0;list-style: none;}
 body{font-size:0.20rem;background-color: #eee;width:100%;}
 a{text-decoration: none;color: #333;}
+.clearfix:after{content: '.';display: block;height: 0;visibility: hidden;clear: both;}
+.clearfix{zoom:1;}/*IE6,7触发haslayout*/
