@@ -15,9 +15,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 //.........................................................//
 const express = require('express')
 const app = express()//请求server
-var appData = require('../station-list.json')
-var query = appData.query
-var stationList = appData.stationList
+var trainData = require('./../mock/train.json')
 var apiRoutes = express.Router()
 app.use('/mock',apiRoutes)
 //.........................................................//
@@ -49,11 +47,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     //.........................................................//
     before(app){
-      app.get('/mock/query',(req, res) =>{
-        res.json({errno:0,data:query})
-      }),
-      app.get('/mock/station-list',(req, res) =>{
-        res.json({errno:0,data:stationList})
+      app.get('/mock/train',(req, res, next) =>{
+        res.json(trainData)
       })
     }
     //.........................................................//

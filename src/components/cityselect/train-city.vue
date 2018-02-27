@@ -94,7 +94,7 @@ export default{
 		loadCityList(){ //点击首页的城市，加载城市列表
 			var vm = this
 			// axios.get('src/api/station-list.json')
-			axios.get('http://localhost:3003/result')
+			axios.get('http://localhost:8080/mock/train')
 			.then((res)=>{
 				let citys=[];
 				citys.push(res.data);

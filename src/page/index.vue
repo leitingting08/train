@@ -68,20 +68,18 @@ export default {
       this.gocity = this.tocity;
       this.tocity = temp;
     },
-<<<<<<< HEAD
     beginSearch(){
       let option = {
         FromStation:this.gocity,
         ToStation:this.tocity
       }
-=======
+    },
     goListRouter(url){
       const option = {
         FromStation:this.gocity,
         ToStation:this.tocity
       }
       this.$router.push({name:url,query:option})
->>>>>>> a38b3da2c395b1dae998c00c55f713e384427782
       setHistory(option);
     }
   },
