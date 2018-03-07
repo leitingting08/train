@@ -18,7 +18,7 @@
                     <div class="auto-list-con" v-if="autoIsShow">
                     	<div class="list-name" v-for="item in autoData" @click="selectCityName(item.sta_name)">{{item.sta_name}}</div>
                     </div>
-                   
+
 					<!-- 城市列表内容 -->
 					<div class="list-con" v-if="!autoIsShow">
 						<div class="tit">定位</div>
@@ -53,7 +53,9 @@
 <script>
 import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
-import {getStation,setStation} from '@/assets/js/storage_stations';//存储城市搜索历史记录
+import {getStation,setStation} from '@/assets/js/storage_stations';
+import {stationListUrl} from '@/service/interface';
+//存储城市搜索历史记录
 
 // const hot_city='热门'
 
@@ -94,7 +96,7 @@ export default{
 		loadCityList(){ //点击首页的城市，加载城市列表
 			var vm = this
 			// axios.get('src/api/station-list.json')
-			axios.get('http://localhost:8080/mock/train')
+			axios.get(stationListUrl)
 			.then((res)=>{
 				let citys=[];
 				citys.push(res.data);
