@@ -5,7 +5,7 @@ import Vue from 'vue'
 import fastclick from 'fastclick'
 import App from './App'
 import router from './router'
-
+import 'font-awesome/css/font-awesome.css'
 // import Vuex from 'vuex'
 // import vuexI18n from 'vuex-i18n'
 
