@@ -95,13 +95,11 @@ export default{
 		},
 		loadCityList(){ //点击首页的城市，加载城市列表
 			var vm = this
-			// axios.get('src/api/station-list.json')
 			axios.get(stationListUrl)
 			.then((res)=>{
 				let citys=[];
-				citys.push(res.data);
-                citys=citys[0];
-                console.log(citys)
+				citys.push(res.data.data);
+                citys=res.data.data;
                 vm.Stations=citys;
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
