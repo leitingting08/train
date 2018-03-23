@@ -14,11 +14,11 @@ let server = http.createServer((req,res)=>{
 
     res.setHeader("Content-Type","text/plain; charset=utf-8");
 
-    console.log(req.url);//字符串
-    console.log(url.parse(req.url));
-    console.log(util.inspect(url.parse(req.url)));//object
+    onsole.log(req.url);//字符串
+    console.log(url.parse(req.url));//object
+    console.log(util.inspect(url.parse(req.url)));//url对象解析后展开
 
-    res.end(util.inspect(url.parse(req.url)));//url对象解析后展开
+    res.end(util.inspect(url.parse(req.url)));
 });
 
 server.listen(3000,'127.0.0.1', ()=>{
