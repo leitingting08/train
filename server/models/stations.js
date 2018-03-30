@@ -7,11 +7,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var productSchema = new Schema({
-    "productId":String,
-    "productName":String,
-    "salePrice":Number,
-    "productImage":String
+var stationSchema = new Schema({
+    "sta_name":String,
+    "sta_ename":String,
+    "sta_code":String
 });
 
-module.exports = mongoose.model('Good',productSchema);
+module.exports = mongoose.model('Station',stationSchema);

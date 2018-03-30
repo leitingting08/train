@@ -8,6 +8,7 @@ import orderList from '@/page/order-list'
 import orderDetail from '@/page/order-detail'
 import orderPay from '@/page/pay-order'
 
+
 Vue.use(Router)
 
 export default new Router({

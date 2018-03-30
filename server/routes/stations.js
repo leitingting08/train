@@ -7,10 +7,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Goods = require('../models/goods');
+var Stations = require('../models/stations');
 
 //链接mongodb数据库
-mongoose.connect('mongodb://127.0.0.1:27017');
+mongoose.connect('mongodb://127.0.0.1:27017/train');
 
 mongoose.connection.on("connected", function(){
     console.log("MongoDB connected success.");
@@ -25,8 +25,8 @@ mongoose.connection.on("disconnected", function(){
 });
 
 router.get("/", function(req,res,next){
-    res.send('hello,goods list .')
-    Goods.find({}, function(err,doc){
+    //res.send('hello,goods list .')
+    Stations.find({}, function(err,doc){
         if(err){
             res.json({
                 status:'1',
