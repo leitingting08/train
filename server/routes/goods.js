@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 var Goods = require('../models/goods');
 
 //链接mongodb数据库
-mongoose.connect('mongodb://127.0.0.1:27017/dumall');
+mongoose.connect('mongodb://127.0.0.1:27017');
 
 mongoose.connection.on("connected", function(){
     console.log("MongoDB connected success.");
@@ -46,4 +46,4 @@ router.get("/", function(req,res,next){
     })
 });
 
-modules.exports = router;
+module.exports = router;
