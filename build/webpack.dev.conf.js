@@ -13,11 +13,11 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 //mock数据
 //.........................................................//
-const express = require('express')
-const app = express()//请求server
-var trainData = require('./../mock/train.json')
-var apiRoutes = express.Router()
-app.use('/mock',apiRoutes)
+// const express = require('express')
+// const app = express()//请求server
+// var trainData = require('./../mock/train.json')
+// var apiRoutes = express.Router()
+// app.use('/mock',apiRoutes)
 //.........................................................//
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -46,11 +46,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     //.........................................................//
-    before(app){
-      app.get('/mock/train',(req, res, next) =>{
-        res.json(trainData)
-      })
-    }
+    // before(app){
+    //   app.get('/mock/train',(req, res, next) =>{
+    //     res.json(trainData)
+    //   })
+    // }
     //.........................................................//
   },
   plugins: [
