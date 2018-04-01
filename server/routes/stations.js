@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-03-27 22:20:28
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-27 22:34:10
+* @Last Modified time: 2018-04-01 20:49:50
 */
 var express = require('express');
 var router = express.Router();
@@ -26,7 +26,16 @@ mongoose.connection.on("disconnected", function(){
 
 router.get("/", function(req,res,next){
     //res.send('hello,goods list .')
-    Stations.find({}, function(err,doc){
+    //实现分页
+    let page = parseInt(req.param("page"));
+    let pageSize = parseInt(req.param('pageSize'));
+    let sort = req.param("sort");
+    let skip = (page-1)*pageSize;
+    let params = {};
+    let stationsModel = Stations.find(params).skip(skip).limit(pageSize);
+    stationsModel.sort({'sta_code':sort});
+
+    Stations.exec({}, function(err,doc){
         if(err){
             res.json({
                 status:'1',
