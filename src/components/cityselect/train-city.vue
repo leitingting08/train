@@ -101,12 +101,13 @@ export default{
 
 				let citys=[];
 				citys.push(res.data.result.list);
+				this.Stations = citys[0]
                 // citys=res.data.list;
                 //vm.Stations=citys;
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
 
-                 citys[0].forEach((item,index)=>{//遍历城市数组
+                 this.Stations.forEach((item,index)=>{//遍历城市数组
                  	arrA_Z.forEach(i=>{//遍历字母数组
                  		if(item.sta_ename&&(item.sta_ename.substring(0, 1).toUpperCase() ===i)){//如果城市英文首字母和对应字母匹配，就加到里面
 			              this.listData[i].push(item);
@@ -158,7 +159,7 @@ export default{
             	}
             })
             if(this.autoData.length===0){
-            	this.autoData.push({name:"暂不支持该城市"});
+            	this.autoData.push({sta_name:"暂不支持该城市"});
             }
             document.getElementsByClassName('vux-popup-left')[0].scrollTop =0;
 		}
