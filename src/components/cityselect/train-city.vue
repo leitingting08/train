@@ -96,7 +96,7 @@ export default{
 		},
 		loadCityList(){ //点击首页的城市，加载城市列表
 			var vm = this
-			axios.get('/stations')
+			axios.get(stationListUrl)
 			.then((res)=>{
 
 				let citys=[];

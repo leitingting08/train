@@ -6,7 +6,7 @@ import fastclick from 'fastclick'
 import App from './App'
 import router from './router'
 import 'font-awesome/css/font-awesome.css'
-import infiniteScroll from 'vue-infinte-scroll'
+import infiniteScroll from 'vue-infinite-scroll'
 // import Vuex from 'vuex'
 // import vuexI18n from 'vuex-i18n'
 Vue.use(infiniteScroll)

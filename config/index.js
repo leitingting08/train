@@ -6,7 +6,11 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+    proxyTable: {
+        '/stations':{
+            target:'http://localhost:3000'
+        }
+    },
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

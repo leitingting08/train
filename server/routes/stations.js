@@ -27,15 +27,16 @@ mongoose.connection.on("disconnected", function(){
 router.get("/", function(req,res,next){
     //res.send('hello,goods list .')
     //实现分页
-    let page = parseInt(req.param("page"));
-    let pageSize = parseInt(req.param('pageSize'));
-    let sort = req.param("sort");
-    let skip = (page-1)*pageSize;
-    let params = {};
-    let stationsModel = Stations.find(params).skip(skip).limit(pageSize);
-    stationsModel.sort({'sta_code':sort});
+    // let page = parseInt(req.param("page"));
+    // let pageSize = parseInt(req.param('pageSize'));
+    // let sort = req.param("sort");
+    // let skip = (page-1)*pageSize;
+    // let params = {};
+    // let stationsModel = Stations.find(params).skip(skip).limit(pageSize);
+    // stationsModel.sort({'sta_code':sort});
 
-    Stations.exec({}, function(err,doc){
+    // Stations.exec({}, function(err,doc){
+    Stations.find({}, function(err,doc){
         if(err){
             res.json({
                 status:'1',
