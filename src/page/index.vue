@@ -8,7 +8,7 @@
         <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
-      <calendar :title='title' @on-change="onChange" v-model="showCalender" show-popup-header :popup-header-title="('请选择')" disable-past></calendar>
+      <calendar :title="(`周${calendarDay}`)" @on-change="onChange" v-model="calendarDate" show-popup-header :popup-header-title="('选择日期')" disable-past></calendar>
       <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import vSwiper from '@/components/header/swiper';
 import vTab from '@/components/header/v-tab';
 import vMenu from '@/components/footer/v-menu';
@@ -40,7 +41,8 @@ export default {
   name:'trainQuery',
   data (){
     return {
-      showCalender:'TODAY',
+      calendarDate:'2018-04-01',
+      calendarDay:'一',
       studentTicket:false,
       onlySeeGD:false,
       title:'',
@@ -52,9 +54,12 @@ export default {
   components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
       this.historys = getHistory();
+
+      this.setcalendarDayStr();
   },
   methods:{
     onChange(val){
+      this.setcalendarDayStr();
       console.log('on change', val)
     },
     changeGoCity(val){
@@ -74,10 +79,23 @@ export default {
         ToStation:this.tocity
       }
     },
+    setcalendarDayStr(){
+      this.calendarDay = moment(this.calendarDate).day();
+      this.calendarDay===1?this.calendarDay='一':'';
+      this.calendarDay===2?this.calendarDay='二':'';
+      this.calendarDay===3?this.calendarDay='三':'';
+      this.calendarDay===4?this.calendarDay='四':'';
+      this.calendarDay===5?this.calendarDay='五':'';
+      this.calendarDay===6?this.calendarDay='六':'';
+      this.calendarDay===0?this.calendarDay='日':'';
+    },
     goListRouter(url){
       const option = {
         FromStation:this.gocity,
-        ToStation:this.tocity
+        ToStation:this.tocity,
+        FromDate:this.calendarDate,
+        gaoDong:this.onlySeeGD,
+        studentTicket:this.studentTicket
       }
       this.$router.push({name:url,query:option})
       setHistory(option);
@@ -116,7 +134,7 @@ export default {
 		}
 		.r{text-align: right;padding:0.4rem 0.3rem;}
 	}
-  .vux-calendar{padding:0.2rem 0;
+  .vux-calendar{
     &:before{left:0.2rem;right:0.2rem}
     &:after{content: " ";
     position: absolute;
@@ -131,7 +149,7 @@ export default {
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
     left:0.2rem;right:0.2rem;}
-    .vux-cell-value{color: #333;margin-right: 4.7rem;}
+    .vux-cell-value{color: #333;margin-right: 3.6rem;}
   }
   .fi{padding:0.3rem 0.2rem;
     &:before{.top1px}
