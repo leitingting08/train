@@ -1,6 +1,8 @@
 import PublicFn from '@/service/public.service';
 import { trainQueryUrl } from '@/service/interface';
 
+let PublicMethod = new PublicFn();
+
 class TraintripServer{
 
 	sendTripListServer(opt){//车票查询

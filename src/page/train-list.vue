@@ -102,8 +102,22 @@ export default{
             questData: {
             trainList:[]
             },
+            trainTripArg: {
+            FromStation: this.$route.query.FromStation,
+            ToStation: this.$route.query.ToStation,
+            FromDate: this.$route.query.FromDate,
+            // PageSize:7,
+            // PageNo:1,
+            // SortType:'',
+            TrainType:this.$route.query.gaoDong,
+            // FilterTime:'',
+            // FilterStation:''
+          }
             
         }
+    },
+    created(){
+       this.loadTrainList(this.trainTripArg)
     },
     // mounted(){
     //    this.$nextTick(()=>{
@@ -112,6 +126,22 @@ export default{
     //    this.$refs.scrollerBottom.reset({top:0})
     // },
     methods:{
+        loadTrainList(data){
+            traintripServer.sendTripListServer({
+                data:data,
+                onSuccess: (response) => {
+                  if(response.status==='error'){
+                    alert(response.tipsinfo);
+                    return;
+                  }
+                },
+                onFalied: (error) => {
+                  
+                  console.log(error);
+                }
+            });
+
+        }
         // bookTicket(){
         //     link:'bookTicket'
         // }
