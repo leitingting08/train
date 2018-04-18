@@ -13,7 +13,7 @@
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
         <!-- <router-link to="./trainList"> -->
-          <x-button type="primary" action-type="button" @click="goListRouter()">开始搜索</x-button>
+          <x-button type="primary" action-type="button" @click.native="goListRouter('trainList')">开始搜索</x-button>
         <!-- </router-link> -->
         <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
@@ -107,8 +107,7 @@ export default {
       this.calendarDay===6?this.calendarDay='六':'';
       this.calendarDay===0?this.calendarDay='日':'';
     },
-    goListRouter(){
-      const url = 'trainList';
+    goListRouter(url){
       console.log(url)
       const option = {
         FromStation:this.gocity,
