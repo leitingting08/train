@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "async-file": "^2.0.2",
+    "async-request": "^1.2.0",
     "axios": "^0.17.1",
     "babel-runtime": "^6.26.0",
     "cookie-parser": "^1.4.3",
@@ -24,10 +26,11 @@
     "jsonp": "^0.2.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "moment": "^2.22.0",
+    "moment": "^2.22.1",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.12",
     "morgan": "^1.9.0",
+    "readline-sync": "^1.4.9",
     "vue": "^2.5.2",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
@@ -35,6 +38,7 @@
     "vuex-i18n": "^1.8.0",
     "vux": "^2.7.5",
     "vux-loader": "^1.1.28",
+    "word-table": "^1.0.3",
     "yaml-loader": "^0.5.0"
   },
   "devDependencies": {

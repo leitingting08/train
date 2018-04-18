@@ -4,16 +4,16 @@
   	<vTab></vTab>
   	<form class="con">
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" :stationsData="questCityData" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" :stationsData="questCityData" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
       <calendar :title="(`周${calendarDay}`)" @on-change="onChange" v-model="calendarDate" show-popup-header :popup-header-title="('选择日期')" disable-past></calendar>
       <div class="fi">
         <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
         <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
         <!-- <router-link to="./trainList"> -->
-          <x-button type="primary" action-type="button" @click="goListRouter('trainList')">开始搜索</x-button>
+          <x-button type="primary" action-type="button" @click="goListRouter()">开始搜索</x-button>
         <!-- </router-link> -->
         <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
@@ -34,9 +34,11 @@ import vTab from '@/components/header/v-tab';
 import vMenu from '@/components/footer/v-menu';
 import trainCity from '@/components/cityselect/train-city';
 import {setHistory,getHistory} from '@/assets/js/storage_historySearch';
-// import {getRecommend} from '@/api/recommend';
-// import {ERR_OK} from '@/api/config';
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
+import TraintripServer from '@/service/traintrip.server';
+const stationServer = new TraintripServer();
+
+
 export default {
   name:'trainQuery',
   data (){
@@ -48,7 +50,8 @@ export default {
       title:'',
       gocity:'北京',
       tocity:'杭州',
-      historys:null
+      historys:null,
+      questCityData:[]
     }
   },
   components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
@@ -58,6 +61,21 @@ export default {
       this.setcalendarDayStr();
   },
   methods:{
+    stationsData(){
+
+      stationServer.sendTripListServer({
+        onSuccess: (response) => {
+          if(response.status==='error'){
+            alert(response.tipsinfo);
+            return;
+          }
+          this.questCityData = response.tipsinfo;
+        },
+        onFalied: (error) => {
+          console.log(error);
+        }
+      });
+    },
     onChange(val){
       this.setcalendarDayStr();
       console.log('on change', val)
@@ -89,7 +107,9 @@ export default {
       this.calendarDay===6?this.calendarDay='六':'';
       this.calendarDay===0?this.calendarDay='日':'';
     },
-    goListRouter(url){
+    goListRouter(){
+      const url = 'trainList';
+      console.log(url)
       const option = {
         FromStation:this.gocity,
         ToStation:this.tocity,
@@ -97,7 +117,8 @@ export default {
         gaoDong:this.onlySeeGD,
         studentTicket:this.studentTicket
       }
-      this.$router.push({name:url,query:option})
+      console.log(option)
+      this.$router.push({name:url,query:option});//在点击查询按钮的时候把查询参数放到浏览器url里
       setHistory(option);
     }
   },

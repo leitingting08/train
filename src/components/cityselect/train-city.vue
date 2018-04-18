@@ -55,13 +55,15 @@ import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
 import {getStation,setStation} from '@/assets/js/storage_stations';
 import {stationListUrl} from '@/service/interface';
+// import TraintripServer from '@/service/traintrip.server';
+// const stationServer =new TraintripServer();
 //存储城市搜索历史记录
 
 // const hot_city='热门'
 
 export default{
 	name:'train-city',
-	props:['cityName','fromToType'],//把父组件的值传到子组件中
+	props:['cityName','fromToType','stationsData'],//把父组件的值传到子组件中
 	directives:{
 		TransferDom
 	},

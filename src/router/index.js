@@ -12,7 +12,7 @@ import orderPay from '@/page/pay-order'
 Vue.use(Router)
 
 export default new Router({
-	mode:'history', //去掉#/
+	// mode:'history', //去掉#/
   routes: [
     {path: '/',name: 'trainQuery',component: trainQuery},
     {path: '/trainList',name: 'trainList',component: trainList},

@@ -88,6 +88,9 @@ import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
 import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
+import TraintripServer from '@/service/traintrip.server';
+const traintripServer = new TraintripServer();
+
 export default{
     name:'trainList',
     components:{vTitle,vFilter,timeCalender,Flexbox, FlexboxItem,Scroller,LoadMore },
@@ -96,6 +99,9 @@ export default{
             scrollTop:0,
             onFetching:false,
             bottomCount:5,
+            questData: {
+            trainList:[]
+            },
             
         }
     },
