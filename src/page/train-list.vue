@@ -117,6 +117,7 @@ export default{
         }
     },
     created(){
+        console.log(this.trainTripArg)
        this.loadTrainList(this.trainTripArg)
     },
     // mounted(){
