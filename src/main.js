@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import 'font-awesome/css/font-awesome.css'
 import infiniteScroll from 'vue-infinite-scroll'
+import store from './store'
 // import Vuex from 'vuex'
 // import vuexI18n from 'vuex-i18n'
 Vue.use(infiniteScroll)
@@ -20,5 +21,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   render: h=>h(App)
 }).$mount('#app')
