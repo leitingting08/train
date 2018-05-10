@@ -1,7 +1,7 @@
 <template>
   <div class="train-query">
-  	<vSwiper></vSwiper>
-  	<vTab></vTab>
+  	<!-- <vSwiper></vSwiper>
+  	<vTab></vTab> -->
   	<form class="con">
   	  <flexbox class="train-q">
         <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" :stationsData="questCityData" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
@@ -18,11 +18,6 @@
         <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
-    <group>
-      <cell is-link class="eTicket">
-        <span style="color:#333;margin-right:4.4rem;"><i class="fa fa-train"></i><span style="vertical-align:middle;">{{('欧洲火车票')}}</span></span>
-      </cell>
-    </group>
     <vMenu></vMenu>
   </div>
 </template>
@@ -121,21 +116,16 @@ export default {
       setHistory(option);
     }
   },
-  // beforeRouteEnter(to,from,next){
-  //   let option={
-  //     headSwiper:true,
-  //     headTab:true,
-  //     headerTitle:false
-  //   }
-  //   next(vm=>{
-  //     vm.$store.commit('pubulicSetEvent',option);
-  //   })
-  // }
-  // var wait1000 = new Promise(function(resolve,reject){
-  //   setTimeout(resolve, 1000)
-  // }).then(function(){
-    
-  // })
+  beforeRouteEnter(to,from,next){
+    let option={
+      headSwiper:true,
+      headNav:true,
+      headerTitle:false
+    }
+    next(vm=>{
+      vm.$store.commit('pubulicSetEvent',option);
+    })
+  }
 }
 </script>
 

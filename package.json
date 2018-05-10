@@ -17,6 +17,7 @@
     "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
     "dev-server": "0.0.2",
+    "echarts": "^4.1.0",
     "ejs": "^2.5.7",
     "express": "~4.16.0",
     "fastclick": "^1.0.6",
