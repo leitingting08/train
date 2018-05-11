@@ -24,8 +24,6 @@
 
 <script>
 import moment from 'moment';
-import vSwiper from '@/components/header/swiper';
-import vTab from '@/components/header/v-tab';
 import vMenu from '@/components/footer/v-menu';
 import trainCity from '@/components/cityselect/train-city';
 import {setHistory,getHistory} from '@/assets/js/storage_historySearch';
@@ -49,7 +47,7 @@ export default {
       questCityData:[]
     }
   },
-  components:{vSwiper,vTab,Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
+  components:{Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
       this.historys = getHistory();
 
@@ -123,7 +121,7 @@ export default {
       headerTitle:false
     }
     next(vm=>{
-      vm.$store.commit('pubulicSetEvent',option);
+      vm.$store.commit('pubulicSet',option);
     })
   }
 }

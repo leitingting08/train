@@ -1,14 +1,15 @@
 <template>
   <div id="app">
+     </vHeader>
     <router-view/>
   </div>
 </template>
 
 <script>
-import vTitle from '@/components/header/v-title'
+import vHeader from '@/components/header/v-header'
 export default {
   name: 'app',
-  components:{vTitle},
+  components:{vHeader},
   data (){
   	return {
 
