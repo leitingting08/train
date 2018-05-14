@@ -1,13 +1,12 @@
 import {publicSetEvent,vLoadingIsShow,toastMsg} from './mutation-types';
-import Vuex from 'vuex'
 
 const mutations = {
   [publicSetEvent]: (state, json) => {
     json.headSwiper !== undefined ? state.publicSet.headSwiper = json.headSwiper : '';
     json.headNav !== undefined ? state.publicSet.headNav = json.headNav : '';
     json.headTitle !== undefined ? state.publicSet.headTitle = json.headTitle : '';
-    json.trainListFilter !== undefined ? state.publicSet.trainListFilter = json.trainListFilter : '';
-    json.indexSubmenu !== undefined ? state.publicSet.indexSubmenu = json.indexSubmenu : '';
+    // json.trainListFilter !== undefined ? state.publicSet.trainListFilter = json.trainListFilter : '';
+    // json.indexSubmenu !== undefined ? state.publicSet.indexSubmenu = json.indexSubmenu : '';
 
     state.publicSet.sTitle = json.sTitle || state.publicSet.sTitle;
     state.publicSet.sStyle = json.sStyle || state.publicSet.sStyle;

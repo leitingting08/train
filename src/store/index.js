@@ -38,7 +38,7 @@ const store = new Vuex.Store({
   mutations,
   actions,
   getters,
-  namespaced: true
+  // namespaced: true
 });
 
 export default store
