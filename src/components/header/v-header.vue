@@ -11,6 +11,8 @@ import vTitle from './v-title'
 import vNav from './v-tab'
 import vSwiper from './swiper'
 import { mapState } from 'vuex'
+// import { createNamespacedHelpers } from 'vuex'
+// const { mapState } = createNamespacedHelpers('commons')
 
 export default{
 	name:'vHeader',

@@ -12,8 +12,8 @@ Vue.use(ToastPlugin)
 
 const state = {
   publicSet: {//设置公共部分--头/尾
-    trainListFilter:false,
-    indexSubmenu:false,
+    // trainListFilter:false,
+    // indexSubmenu:false,
     headSwiper: false,
     headNav: false,
     headTitle: false,
@@ -35,9 +35,10 @@ const state = {
 
 const store = new Vuex.Store({
   state,
-  getters,
   mutations,
-  actions
+  actions,
+  getters,
+  namespaced: true
 });
 
 export default store

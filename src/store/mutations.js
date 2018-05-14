@@ -1,4 +1,5 @@
 import {publicSetEvent,vLoadingIsShow,toastMsg} from './mutation-types';
+import Vuex from 'vuex'
 
 const mutations = {
   [publicSetEvent]: (state, json) => {
