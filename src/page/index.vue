@@ -129,6 +129,7 @@ export default {
 
 <style lang="less">
 @import "../assets/css/base.less";
+
 @yellow:#FFC300;
 @orange:#ff6600;
 @grey:#d9d9d9;

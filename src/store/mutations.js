@@ -1,4 +1,7 @@
 import {publicSetEvent,vLoadingIsShow,toastMsg} from './mutation-types';
+// const publicSetEvent ='publicSetEvent';
+// const vLoadingIsShow ='vLoadingIsShow';
+// const toastMsg ='toastMsg';
 
 const mutations = {
   [publicSetEvent]: (state, json) => {

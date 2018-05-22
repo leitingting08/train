@@ -53,6 +53,16 @@ export default{
 
         }
     },
+    beforeRouteEnter(to,from,next){
+    let option={
+      headSwiper:true,
+      headNav:true,
+      headerTitle:false
+    }
+    next(vm=>{
+      vm.$store.commit('pubulicSet',option);
+    })
+  },
     created(){
         console.log(this.trainTripArg)
        this.loadTrainList(this.trainTripArg)
