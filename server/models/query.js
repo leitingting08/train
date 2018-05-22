@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require('url');
 var util = require('util');
+// var url = 'https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-05-24&leftTicketDTO.from_station=HZH&leftTicketDTO.to_station=MCN&purpose_codes=ADULT'
 
 http.createServer(function(req, res){
     res.writeHead(200, {'Content-Type':'text/plain'});

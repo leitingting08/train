@@ -1,3 +1,7 @@
 {
-	""
+	"leftTicketDTO": {
+        "train_date":"string",
+        "to_station":"string",
+        "purpose_codes":"string"
+    }
 }
