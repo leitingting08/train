@@ -7,13 +7,7 @@ const path = require('path')
 module.exports = {
   dev: {
     proxyTable: {
-        // '/api':{
-        //     target:'http://localhost:3000'
-        // }
-        // '/stations':{
-        //     target:'http://localhost:3000'
-        // },
-        // '/query':{
+        // '/':{
         //     target:'http://localhost:3000'
         // }
     },
