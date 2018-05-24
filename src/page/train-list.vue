@@ -60,7 +60,7 @@ export default{
       headerTitle:false
     }
     next(vm=>{
-      vm.$store.commit('pubulicSet',option);
+      vm.$store.commit('publicSetEvent',option);
     })
   },
     created(){
