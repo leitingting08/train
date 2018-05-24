@@ -54,7 +54,7 @@
 import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
 import {getStation,setStation} from '@/assets/js/storage_stations';
-import {stationListUrl} from '@/service/interface';
+import {stationListUrl} from '@/service/interface.service';
 // import TraintripServer from '@/service/traintrip.server';
 // const stationServer =new TraintripServer();
 //存储城市搜索历史记录

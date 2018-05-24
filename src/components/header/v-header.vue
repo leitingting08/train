@@ -1,8 +1,8 @@
 <template>
   <div class="v-header">
      <vSwiper v-if="publicSet.headSwiper"></vSwiper>
-     <vNav v-if="publicSet.headNav" :title="publicSet.sTitle" :sTo="publicSet.sTo"></vNav>
-     <vTitle v-if="publicSet.headTitle"></vTitle>
+     <vNav v-if="publicSet.headNav"></vNav>
+     <vTitle v-if="publicSet.headTitle" :title="publicSet.sTitle" :sTo="publicSet.sTo"></vTitle>
   </div>
 </template>
 
@@ -27,5 +27,5 @@ export default{
 </script>
 
 <style lang="less">
-	
+
 </style>

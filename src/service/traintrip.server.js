@@ -1,5 +1,5 @@
 import PublicFn from '@/service/public.service';
-import { trainQueryUrl } from '@/service/interface';
+import { trainQueryUrl } from '@/service/interface.service';
 
 let PublicMethod = new PublicFn();
 

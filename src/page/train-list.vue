@@ -1,6 +1,6 @@
 <template>
     <div class="train-list">
-        <vTitle :title="('杭州-北京')"></vTitle>
+        <!-- <vTitle :title="('杭州-北京')"></vTitle> -->
         <timeCalender></timeCalender>
          <div class="lists">
             <scroller lock-x>
@@ -21,10 +21,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
 import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
+import {trainQueryUrl} from '@/service/interface.service'
 import TraintripServer from '@/service/traintrip.server';
 const traintripServer = new TraintripServer();
 
@@ -55,9 +57,14 @@ export default{
     },
     beforeRouteEnter(to,from,next){
     let option={
-      headSwiper:true,
-      headNav:true,
-      headerTitle:false
+      headSwiper:false,
+      headNav:false,
+      headTitle:true,
+      sTitle: '杭州-北京',
+      sTo: {
+        url: '/',
+        name: true
+      }
     }
     next(vm=>{
       vm.$store.commit('publicSetEvent',option);
@@ -65,23 +72,31 @@ export default{
   },
     created(){
         console.log(this.trainTripArg)
-       this.loadTrainList(this.trainTripArg)
+       // this.loadTrainList(this.trainTripArg)
+       this.loadTrainList()
     },
     methods:{
         loadTrainList(data){
-            traintripServer.sendTripListServer({
-                params:data,
-                onSuccess: (response) => {
-                  if(response.status==='error'){
-                    alert(response.tipsinfo);
-                    return;
-                  }
-                },
-                onFalied: (error) => {
+          axios.get(trainQueryUrl)
+            .then((res)=>{
+                console.log(err)
+            })
+            .catch((err)=>{
+              console.log(err)
+            })
+            // traintripServer.sendTripListServer({
+            //     params:data,
+            //     onSuccess: (response) => {
+            //       if(response.status==='error'){
+            //         alert(response.tipsinfo);
+            //         return;
+            //       }
+            //     },
+            //     onFalied: (error) => {
 
-                  console.log(error);
-                }
-            });
+            //       console.log(error);
+            //     }
+            // });
 
         }
     }
