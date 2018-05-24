@@ -12,24 +12,33 @@ var Query = require('../models/query');
 
 
 router.get("/", function(req,res,next){
-    Query.find({}, function(err,doc){
-        if(err){
-            res.json({
-                status:'1',
-                msg:err.message
-            });
+    var _callbcak = req.query.callbcak;
+    var _data = {};
+    if (_callbcak){
+        res.type('text/javascript');
+        res.send(_callbcak + '('+JSON.stringify(_data)+ ')');
+    }
+    else{
+        res.json(_data)
+    }
+    // Query.find({}, function(err,doc){
+    //     if(err){
+    //         res.json({
+    //             status:'1',
+    //             msg:err.message
+    //         });
 
-        }else{
-            res.json({
-                status:'0',
-                msg:'',
-                result:{
-                    count:doc.length,
-                    list:doc
-                }
-            })
-        }
-    })
+    //     }else{
+    //         res.json({
+    //             status:'0',
+    //             msg:'',
+    //             result:{
+    //                 count:doc.length,
+    //                 list:doc
+    //             }
+    //         })
+    //     }
+    // })
 });
 
 module.exports = router;

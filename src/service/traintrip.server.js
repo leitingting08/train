@@ -6,7 +6,8 @@ let PublicMethod = new PublicFn();
 class TraintripServer{
 
 	sendTripListServer(opt){//车票查询
-        PublicMethod.axiosServer(trainQueryUrl,opt.data,opt.onSuccess,opt.onFalied);
+		const data = PublicMethod.setData(opt);
+        PublicMethod.getServer(trainQueryUrl, data ,opt.onSuccess,opt.onFalied);
     }
 }
 

@@ -67,16 +67,10 @@ export default{
         console.log(this.trainTripArg)
        this.loadTrainList(this.trainTripArg)
     },
-    // mounted(){
-    //    this.$nextTick(()=>{
-    //     // this.$refs.scrollerEvent.reset({top:0})
-    //    })
-    //    this.$refs.scrollerBottom.reset({top:0})
-    // },
     methods:{
         loadTrainList(data){
             traintripServer.sendTripListServer({
-                data:data,
+                params:data,
                 onSuccess: (response) => {
                   if(response.status==='error'){
                     alert(response.tipsinfo);
@@ -90,29 +84,12 @@ export default{
             });
 
         }
-        // bookTicket(){
-        //     link:'bookTicket'
-        // }
-        // onScrollButtom(){
-        //     if(this.onFetching){
-
-        //     }else{
-        //         this.onFetching = true
-        //         setTimeout(()=>{
-        //             this.bottomCount += 10
-        //             this.$nextTick(()=>{
-        //                 this.$refs.scrollerBottom.reset()
-        //             })
-        //             this.onFetching = false
-        //         },2000)
-        //     }
-        // }
     }
 }
 
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @yellow:#FFC300;
 @orange:#ff6600;
 .col999{color:#999;}
