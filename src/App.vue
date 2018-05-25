@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-      <vHeader></vHeader>
-      <router-view/>
+      <vHeader/>
+      <router-view></router-view>
       <div v-transfer-dom><loading :show="vLoadingIsShow" :text="`加载中...`"></loading></div>
-      <!-- <toast v-model="toastMsg.isShow" type="text" :width="toastMsg.width" :time="toastMsg.time" is-show-mask :position="`middle`">{{toastMsg.text}}</toast> -->
+      <toast v-model="toastMsg.isShow" type="text" :width="toastMsg.width" :time="toastMsg.time" is-show-mask :position="`middle`">{{toastMsg.text}}</toast>
   </div>
 </template>
 
@@ -24,8 +24,8 @@ export default {
   	}
   },
   computed:{
-    // ...mapState(['vLoadingIsShow','toastMsg'])
-    ...mapState(['vLoadingIsShow'])
+    ...mapState(['vLoadingIsShow','toastMsg'])
+    // ...mapState(['vLoadingIsShow'])
   }
 }
 </script>
