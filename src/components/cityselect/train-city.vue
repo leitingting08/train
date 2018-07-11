@@ -175,7 +175,8 @@ export default{
 @orange:#ff6600;
 @grey:#d8d8d8;
 .vux-popup-dialog{
-    .city-btns{padding: 0.2rem;background: #fff;overflow: hidden;font-size: 0.26rem;
+    .city-btns{position: fixed;width:100%;top: 0;z-index: 10;box-sizing: border-box;
+    	padding: 0.2rem;background: #fff;overflow: hidden;font-size: 0.26rem;
        .vux-enter{float: right;}
        .title{margin-left:2.8rem;}
     }
