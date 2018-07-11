@@ -14,9 +14,9 @@ const state = {
   publicSet: {//设置公共部分--头/尾
     // trainListFilter:false,
     // indexSubmenu:false,
-    headSwiper: false,
-    headNav: false,
-    headTitle: false,
+    headSwiper: false, //轮播图
+    headNav: false, // tab切换
+    headTitle: false, // 头
     sTitle: '列表页',
     sStyle: '',
     sTo: {

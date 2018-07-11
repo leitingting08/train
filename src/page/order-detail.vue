@@ -1,6 +1,6 @@
 <template>
 <div class="order-datail">
-    <vTitle :title="('订单详情')"></vTitle>
+    <!-- <vTitle :title="('订单详情')"></vTitle> -->
     <div>
     	<div></div>
     	<div></div>
@@ -57,7 +57,20 @@ export default {
 		return{
 
 		}
-	}
+	},
+  beforeRouteEnter(to,from,next){
+    let option={
+      headTitle:true,
+      sTitle: '订单详情',
+      sTo: {
+        url: '/',
+        name: true
+      }
+    }
+    next(vm=>{
+      vm.$store.commit('publicSetEvent',option);
+    })
+  }
 }
 </script>
 
@@ -74,7 +87,7 @@ export default {
 .font30{font-size: 0.3rem;}
 .order-datail{
 	.v-title{position: fixed;top: 0;width: 100%;}
-.train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0.2rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;margin-top: 1.1rem;
+.train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;margin-top: 1.1rem;
     .l{text-align: left;}
     .c{text-align: center;
       .time-table{display: inline-block;width: 1.5rem;height: 0.55rem;background: url(../assets/img/icon/arrow.png) no-repeat center;background-size: contain;

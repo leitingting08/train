@@ -1,6 +1,6 @@
 <template>
 <div class="train-fill-order">
-	<vTitle :title="('12月25日 周一')"></vTitle>
+	<!-- <vTitle :title="('12月25日 周一')"></vTitle> -->
 	<trainInfo></trainInfo>
 	<div class="seatType">
 		<div class="type font30"><span>二等座</span><span class="price"><span class="font20">￥</span>77.5</span></div>
@@ -73,7 +73,20 @@ export default{
 		return{
 			noTicket:false
 		}
-	}
+	},
+  beforeRouteEnter(to,from,next){
+    let option={
+      headTitle:true,
+      sTitle: '订单填写',
+      sTo: {
+        url: '/',
+        name: true
+      }
+    }
+    next(vm=>{
+      vm.$store.commit('publicSetEvent',option);
+    })
+  }
 }
 </script>
 
@@ -88,7 +101,7 @@ export default{
 .font20{font-size: 0.2rem;}
 .font26{font-size: 0.26rem;}
 .font30{font-size: 0.3rem;}
-.train-fill-order{
+.train-fill-order{margin-top: 1rem;
 	.weui-cells{margin-top: 0.2rem;}
    .seatType{background-color: #fff;position: relative;padding:0.2rem;
    	&:before{.top1px(#d9d9d9)}

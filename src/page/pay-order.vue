@@ -1,6 +1,6 @@
 <template>
 <div class="train-order-pay">
-    <vTitle :title="('支付')"></vTitle>
+    <!-- <vTitle :title="('支付')"></vTitle> -->
 		<div class="waring">火车票余票紧张，为保证出票，请尽快完成支付</div>
     <div class="group">
       <div class="order-detail">
@@ -35,6 +35,19 @@ export default{
     return {
        payWayList: [ '<span class="alipay"></span>支付宝', '<span class="wxpay"></span>微信'],
     }
+  },
+  beforeRouteEnter(to,from,next){
+    let option={
+      headTitle:true,
+      sTitle: '订单支付',
+      sTo: {
+        url: '/',
+        name: true
+      }
+    }
+    next(vm=>{
+      vm.$store.commit('publicSetEvent',option);
+    })
   }
 }
 </script>
@@ -42,7 +55,7 @@ export default{
 <style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
-.train-order-pay{
+.train-order-pay{margin-top: 1rem;
   .waring{padding:0.2rem;}
   .group{background-color: #fff;
     .order-detail{padding: 0.2rem;line-height: 0.5rem;
