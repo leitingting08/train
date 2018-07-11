@@ -133,7 +133,7 @@ export default {
 @yellow:#FFC300;
 @orange:#ff6600;
 @grey:#d9d9d9;
-.train-query{font-size: 0.3rem;
+.train-query{font-size: 0.3rem;margin-top: 3rem;
   .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
   .con{background: #fff;
 	.train-q{

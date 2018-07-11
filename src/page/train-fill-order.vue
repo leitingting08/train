@@ -101,7 +101,7 @@ export default{
 .font20{font-size: 0.2rem;}
 .font26{font-size: 0.26rem;}
 .font30{font-size: 0.3rem;}
-.train-fill-order{margin-top: 1rem;
+.train-fill-order{margin-top: 1rem;overflow-x: hidden;padding-bottom: 1rem;
 	.weui-cells{margin-top: 0.2rem;}
    .seatType{background-color: #fff;position: relative;padding:0.2rem;
    	&:before{.top1px(#d9d9d9)}
