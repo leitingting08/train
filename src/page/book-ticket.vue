@@ -65,7 +65,7 @@ export default{
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @yellow:#FFC300;
 @orange:#ff6600;
 @bg-grey:#fcf8e3;

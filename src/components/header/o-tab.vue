@@ -25,7 +25,8 @@ export default{
 <style lang="less">
 @yellow:#FFC300;
 .tab{
+	.vux-tab .vux-tab-item{font-size: 0.3rem!important;}
 	.vux-tab .vux-tab-item.vux-tab-selected{color: @yellow;border-bottom: 3px solid @yellow;}
-	.vux-tab-ink-bar{background-color:@yellow; }
+	.vux-tab-ink-bar{background-color:@yellow!important;}
 }
 </style>

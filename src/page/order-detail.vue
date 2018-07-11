@@ -74,7 +74,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../assets/css/base.less";
 @yellow:#FFC300;
 @orange:#ff6600;

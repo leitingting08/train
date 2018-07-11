@@ -117,8 +117,7 @@ export default {
   beforeRouteEnter(to,from,next){
     let option={
       headSwiper:true,
-      headNav:true,
-      headerTitle:false
+      headTitle:false
     }
     next(vm=>{
       vm.$store.commit('publicSetEvent',option);
@@ -127,14 +126,14 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../assets/css/base.less";
 
 @yellow:#FFC300;
 @orange:#ff6600;
 @grey:#d9d9d9;
-.train-query{font-size: 0.3rem;margin-top: 3rem;
-  .vux-tab .vux-tab-item{font-size: 0.3rem!important;}
+
+.train-query{font-size: 0.3rem;margin-top: 2.3rem;
   .con{background: #fff;
 	.train-q{
 		.l{text-align: left;padding:0.4rem 0.3rem;}

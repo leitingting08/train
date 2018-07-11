@@ -44,7 +44,7 @@ export default{
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @yellow:#FFC300;
 @orange:#ff6600;
 .font30{font-size: 0.3rem;}

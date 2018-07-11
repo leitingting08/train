@@ -43,7 +43,7 @@ export default {
 <style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
-.v-title{font-size: 0.33rem;height:.9rem;
+.v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;
   .vux-header{background: @yellow;
     .vux-header-title{color: #333;}
     .vux-header-left .left-arrow:before{content: "";
@@ -59,7 +59,7 @@ export default {
    .vux-header-left a,.vux-header-left button,.vux-header-right a, .vux-header-right button{color: #333;}
   }
   .right-options{position: absolute;top: 0.2rem;right: 0.2rem;width: 0.8rem;height: 0.52rem;background: transparent;border: transparent;&:active{border-style: none;border:none;}}
-  .vux-popover{left: 4.8rem!important;width: 2.2rem;
+  .vux-popover{left: 4.8rem!important;width: 2.2rem;z-index: 11;
     .vux-popover-arrow-up{left:83%;}
    .popover-demo-content{background-color: rgba(0,0,0,0.3);
     li{padding:0.1rem 0.2rem;font-size: 0.26rem;
