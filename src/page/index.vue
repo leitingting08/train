@@ -36,7 +36,7 @@ export default {
   name:'trainQuery',
   data (){
     return {
-      calendarDate:'2018-04-01',
+      calendarDate:'2018-08-17',
       calendarDay:'一',
       studentTicket:false,
       onlySeeGD:false,
