@@ -28,7 +28,8 @@ router.get("/query", function(req,res,next){
 
 });
 
-// module.exports = router;
+module.exports = router;
+
 // const request = require('async-request');
 // const _ = require('lodash');
 // const fs = require('async-file');
