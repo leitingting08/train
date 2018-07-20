@@ -1,39 +1,33 @@
 
-// var https = require('https');
 
-// https.get('https://www.baidu.com', function(res){
-//     console.log('status code: ' + res.statusCode);
-//     console.log('headers: ' + res.headers);
-
-//     res.on('data', function(data){
-//         process.stdout.write(data);
-//     });
-// }).on('error', function(err){
-//     console.error(err);
-// });
 var https = require('https');
 var fs = require('fs');
+var ca = fs.readFileSync('../cert/srca.cer');
 
+function getTrains(){
+var url = 'otn/leftTicket/query?leftTicketDTO.train_date=2018-08-17&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=SHH&purpose_codes=ADULT'
 var options={
-    hostnme:'kyfw.12306.cn',
+    hostname:'kyfw.12306.cn',
     port:443,
     path:url,
     method:'GET',
-    rejectUnauthorized:false
+    rejectUnauthorized:false,
+    ca:[ca]//证书
 };
-
-var request=https.request(options,function(response){
-    response.setEncoding('utf8');
-
-    var str='';
-
-    response.on('data',function(chunk){
-        str+=chunk;
-    });   
-})
-
-//完成拼装
-    request.on('error',funcion(e){
-        console.log('错误信息：'+e.message);
-    });
-    request.end();
+var req = https.get(options, function(res){ 
+	res.setEncoding('utf8');
+    var data = '';
+    res.on('data',function(buff){
+        data += buff;//查询结果（JSON格式）
+        console.log(data)
+    }); 
+    res.on('end',function(){
+        console.log('res',data);
+        // var jsonData = JSON.parse(data).data;
+    })  
+});
+req.on('error', function(err){
+    console.error(err.code);
+});
+}
+getTrains()
