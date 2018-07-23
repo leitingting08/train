@@ -2,7 +2,7 @@
 
 var https = require('https');
 var fs = require('fs');
-var ca = fs.readFileSync('../cert/srca.cer');
+var ca = fs.readFileSync('../cert/srca.cer.pem');
 
 function getTrains(){
 var url = 'otn/leftTicket/query?leftTicketDTO.train_date=2018-08-17&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=SHH&purpose_codes=ADULT'
@@ -10,8 +10,8 @@ var options={
     hostname:'kyfw.12306.cn',
     port:443,
     path:url,
-    method:'GET',
-    rejectUnauthorized:false,
+    // method:'GET',
+    // rejectUnauthorized:false,
     ca:[ca]//证书
 };
 var req = https.get(options, function(res){ 
