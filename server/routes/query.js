@@ -1,6 +1,6 @@
 var https = require('https');
 var fs = require('fs');
-var ca = fs.readFileSync('./cert/srca.cer.pem');
+// var ca = fs.readFileSync('cert/srca.cer.pem');
 var express = require('express');
 var router = express.Router();
 var config = {
@@ -9,7 +9,7 @@ var config = {
     end_station:'XMS',//车次
 };
 // var yz_temp = '',yw_temp = '';//保存余票状态
-router.get("/", function(req,res,next){
+// router.get("/", function(req,res,next){
 function queryTickets(config){
     var options = { 
         hostname: 'kyfw.12306.cn',//12306
@@ -38,6 +38,6 @@ function queryTickets(config){
     });
     }
     queryTickets(config)
-});
+// });
 
-module.exports = router;
+// module.exports = router;
