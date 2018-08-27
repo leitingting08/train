@@ -20,7 +20,11 @@ const url = 'https://kyfw.12306.cn/otn/leftTicket/queryA?leftTicketDTO.train_dat
     var options = { 
         hostname: 'kyfw.12306.cn',//12306
         path: '/otn/leftTicket/queryA?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT',
-        ca:[ca],//证书
+        cert:[ca],//证书
+        // key: fs.readFileSync('../cert/server.key'),//这是我在ssl目录下生成的server.key改名为server.pem
+        // cert: fs.readFileSync('../cert/cert.pem'),
+        requestCert:true,  //请求客户端证书
+        // rejectUnauthorized:false 
         // rejectUnauthorized:false
     };
     var req = https.get(options, function(res){ 
@@ -34,7 +38,7 @@ const url = 'https://kyfw.12306.cn/otn/leftTicket/queryA?leftTicketDTO.train_dat
         res.on('end',function(){
             console.log(data)
         }); 
-        // console.log(res.pipe(process.stdout));
+        console.log(res);
     });
 
     req.on('error', function(err){
