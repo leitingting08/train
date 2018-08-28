@@ -20,7 +20,7 @@ const url = 'https://kyfw.12306.cn/otn/leftTicket/queryA?leftTicketDTO.train_dat
     var options = { 
         hostname: 'kyfw.12306.cn',//12306
         path: '/otn/leftTicket/queryA?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT',
-        cert:[ca],//证书
+        ca:[ca],//证书
         // key: fs.readFileSync('../cert/server.key'),//这是我在ssl目录下生成的server.key改名为server.pem
         // cert: fs.readFileSync('../cert/cert.pem'),
         requestCert:true,  //请求客户端证书
