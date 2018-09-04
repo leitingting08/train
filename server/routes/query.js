@@ -1,9 +1,4 @@
-var https = require('https');
-const request = require('async-request');
-var fs = require('fs');
-// var ca = fs.readFileSync('../cert/srca.cer.pem');
 var superagent = require('superagent')
-var cheerio = require('cheerio')
 var express = require('express');
 var app = express();
 var router = express.Router();
