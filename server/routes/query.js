@@ -19,8 +19,8 @@ let lists = []
 
 superagent.get(url)
         .end(function(response,result){
-             if (result) {
-              const r = JSON.parse(result.text)
+             if (result.statusCode==200) {
+              const r = result.body
               const flag = r.data.flag
               const map = r.data.map
               const ress = r.data.result
