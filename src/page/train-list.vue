@@ -2,16 +2,22 @@
     <div class="train-list">
         <!-- <vTitle :title="('杭州-北京')"></vTitle> -->
         <timeCalender></timeCalender>
-         <div class="lists">
+
+         <div class="lists" v-if="questData.trainList.length===0">
+           
+         </div>
+         <div class="lists" v-if="questData.trainList.length!==0">
             <scroller lock-x>
-            <div class="list"><router-link to="./trainFillOrder">
+            <div class="list" v-for="item in questData.trainList">
+              <!-- <router-link to="./trainFillOrder"> -->
                 <flexbox>
-                    <flexbox-item><div class="flex-demo l"><span class="font36">07:10</span><br/><span>杭州东</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo c1"><span>G34<i class="fa fa-vcard-o"></i></span><br/><span>5时55分</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo c2"><span class="font36">13:05</span><br/><span>北京南</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo l"><span class="font36">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c1"><span>{{item.train_no}}<i class="fa fa-vcard-o"></i></span><br/><span>{{item.duration}}</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo c2"><span class="font36">{{item.arrive_time}}</span><br/><span>{{item.to_station_name}}</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
                 </flexbox>
-                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div></router-link>
+                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+              <!-- </router-link> -->
             </div>
             <!-- <load-more tip="loading"></load-more> -->
             </scroller>
@@ -39,7 +45,7 @@ export default{
             onFetching:false,
             bottomCount:5,
             questData: {
-            trainList:[]
+              trainList:[]
             },
             trainTripArg: {
             FromStation: this.$route.query.FromStation,
@@ -76,10 +82,11 @@ export default{
        this.loadTrainList()
     },
     methods:{
-        loadTrainList(data){
+        loadTrainList(){
           axios.get(trainQueryUrl)
             .then((res)=>{
-                console.log(err)
+                console.log(res)
+                this.questData.trainList = res.data.data.result;
             })
             .catch((err)=>{
               console.log(err)
