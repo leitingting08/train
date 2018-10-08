@@ -6,20 +6,26 @@
 后端用node.js+MongoDB，完成了server端的环境搭建，以及车站接口/stations
 后面的一些接口还在学习和搭建的过程中
 
-## Build Setup
+## Build Setup 运行项目
 
 ``` bash
-# install dependencies
+# install dependencies 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080 运行
 npm run dev
 
-# build for production with minification
+# build for production with minification  打包
 npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+```
+## 运行server端
+
+``` bash
+# 运行
+node server/bin/www
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
