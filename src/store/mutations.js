@@ -13,12 +13,9 @@ const mutations = {
         name: true
       }
     } // 在路由变化时更新状态
-    json.headSwiper !== undefined ? state.publicSet.headSwiper = json.headSwiper : '';
-    json.headNav !== undefined ? state.publicSet.headNav = json.headNav : '';
-    json.headTitle !== undefined ? state.publicSet.headTitle = json.headTitle : '';
-    // json.trainListFilter !== undefined ? state.publicSet.trainListFilter = json.trainListFilter : '';
-    // json.indexSubmenu !== undefined ? state.publicSet.indexSubmenu = json.indexSubmenu : '';
-
+    state.publicSet.headSwiper = json.headSwiper || state.publicSet.headSwiper;
+    state.publicSet.headNav = json.headNav || state.publicSet.headNav;
+    state.publicSet.headTitle = json.headTitle || state.publicSet.headTitle;
     state.publicSet.sTitle = json.sTitle || state.publicSet.sTitle;
     state.publicSet.sStyle = json.sStyle || state.publicSet.sStyle;
     state.publicSet.sTo = json.sTo || state.publicSet.sTo;

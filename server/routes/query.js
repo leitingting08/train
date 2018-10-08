@@ -5,11 +5,18 @@ var router = express.Router();
 var stationobj = require('../models/query');
 
 router.get("/", function(req,res,next){
-
+  var fromsta = 'BJP';
+  var tosta = 'HZH';
+  
+  for(let i in stationobj){
+    fromsta = stationobj[req.query.FromStation]
+    tosta = stationobj[req.query.ToStation]
+  }
+//获取查询参数
 var config = {
-    time:'2018-10-30',//日期格式必须是这样
-    from_station:'BJP',//始发站车站代码，这里是北京北
-    end_station:'XMS',//车次
+    time:req.query.FromDate,//日期格式必须是这样
+    from_station:fromsta,//始发站车站代码，这里是北京北
+    end_station:tosta,//车次
 };
 
 

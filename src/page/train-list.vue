@@ -77,13 +77,13 @@ export default{
     })
   },
     created(){
-        console.log(this.trainTripArg)
-       // this.loadTrainList(this.trainTripArg)
        this.loadTrainList()
     },
     methods:{
         loadTrainList(){
-          axios.get(trainQueryUrl)
+          axios.get(trainQueryUrl,{
+            params:this.trainTripArg
+          })
             .then((res)=>{
                 console.log(res)
                 this.questData.trainList = res.data.data.result;

@@ -36,7 +36,7 @@ export default {
   name:'trainQuery',
   data (){
     return {
-      calendarDate:'2018-08-17',
+      calendarDate:'2018-10-17',
       calendarDay:'一',
       studentTicket:false,
       onlySeeGD:false,
@@ -50,7 +50,13 @@ export default {
   components:{Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
   created(){
       this.historys = getHistory();
-
+      let queryinfo = JSON.parse(localStorage.getItem('QUERY_INFO'))
+      const today = moment(new Date()).format('YYYY-MM-DD');
+      this.calendarDate = queryinfo&&queryinfo.FromDate>today?queryinfo.FromDate:today;
+      this.gocity = queryinfo&&queryinfo.FromStation?queryinfo.FromStation:'北京';
+      this.tocity = queryinfo&&queryinfo.ToStation?queryinfo.ToStation:'杭州';
+      this.studentTicket = queryinfo&&queryinfo.studentTicket?queryinfo.studentTicket:false;
+      this.onlySeeGD = queryinfo&&queryinfo.gaoDong?queryinfo.gaoDong:false;
       this.setcalendarDayStr();
   },
   methods:{
@@ -110,6 +116,7 @@ export default {
         studentTicket:this.studentTicket
       }
       console.log(option)
+      localStorage.setItem('QUERY_INFO',JSON.stringify(option))
       this.$router.push({name:url,query:option});//在点击查询按钮的时候把查询参数放到浏览器url里
       setHistory(option);
     }
