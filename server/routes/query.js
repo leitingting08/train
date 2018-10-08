@@ -7,7 +7,7 @@ var stationobj = require('../models/query');
 router.get("/", function(req,res,next){
 
 var config = {
-    time:'2018-09-17',//日期格式必须是这样
+    time:'2018-10-30',//日期格式必须是这样
     from_station:'BJP',//始发站车站代码，这里是北京北
     end_station:'XMS',//车次
 };
