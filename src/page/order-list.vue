@@ -1,6 +1,5 @@
 <template>
 <div class="order-list">
-	<vTitle :title="('我的订单')"></vTitle>
     <oTab></oTab>
     <div class="list-wrapper">
     	<div class="list"><router-link to="./orderDetail">
@@ -31,16 +30,25 @@
 </template>
 
 <script>
-import vTitle from '@/components/header/v-title'
 import oTab from '@/components/header/o-tab'
 
 export default{
-	components:{vTitle,oTab},
+	components:{oTab},
 	data(){
 		return{
            
 		}
-	}
+	},
+    beforeRouteEnter(to,from,next){
+    let option={
+      headSwiper:false,
+      sTitle:'我的订单',
+      headTitle:true
+    }
+    next(vm=>{
+      vm.$store.commit('publicSetEvent',option);
+    })
+  }
 }
 </script>
 
@@ -50,7 +58,9 @@ export default{
 .font30{font-size: 0.3rem;}
 .orange{color: @orange;}
 .fr{float: right;}
+.tab{position: fixed;top: 0.9rem;width: 100%;}
 .order-list{
+    .list-wrapper{padding-top: 2rem;}
 	.list{background: #fff;overflow: hidden;padding: 0.2rem 0;position: relative;margin-bottom: 0.2rem;
 		i{position: absolute;top: 1rem;left:0.2rem;}
 		.title{padding: 0 0.2rem 0.2rem;}

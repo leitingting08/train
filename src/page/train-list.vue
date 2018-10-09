@@ -51,12 +51,7 @@ export default{
             FromStation: this.$route.query.FromStation,
             ToStation: this.$route.query.ToStation,
             FromDate: this.$route.query.FromDate,
-            // PageSize:7,
-            // PageNo:1,
-            // SortType:'',
             TrainType:this.$route.query.gaoDong,
-            // FilterTime:'',
-            // FilterStation:''
           }
 
         }
