@@ -19,8 +19,8 @@ var config = {
     end_station:tosta,//车次
 };
 
-
-const url = 'https://kyfw.12306.cn/otn/leftTicket/queryA?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT'
+// https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date=2018-10-20&leftTicketDTO.from_station=HZH&leftTicketDTO.to_station=SHH&purpose_codes=ADULT
+const url = 'https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT'
 
 let lists = []
 

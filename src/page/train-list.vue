@@ -3,12 +3,12 @@
         <!-- <vTitle :title="('杭州-北京')"></vTitle> -->
         <timeCalender></timeCalender>
 
-         <div class="lists" v-if="questData.trainList.length===0">
-           
+         <div class="lists center mt20" v-if="!trainList||trainList.length===0">
+            暂无列车信息
          </div>
-         <div class="lists" v-if="questData.trainList.length!==0">
+         <div class="lists" v-if="trainList&&trainList.length!==0">
             <scroller lock-x>
-            <div class="list" v-for="item in questData.trainList">
+            <div class="list" v-for="item in trainList">
               <!-- <router-link to="./trainFillOrder"> -->
                 <flexbox>
                     <flexbox-item><div class="flex-demo l"><span class="font36">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></flexbox-item>
@@ -16,7 +16,11 @@
                     <flexbox-item><div class="flex-demo c2"><span class="font36">{{item.arrive_time}}</span><br/><span>{{item.to_station_name}}</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
                 </flexbox>
-                <div class="explain"><span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票</div>
+                <div class="explain">
+                  <span v-if="item.if_can_by=='Y'">有票</span>
+                  <span v-if="item.if_can_by!=='Y'">无票</span>
+                  <!-- <span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票 -->
+                </div>
               <!-- </router-link> -->
             </div>
             <!-- <load-more tip="loading"></load-more> -->
@@ -44,8 +48,16 @@ export default{
             scrollTop:0,
             onFetching:false,
             bottomCount:5,
-            questData: {
-              trainList:[]
+            trainList:[],
+            option:{
+              headSwiper:false,
+              headNav:false,
+              headTitle:true,
+              sTitle: '杭州-北京',
+              sTo: {
+                url: '/',
+                name: true
+              }
             },
             trainTripArg: {
             FromStation: this.$route.query.FromStation,
@@ -57,18 +69,10 @@ export default{
         }
     },
     beforeRouteEnter(to,from,next){
-    let option={
-      headSwiper:false,
-      headNav:false,
-      headTitle:true,
-      sTitle: '杭州-北京',
-      sTo: {
-        url: '/',
-        name: true
-      }
-    }
+    
     next(vm=>{
-      vm.$store.commit('publicSetEvent',option);
+      vm.option.sTitle = vm.$route.query.FromStation+'-'+vm.$route.query.ToStation
+      vm.$store.commit('publicSetEvent',vm.option);
     })
   },
     created(){
@@ -81,7 +85,18 @@ export default{
           })
             .then((res)=>{
                 console.log(res)
-                this.questData.trainList = res.data.data.result;
+                if(!res.data.status){
+                  this.$vux.alert.show({
+                  content: res.data.msg,
+                  onShow () {
+                    console.log('Plugin: I\'m showing')
+                  },
+                  onHide () {
+                    console.log('Plugin: I\'m hiding')
+                  }
+                })
+                }
+                this.trainList = res.data.data.result;
             })
             .catch((err)=>{
               console.log(err)
