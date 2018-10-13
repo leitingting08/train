@@ -1,15 +1,12 @@
 <template>
     <div class="train-list">
-        <!-- <vTitle :title="('杭州-北京')"></vTitle> -->
-        <timeCalender></timeCalender>
-
-         <div class="lists center mt20" v-if="!trainList||trainList.length===0">
+        <timeCalender :leavedate="leavedate"></timeCalender>
+         <div class="lists center mt20" v-if="trainList&&trainList.length===0">
             暂无列车信息
          </div>
          <div class="lists" v-if="trainList&&trainList.length!==0">
             <scroller lock-x>
             <div class="list" v-for="item in trainList">
-              <!-- <router-link to="./trainFillOrder"> -->
                 <flexbox>
                     <flexbox-item><div class="flex-demo l"><span class="font36">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c1"><span>{{item.train_no}}<i class="fa fa-vcard-o"></i></span><br/><span>{{item.duration}}</span></div></flexbox-item>
@@ -21,9 +18,7 @@
                   <span v-if="item.if_can_by!=='Y'">无票</span>
                   <!-- <span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票 -->
                 </div>
-              <!-- </router-link> -->
             </div>
-            <!-- <load-more tip="loading"></load-more> -->
             </scroller>
          </div>
         <vFilter></vFilter>
@@ -48,7 +43,7 @@ export default{
             scrollTop:0,
             onFetching:false,
             bottomCount:5,
-            trainList:[],
+            trainList:null,
             option:{
               headSwiper:false,
               headNav:false,
@@ -59,6 +54,7 @@ export default{
                 name: true
               }
             },
+            leavedate:'',
             trainTripArg: {
             FromStation: this.$route.query.FromStation,
             ToStation: this.$route.query.ToStation,
@@ -76,7 +72,8 @@ export default{
     })
   },
     created(){
-       this.loadTrainList()
+       this.leavedate = this.$route.query.FromDate;
+       this.loadTrainList();
     },
     methods:{
         loadTrainList(){

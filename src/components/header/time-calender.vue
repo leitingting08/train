@@ -1,9 +1,9 @@
 <template>
 <div class="time-calender">
     <flexbox>
-        <flexbox-item><div class="flex-demo l"><i class="fa fa-angle-left"></i>前一天</div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"> 2月13日 周二 | <i class="fa fa-calendar-o"></i></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r">后一天<i class="fa fa-angle-right"></i></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l" @click="beforedate"><i class="fa fa-angle-left"></i>前一天</div></flexbox-item>
+        <flexbox-item><div class="flex-demo c"> {{leavedate}} | <i class="fa fa-calendar-o"></i></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r" @click="afterdate">后一天<i class="fa fa-angle-right"></i></div></flexbox-item>
     </flexbox>
 </div>
 </template>
@@ -13,10 +13,19 @@ import {Flexbox, FlexboxItem} from 'vux'
 
 export default {
     components:{Flexbox, FlexboxItem},
+    props:['leavedate'],
     data(){
         return{
 
         }
+    },
+    methods:{
+      beforedate(){
+        this.$emit('beforedate')
+      },
+      afterdate(){
+        this.$emit('afterdate')
+      },
     }
 }
 </script>
