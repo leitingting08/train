@@ -61,6 +61,7 @@ export default{
             ToStation: '',
             FromDate: '',
             TrainType:'',
+            curpage:1
           }
 
         }
@@ -82,7 +83,7 @@ export default{
     },
     methods:{
         loadTrainList(){
-          axios.get(trainQueryUrl,{
+          axios.post(trainQueryUrl,{
             params:this.trainTripArg
           })
             .then((res)=>{
@@ -119,10 +120,16 @@ export default{
 
         },
         clickbeforedate(date){
-          console.log('前一天')
+          this.trainTripArg.FromDate = moment(this.trainTripArg.FromDate).add(-1, 'days').format('YYYY-MM-DD')
+          console.log('前一天'+this.trainTripArg.FromDate)
+          this.leavedate = this.trainTripArg.FromDate
+          this.loadTrainList();
         },
-        clickafterdate(date){
-          console.log('后一天')
+        clickafterdate(date){         
+          this.trainTripArg.FromDate = moment(this.trainTripArg.FromDate).add(1, 'days').format('YYYY-MM-DD')
+          console.log('后一天'+this.trainTripArg.FromDate)
+          this.leavedate = this.trainTripArg.FromDate
+          this.loadTrainList();
         },
     }
 }

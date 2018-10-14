@@ -12,7 +12,7 @@ var Stations = require('../models/stations');
 //链接mongodb数据库
 mongoose.connect('mongodb://127.0.0.1:27017/train');
 
-mongoose.connection.on("connected", function(){
+mongoose.connection.on("connected", function(res){
     console.log("MongoDB connected success.");
 });
 

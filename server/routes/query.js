@@ -4,20 +4,22 @@ var app = express();
 var router = express.Router();
 var stationobj = require('../models/query');
 
-router.get("/", function(req,res,next){
+router.post("/", function(req,res,next){
+  var params = req.body.params
   var fromsta = 'BJP';
   var tosta = 'HZH';
-  
+  var curpage = params.curpage;
   for(let i in stationobj){
-    fromsta = stationobj[req.query.FromStation]
-    tosta = stationobj[req.query.ToStation]
+    fromsta = stationobj[params.FromStation]
+    tosta = stationobj[params.ToStation]
   }
 //获取查询参数
 var config = {
-    time:req.query.FromDate,//日期格式必须是这样
+    time:params.FromDate,//日期格式必须是这样
     from_station:fromsta,//始发站车站代码，这里是北京北
     end_station:tosta,//车次
 };
+console.log(config)
 
 // https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date=2018-10-20&leftTicketDTO.from_station=HZH&leftTicketDTO.to_station=SHH&purpose_codes=ADULT
 const url = 'https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT'
