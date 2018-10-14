@@ -8,7 +8,7 @@ router.post("/", function(req,res,next){
   var params = req.body.params
   var fromsta = 'BJP';
   var tosta = 'HZH';
-  var curpage = params.curpage;
+  var curpage = params.curpage?params.curpage:1;
   for(let i in stationobj){
     fromsta = stationobj[params.FromStation]
     tosta = stationobj[params.ToStation]
