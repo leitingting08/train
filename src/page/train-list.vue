@@ -1,6 +1,6 @@
 <template>
     <div class="train-list">
-        <timeCalender :leavedate="leavedate"></timeCalender>
+        <timeCalender :leavedate="leavedate" @beforedate="clickbeforedate" @afterdate="clickafterdate"></timeCalender>
          <div class="lists center mt20" v-if="trainList&&trainList.length===0">
             暂无列车信息
          </div>
@@ -27,6 +27,7 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
@@ -56,10 +57,10 @@ export default{
             },
             leavedate:'',
             trainTripArg: {
-            FromStation: this.$route.query.FromStation,
-            ToStation: this.$route.query.ToStation,
-            FromDate: this.$route.query.FromDate,
-            TrainType:this.$route.query.gaoDong,
+            FromStation: '',
+            ToStation: '',
+            FromDate: '',
+            TrainType:'',
           }
 
         }
@@ -72,8 +73,12 @@ export default{
     })
   },
     created(){
-       this.leavedate = this.$route.query.FromDate;
-       this.loadTrainList();
+      this.trainTripArg.FromStation = this.$route.query.FromStation
+      this.trainTripArg.ToStation = this.$route.query.ToStation
+      this.trainTripArg.FromDate = this.$route.query.FromDate
+      this.trainTripArg.TrainType = this.$route.query.gaoDong
+      this.leavedate = moment(this.trainTripArg.FromDate).format('MM月DD日');
+      this.loadTrainList();
     },
     methods:{
         loadTrainList(){
@@ -112,7 +117,13 @@ export default{
             //     }
             // });
 
-        }
+        },
+        clickbeforedate(date){
+          console.log('前一天')
+        },
+        clickafterdate(date){
+          console.log('后一天')
+        },
     }
 }
 
