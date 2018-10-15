@@ -11,12 +11,20 @@
                     <flexbox-item><div class="flex-demo l"><span class="font36">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c1"><span>{{item.train_no}}<i class="fa fa-vcard-o"></i></span><br/><span>{{item.duration}}</span></div></flexbox-item>
                     <flexbox-item><div class="flex-demo c2"><span class="font36">{{item.arrive_time}}</span><br/><span>{{item.to_station_name}}</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">538.5</span><span class="col999">起</span></span><br/><span>预约购票</span></div></flexbox-item>
+                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">{{item.price}}</span><span class="col999">起</span></span><br/>
+                      <!-- <span>预约购票</span> -->
+                    </div></flexbox-item>
                 </flexbox>
                 <div class="explain">
-                  <span v-if="item.if_can_by=='Y'">有票</span>
-                  <span v-if="item.if_can_by!=='Y'">无票</span>
-                  <!-- <span class="orange">1月15日 11点30分</span>起售，可预约购票，开启自动购票 -->
+                  <div class="flex" v-if="item.if_can_by=='Y'">
+                    <div class="flexitem left" v-if="item.zc0&&item.num0">{{item.zc0}}:{{item.num0}}</div>
+                    <div class="flexitem" v-if="item.zc1&&item.num1">{{item.zc1}}:{{item.num1}}</div>
+                    <div class="flexitem" v-if="item.zc2&&item.num2">{{item.zc2}}:{{item.num2}}</div>
+                    <div class="flexitem" v-if="item.zc3&&item.num3">{{item.zc3}}:{{item.num3}}</div>
+                  </div>
+                  <div class="orange" v-if="item.if_can_by!=='Y'">
+                    暂无余票
+                  </div>
                 </div>
             </div>
             </scroller>
