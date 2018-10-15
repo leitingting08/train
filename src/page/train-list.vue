@@ -6,19 +6,21 @@
          </div>
          <div class="lists" v-if="trainList&&trainList.length!==0">
             <scroller lock-x>
-            <div class="list" v-for="item in trainList">
-                <flexbox>
-                    <flexbox-item><div class="flex-demo l"><span class="font36">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo c1"><span>{{item.train_no}}<i class="fa fa-vcard-o"></i></span><br/><span>{{item.duration}}</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo c2"><span class="font36">{{item.arrive_time}}</span><br/><span>{{item.to_station_name}}</span></div></flexbox-item>
-                    <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">{{item.price}}</span><span class="col999">起</span></span><br/>
-                      <!-- <span>预约购票</span> -->
-                    </div></flexbox-item>
-                </flexbox>
+            <div class="list" v-for="item in trainList" @click="goBookTicket(item)">
+                <!-- <flexbox> -->
+                  <div class="flex p20">
+                    <div><div class="flex-demo l"><span class="font36 orange">{{item.start_time}}</span><br/><span>{{item.from_station_name}}</span></div></div>
+                    <div><div class="flex-demo c1"><span>{{item.train_no}}<i class="fa fa-vcard-o"></i></span><br/><span>{{item.duration}}</span></div></div>
+                    <div><div class="flex-demo c2"><span class="font36">{{item.arrive_time}}</span><br/><span>{{item.to_station_name}}</span></div></div>
+                  </div>
+                    <!-- <flexbox-item><div class="flex-demo r orange"><span><span>￥</span><span  class="font36">{{item.price}}</span><span class="col999">起</span></span><br/>
+                      <span>预约购票</span>
+                    </div></flexbox-item> -->
+                <!-- </flexbox> -->
                 <div class="explain">
                   <div class="flex" v-if="item.if_can_by=='Y'">
                     <div class="flexitem left" v-if="item.zc0&&item.num0">{{item.zc0}}:{{item.num0}}</div>
-                    <div class="flexitem" v-if="item.zc1&&item.num1">{{item.zc1}}:{{item.num1}}</div>
+                    <div class="flexitem" v-if="item.zc1&&item.num1">{{item.zc1}}:<span>{{item.num1}}</span></div>
                     <div class="flexitem" v-if="item.zc2&&item.num2">{{item.zc2}}:{{item.num2}}</div>
                     <div class="flexitem" v-if="item.zc3&&item.num3">{{item.zc3}}:{{item.num3}}</div>
                   </div>
@@ -126,6 +128,10 @@ export default{
             //     }
             // });
 
+        },
+        goBookTicket(item){
+            item.fromDate = this.trainTripArg.FromDate;
+            this.$router.push({name:'bookTicket',query:item})
         },
         clickbeforedate(date){
           this.trainTripArg.FromDate = moment(this.trainTripArg.FromDate).add(-1, 'days').format('YYYY-MM-DD')

@@ -1,13 +1,13 @@
 <template>
 <div class="book-ticket">
-   <vTitle :title="('12月25日 周一')"></vTitle>
+   <!-- <vTitle :title="('12月25日 周一')"></vTitle> -->
     <div class="train-info">
         <!-- <flexbox>
             <flexbox-item><div class="flex-demo l font30"><span>杭州东</span><br/><span>02:26</span></div></flexbox-item>
             <flexbox-item><div class="flex-demo c"><span>G34</span><br/><span>1小时48分</span></div></flexbox-item>
             <flexbox-item><div class="flex-demo r font30"><span>上海南</span><br/><span>04:14</span></div></flexbox-item>
         </flexbox> -->
-        <trainInfo></trainInfo>
+        <trainInfo :trainInfo="seatInfo"></trainInfo>
         <div class="explain">卧铺暂显示为下铺价格，最终票款以上中下铺占座结果为准；如需指定下铺，请使用送票上门服务</div>
     </div>
     <div class="seat-type">
@@ -59,9 +59,22 @@ export default{
 	components:{vTitle,Flexbox, FlexboxItem,timeCalender,XTable,Cell,bookMenu,trainInfo},
 	data (){
 		return{
-			title:'12月25日 周一'
+			seatInfo:this.$route.query
 		}
-	}
+	},
+    beforeRouteEnter(to,from,next){
+    let option={
+      headTitle:true,
+      sTitle:'选择坐席'
+    }
+    next(vm=>{
+      vm.$store.commit('publicSetEvent',option);
+    })
+  },
+  created(){
+    console.log(this.$route.query)
+  }
+
 }
 </script>
 
@@ -74,7 +87,7 @@ export default{
 .col999{color: #999;}
 .font20{font-size: 0.20rem;}
 .font30{font-size: 0.30rem;}
-.book-ticket{
+.book-ticket{ margin-top:1rem;
 	.train-info{background-color: #fff;padding:0.3rem 0rem 0;margin-top: -0.1rem;
 		// .vux-flexbox{padding-bottom: 0.2rem;
 		// .l{text-align: right;}

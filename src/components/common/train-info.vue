@@ -1,9 +1,9 @@
 <template>
 <div class="train-info">
 	<flexbox>
-        <flexbox-item><div class="flex-demo l font30"><span>杭州东</span><br/><span>02:26</span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"><span>G34</span><br/><stopList></stopList><span class="font20">1小时26分</span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r font30"><span>上海南</span><br/><span>04:14</span></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l font30"><span>{{trainInfo.from_station_name}}</span><br/><span>{{trainInfo.start_time}}</span></div></flexbox-item>
+        <flexbox-item><div class="flex-demo c"><span>{{trainInfo.train_no}}</span><br/><stopList></stopList><span class="font20">{{trainInfo.duration}}</span></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r font30"><span>{{trainInfo.to_station_name}}</span><br/><span>{{trainInfo.arrive_time}}</span></div></flexbox-item>
     </flexbox>
 </div>
 </template>
@@ -13,6 +13,8 @@ import stopList from '@/components/common/stop-list'
 import {Flexbox, FlexboxItem} from 'vux'
 
 export default{
+	name:"train-info",
+	props:['trainInfo'],
 	components:{stopList, Flexbox, FlexboxItem}
 }
 </script>
