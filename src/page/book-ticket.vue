@@ -48,6 +48,8 @@ import timeCalender from '@/components/header/time-calender'
 import trainInfo from '@/components/common/train-info'
 import bookMenu from '@/components/footer/book-menu'
 import {Flexbox, FlexboxItem,XTable,Cell} from 'vux'
+import TraintripServer from '@/service/traintrip.server';
+const tripServer = new TraintripServer();
 
 export default{
 	components:{vTitle,Flexbox, FlexboxItem,timeCalender,XTable,Cell,bookMenu,trainInfo},
@@ -67,6 +69,21 @@ export default{
   },
   created(){
     console.log(this.$route.query)
+    this.loadTicketPrice();
+  },
+  methods:{
+    loadTicketPrice(){
+      tripServer.sendTrainBookUrlServer({
+            data:{},
+            onSuccess: (res) => {
+              console.log(res)
+              // this.questCityData = res.tipsinfo;
+            },
+            onFalied: (error) => {
+              console.log(error);
+            }
+          });
+    }
   }
 
 }

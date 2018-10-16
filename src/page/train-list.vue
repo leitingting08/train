@@ -42,9 +42,8 @@ import vTitle from '@/components/header/v-title'
 import timeCalender from '@/components/header/time-calender'
 import vFilter from '@/components/footer/filter'
 import {Flexbox, FlexboxItem,Scroller,LoadMore } from 'vux'
-import {trainQueryUrl} from '@/service/interface.service'
 import TraintripServer from '@/service/traintrip.server';
-const traintripServer = new TraintripServer();
+const tripServer = new TraintripServer();
 
 export default{
     name:'trainList',
@@ -89,45 +88,20 @@ export default{
       this.trainTripArg.FromDate = this.$route.query.FromDate
       this.trainTripArg.TrainType = this.$route.query.gaoDong
       this.leavedate = moment(this.trainTripArg.FromDate).format('MM月DD日');
+      console.log(this.trainTripArg)
       this.loadTrainList();
     },
     methods:{
         loadTrainList(){
-          axios.post(trainQueryUrl,{
-            params:this.trainTripArg
-          })
-            .then((res)=>{
-                console.log(res)
-                if(!res.data.status){
-                  this.$vux.alert.show({
-                  content: res.data.msg,
-                  onShow () {
-                    console.log('Plugin: I\'m showing')
-                  },
-                  onHide () {
-                    console.log('Plugin: I\'m hiding')
-                  }
-                })
-                }
-                this.trainList = res.data.data.result;
-            })
-            .catch((err)=>{
-              console.log(err)
-            })
-            // traintripServer.sendTripListServer({
-            //     params:data,
-            //     onSuccess: (response) => {
-            //       if(response.status==='error'){
-            //         alert(response.tipsinfo);
-            //         return;
-            //       }
-            //     },
-            //     onFalied: (error) => {
-
-            //       console.log(error);
-            //     }
-            // });
-
+          tripServer.sendTripListServer({
+            data:this.trainTripArg,
+            onSuccess: (res) => {
+              console.log(res)
+            },
+            onFalied: (err) => {
+              console.log(err);
+            }
+          });
         },
         goBookTicket(item){
             item.fromDate = this.trainTripArg.FromDate;

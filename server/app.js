@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var stations = require('./routes/stations');
 var query = require('./routes/query');
+var book = require('./routes/book');
 
 var app = express();
 // app.use(cors());
@@ -44,6 +45,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/stations', stations);
 app.use('/query', query);
+app.use('/book', book);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,9 +4,9 @@
   	<vTab></vTab> -->
   	<form class="con">
   	  <flexbox class="train-q">
-        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" :stationsData="questCityData" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo l"><trainCity :cityName="gocity" fromToType="from" @changeCityName="changeGoCity"></trainCity></div></flexbox-item>
         <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" :stationsData="questCityData" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
+        <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
       <calendar :title="(`周${calendarDay}`)" @on-change="onChange" v-model="calendarDate" show-popup-header :popup-header-title="('选择日期')" disable-past></calendar>
       <div class="fi">
@@ -28,9 +28,6 @@ import vMenu from '@/components/footer/v-menu';
 import trainCity from '@/components/cityselect/train-city';
 import {setHistory,getHistory} from '@/assets/js/storage_historySearch';
 import {Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell} from 'vux';
-import TraintripServer from '@/service/traintrip.server';
-const stationServer = new TraintripServer();
-
 
 export default {
   name:'trainQuery',
@@ -43,8 +40,7 @@ export default {
       title:'',
       gocity:'北京',
       tocity:'杭州',
-      historys:null,
-      questCityData:[]
+      historys:null
     }
   },
   components:{Flexbox, FlexboxItem,Group,Calendar,CheckIcon,XButton,Cell,vMenu,trainCity},
@@ -60,21 +56,6 @@ export default {
       this.setcalendarDayStr();
   },
   methods:{
-    stationsData(){
-
-      stationServer.sendTripListServer({
-        onSuccess: (response) => {
-          if(response.status==='error'){
-            alert(response.tipsinfo);
-            return;
-          }
-          this.questCityData = response.tipsinfo;
-        },
-        onFalied: (error) => {
-          console.log(error);
-        }
-      });
-    },
     onChange(val){
       this.setcalendarDayStr();
       console.log('on change', val)

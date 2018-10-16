@@ -25,7 +25,7 @@ mongoose.connection.on("disconnected", function(){
     console.log("MongoDB connected disconnected.");
 });
 
-router.get("/", function(req,res,next){
+router.post("/", function(req,res,next){
     //res.send('hello,goods list .')
     //实现分页
     // let page = parseInt(req.param("page"));

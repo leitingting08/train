@@ -1,6 +1,5 @@
-const SERVER_PATH='http://localhost:3000';
-// const SERVER_PATH='';
-
-// export const stationListUrl = `${SERVER_PATH}/mock/train`
-export const stationListUrl = `${SERVER_PATH}/stations`;
-export const trainQueryUrl = `${SERVER_PATH}/query`;
+// const SERVER_PATH='http://localhost:3000';
+const SERVER_PATH=__ce.baseURL;
+export const StationListUrl = `${SERVER_PATH}/stations`;
+export const TrainQueryUrl = `${SERVER_PATH}/query`;
+export const TrainBookUrl = `${SERVER_PATH}/book`;

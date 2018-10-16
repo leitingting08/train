@@ -4,66 +4,54 @@
 * @Last Modified by:   Administrator
 * @Last Modified time: 2018-03-08 22:44:57
 */
-import axios from 'axios';
-//import store from '@/store';
+import axios from './axios.service';
+
 class PublicFn{
+
+  getUrl(url){
+    return `${__ce.baseURL}${url}`; // 打包时用这个 __ce.baseURL
+   // return `/api${url}`; // 防止跨域，开发环境用这个代理
+  };
    //公共ajax;
   postServer(opt) {
-    const _axios = axios.create({
-      timeout: this.timeout
-    });
     let data = {};
     if (opt.data) {
       data = opt.data;
     }
-    _axios.post(opt.url, data).then((response) => {
-      console.log(response);
-      if(response.data.status === 'error'){
-        layer.open({
-          content: 'error:' + response.data.hotelInfo
-          ,skin: 'msg'
-          ,time: 2 //2秒后自动关闭
-        });
+    axios.post(opt.url, data).then((res) => {
+      console.log(res)
+      if(!res.data.status){
         if (opt.onFailed) {
-          opt.onFailed(response);
+          opt.onFailed(res);
         }
         return;
       }
       if (opt.onSuccess) {
-        opt.onSuccess(response);
+        opt.onSuccess(res);
       }
-    }).catch(error => {
+    }).catch(err => {
       if (opt.onFailed) {
-        opt.onFailed(error);
+        opt.onFailed(err);
       }
-      if (!error.response.data.success) {
-        alert(error.response.data.error.message);
-        // return;
-      }
-
     });
   }
 
   // get 请求
   getServer(opt) {
-    const _axios = axios.create({
-      timeout: this.timeout
-    });
     let data = {};
     if (opt.data) {
       data = opt.data;
     }
-    _axios.get(opt.url, {params: data}).then((response) => {
+    axios.get(opt.url, {params: data}).then((res) => {
       if (opt.onSuccess) {
-        opt.onSuccess(response);
+        opt.onSuccess(res);
       }
-    }).catch(error => {
+    }).catch(err => {
       if (opt.onFailed) {
-        opt.onFailed(error);
+        opt.onFailed(err);
       }
     });
   }
-
 
   setData(opt) {
     let data = {};

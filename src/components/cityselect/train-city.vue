@@ -40,8 +40,6 @@
 				            <div :id="index" :class="`v${index}`">{{index}}</div>
 	                        <div class="name" v-for="city in item" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
 						</div>
-
-						<!-- <div v-for="(item,inedx) in listData" @click="loadCity(index)"></div> -->
 					</div>
 				</div>
 			</div>
@@ -54,22 +52,22 @@
 import axios from 'axios';
 import {TransferDom,Popup,InlineLoading } from 'vux';
 import {getStation,setStation} from '@/assets/js/storage_stations';
-import {stationListUrl} from '@/service/interface.service';
-// import TraintripServer from '@/service/traintrip.server';
-// const stationServer =new TraintripServer();
+import TraintripServer from '@/service/traintrip.server';
+const tripServer = new TraintripServer();
 //存储城市搜索历史记录
 
 // const hot_city='热门'
 
 export default{
 	name:'train-city',
-	props:['cityName','fromToType','stationsData'],//把父组件的值传到子组件中
+	props:['cityName','fromToType'],//把父组件的值传到子组件中
 	directives:{
 		TransferDom
 	},
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
-       this.Stations = this.loadCityList(); //加载城市列表
+       // this.Stations = this.loadCityList(); //加载城市列表
+       this.loadCityList();
 	},
 	data(){
 		return{
@@ -82,7 +80,8 @@ export default{
 			Stations: [],
 			autoData:[],
 			autoIsShow:false,
-            sortFlag:true
+            sortFlag:true,
+            questCityData:[]
 		}
 	},
 	computed:{
@@ -97,32 +96,39 @@ export default{
 			this.citys=getStation();
 		},
 		loadCityList(){ //点击首页的城市，加载城市列表
-			var vm = this
-			axios.get(stationListUrl)
-			.then((res)=>{
+			// var vm = this
+			tripServer.sendStationListServer({
+				data:{},
+		        onSuccess: (res) => {
+		          console.log(res)
+		          // this.questCityData = res.tipsinfo;
+		        },
+		        onFalied: (error) => {
+		          console.log(error);
+		        }
+		      });
+			// axios.get(stationListUrl)
+			// .then((res)=>{
+			// 	let citys=[];
+			// 	citys.push(res.data.result.list);
+			// 	this.Stations = citys[0]
+   //              const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+   //              this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
 
-				let citys=[];
-				citys.push(res.data.result.list);
-				this.Stations = citys[0]
-                // citys=res.data.list;
-                //vm.Stations=citys;
-                const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-                this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
-
-                 this.Stations.forEach((item,index)=>{//遍历城市数组
-                 	arrA_Z.forEach(i=>{//遍历字母数组
-                 		if(item.sta_ename&&(item.sta_ename.substring(0, 1).toUpperCase() ===i)){//如果城市英文首字母和对应字母匹配，就加到里面
-			              this.listData[i].push(item);
-			              return false;
-            			}
-                 	})
-                 })
-                 // console.log(citys[0]);
-                 // console.log(this.listData);
-			})
-			.catch((err)=>{
-				console.log(err);
-			})
+   //               this.Stations.forEach((item,index)=>{//遍历城市数组
+   //               	arrA_Z.forEach(i=>{//遍历字母数组
+   //               		if(item.sta_ename&&(item.sta_ename.substring(0, 1).toUpperCase() ===i)){//如果城市英文首字母和对应字母匹配，就加到里面
+			//               this.listData[i].push(item);
+			//               return false;
+   //          			}
+   //               	})
+   //               })
+   //               // console.log(citys[0]);
+   //               // console.log(this.listData);
+			// })
+			// .catch((err)=>{
+			// 	console.log(err);
+			// })
 		},
 		localCity(index){ //点击右边字母索引，跳到对应的位置
 	      const id = `v${index}`;

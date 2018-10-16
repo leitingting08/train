@@ -1,13 +1,24 @@
-import PublicFn from '@/service/public.service';
-import { trainQueryUrl } from '@/service/interface.service';
+import PublicFn from './public.service';
 
 let PublicMethod = new PublicFn();
 
 class TraintripServer{
+	sendStationListServer(opt){//车站列表
+		const data = PublicMethod.setData(opt);
+        const url = PublicMethod.getUrl('/stations');
+        PublicMethod.postServer(url, data ,opt.onSuccess,opt.onFalied);
+    }
 
 	sendTripListServer(opt){//车票查询
 		const data = PublicMethod.setData(opt);
-        PublicMethod.getServer(trainQueryUrl, data ,opt.onSuccess,opt.onFalied);
+        const url = PublicMethod.getUrl('/query');
+        PublicMethod.postServer(url, data ,opt.onSuccess,opt.onFalied);
+    }
+
+    sendTrainBookUrlServer(opt){//车票查询
+		const data = PublicMethod.setData(opt);
+        const url = PublicMethod.getUrl('/book');
+        PublicMethod.postServer(url, data ,opt.onSuccess,opt.onFalied);
     }
 }
 

@@ -8,10 +8,11 @@ import router from './router'
 import 'font-awesome/css/font-awesome.css'
 import Vuex from 'vuex'
 import store from './store'
-import  { AlertPlugin, ConfirmPlugin } from 'vux'
+import  { AlertPlugin, ConfirmPlugin, ToastPlugin  } from 'vux'
 
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
+Vue.use(ToastPlugin )
 
 Vue.use(Vuex)
 fastclick.attach(document.body)
