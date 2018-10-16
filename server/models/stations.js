@@ -19,26 +19,28 @@ const url = 'https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?st
 let stalists = []
 superagent.get(url)
   .end(function(response,result){
-	  let r = result.text.split('=')[1]
-	  let arr = r.split('@')
-	  arr.forEach((i,index)=>{
-	    let list = {}
-	    list.sta_name = i.split('|')[1];
-	    list.sta_ename = i.split('|')[3];
-	    list.sta_code = i.split('|')[2];
-	    stalists.push(list);
-	  })
+  	if (result.statusCode==200) {
+  		  let r = result.text.split('=')[1]
+		  let arr = r.split('@')
+		  arr.forEach((i,index)=>{
+		    let list = {}
+		    list.sta_name = i.split('|')[1];
+		    list.sta_ename = i.split('|')[3];
+		    list.sta_code = i.split('|')[2];
+		    stalists.push(list);
+		  })
 
-	  monModel.find({},function(err,docs){
-	  	console.log(docs.length)
-	  	if(!docs.length){ // 如果数据库里有数据就不插入，否则就插入数据
-	  	  // 把车站信息写入数据库
-	      monModel.insertMany(stalists, function(err, docs){
-		        if(err) console.log(err);
-		        console.log('车站信息写入成功：' + docs);
-		  });
-	  	}
-	  })
+		  monModel.find({},function(err,docs){
+		  	console.log(docs.length)
+		  	if(!docs.length){ // 如果数据库里有数据就不插入，否则就插入数据
+		  	  // 把车站信息写入数据库
+		      monModel.insertMany(stalists, function(err, docs){
+			        if(err) console.log(err);
+			        console.log('车站信息写入成功：' + docs);
+			  });
+		  	}
+		  })
+  	}
 })
 
 

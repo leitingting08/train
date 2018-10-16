@@ -12,7 +12,7 @@ axios.interceptors.request.use(config => { // 请求之前加loading
   })
   return config
 }, error => {
-  vm.$vux.toast.text('加载超时')
+  vm.$vux.toast.text('请求失败')
   return Promise.reject(error)
 })
 // http响应拦截器
@@ -21,7 +21,7 @@ axios.interceptors.response.use(data => { // 响应成功关闭loading
   return data
 }, error => {
   vm.$vux.toast.hide()
-  vm.$vux.toast.text('加载超时')
+  vm.$vux.toast.text('请求失败')
   return Promise.reject(error)
 })
 export default axios;

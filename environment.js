@@ -6,6 +6,6 @@
   return {
     _: {},
     debug: true,
-    baseURL: 'http:192.168.5.98:88'
+    baseURL: 'http://192.168.5.174:88'
   }
 }));

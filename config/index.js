@@ -7,9 +7,13 @@ const path = require('path')
 module.exports = {
   dev: {
     proxyTable: {
-        // '/':{
-        //     target:'http://localhost:3000'
-        // }
+        '/': {
+          target: 'http://192.168.5.174:88',  //目标接口域名
+          changeOrigin: true,  //是否跨域
+          pathRewrite: {
+            '^/api': '/'   //重写接口
+          }
+      }
     },
     // Paths
     assetsSubDirectory: 'static',
@@ -17,8 +21,8 @@ module.exports = {
    
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8088, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: '192.168.5.174', // can be overwritten by process.env.HOST
+    port: 66, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
