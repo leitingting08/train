@@ -6,6 +6,6 @@
   return {
     _: {},
     debug: true,
-    baseURL: 'localhost:3000'
+    baseURL: 'http:192.168.5.98:88'
   }
 }));

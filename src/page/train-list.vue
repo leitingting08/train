@@ -89,6 +89,7 @@ export default{
       this.trainTripArg.TrainType = this.$route.query.gaoDong
       this.leavedate = moment(this.trainTripArg.FromDate).format('MM月DD日');
       console.log(this.trainTripArg)
+      console.log(tripServer)
       this.loadTrainList();
     },
     methods:{
