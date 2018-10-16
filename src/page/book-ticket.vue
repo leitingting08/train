@@ -1,49 +1,43 @@
 <template>
 <div class="book-ticket">
-   <!-- <vTitle :title="('12月25日 周一')"></vTitle> -->
     <div class="train-info">
-        <!-- <flexbox>
-            <flexbox-item><div class="flex-demo l font30"><span>杭州东</span><br/><span>02:26</span></div></flexbox-item>
-            <flexbox-item><div class="flex-demo c"><span>G34</span><br/><span>1小时48分</span></div></flexbox-item>
-            <flexbox-item><div class="flex-demo r font30"><span>上海南</span><br/><span>04:14</span></div></flexbox-item>
-        </flexbox> -->
         <trainInfo :trainInfo="seatInfo"></trainInfo>
-        <div class="explain">卧铺暂显示为下铺价格，最终票款以上中下铺占座结果为准；如需指定下铺，请使用送票上门服务</div>
+        <!-- <div class="explain">卧铺暂显示为下铺价格，最终票款以上中下铺占座结果为准；如需指定下铺，请使用送票上门服务</div> -->
     </div>
     <div class="seat-type">
-	    <timeCalender></timeCalender>
+	    <timeCalender :leavedate="seatInfo.fromDate"></timeCalender>
 	    <x-table :cell-bordered="false" style="background-color:#fff;">
 	        <tbody>
 	          <tr>
-	            <td>硬座</td>
-	            <td>有票</td>
+	            <td>{{seatInfo.zc0}}</td>
+	            <td>{{seatInfo.num0}}</td>
 	            <td class="orange font30"><span>￥</span>24.5</td>
 	            <td><button>立即预定</button></td>
 	          </tr>
-	          <tr>
-	            <td>硬卧</td>
-	            <td class="orange">仅剩4张</td>
-	            <td class="orange font30"><span>￥</span>78.5</td>
-	            <td><button>立即预定</button></td>
-	          </tr>
-	          <tr>
-	            <td>软卧</td>
-	            <td class="orange">仅剩5张</td>
-	            <td class="orange font30"><span>￥</span>114.5</td>
-	            <td><button>立即预定</button></td>
-	          </tr>
-	          <tr>
-	            <td>无座</td>
-	            <td class="col999">无票</td>
-	            <td class="orange font30"><span>￥</span>24.5</td>
-	            <td><button class="orange no-ticket">预约购票</button></td>
-	          </tr>
+              <tr>
+                <td>{{seatInfo.zc1}}</td>
+                <td>{{seatInfo.num1}}</td>
+                <td class="orange font30"><span>￥</span>24.5</td>
+                <td><button>立即预定</button></td>
+              </tr>
+              <tr>
+                <td>{{seatInfo.zc2}}</td>
+                <td>{{seatInfo.num2}}</td>
+                <td class="orange font30"><span>￥</span>24.5</td>
+                <td><button>立即预定</button></td>
+              </tr>
+              <tr v-if="seatInfo.zc3&&seatInfo.num3">
+                <td>{{seatInfo.zc3}}</td>
+                <td>{{seatInfo.num3}}</td>
+                <td class="orange font30"><span>￥</span>24.5</td>
+                <td><button>立即预定</button></td>
+              </tr>
 	        </tbody>
 	    </x-table>
     </div>
-    <cell class="comT" is-link><span slot="title"><i class="fa fa-ticket fa-2"></i>
+    <!-- <cell class="comT" is-link><span slot="title"><i class="fa fa-ticket fa-2"></i>
     	<div style="margin-left:0.5rem;"><span class="font30">{{('没票？试试上车补票吧！')}}</span><br/><span class="col999 font20">{{('购买中途站车票，上车再补票')}}</span></div></span>
-    </cell>
+    </cell> -->
     <bookMenu></bookMenu>
 </div>
 </template>
@@ -88,7 +82,7 @@ export default{
 .font20{font-size: 0.20rem;}
 .font30{font-size: 0.30rem;}
 .book-ticket{ margin-top:1rem;
-	.train-info{background-color: #fff;padding:0.3rem 0rem 0;margin-top: -0.1rem;
+	.train-info{background-color: #fff;padding:0.3rem 0rem 0;margin-top: -0.2rem;
 		// .vux-flexbox{padding-bottom: 0.2rem;
 		// .l{text-align: right;}
 		// .c{text-align: center;}
