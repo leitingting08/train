@@ -7,13 +7,13 @@ const path = require('path')
 module.exports = {
   dev: {
     proxyTable: {
-        '/': {
-          target: 'http://192.168.5.174:88',  //目标接口域名
-          changeOrigin: true,  //是否跨域
-          pathRewrite: {
-            '^/api': '/'   //重写接口
-          }
-      }
+        // '/': {
+        //   target: 'http://192.168.5.174:88',  //目标接口域名
+        //   changeOrigin: true,  //是否跨域
+        //   pathRewrite: {
+        //     '^/api': '/'   //重写接口
+        //   }
+        // }
     },
     // Paths
     assetsSubDirectory: 'static',

@@ -9,8 +9,8 @@ import axios from './axios.service';
 class PublicFn{
 
   getUrl(url){
-    // return `${__ce.baseURL}${url}`; // 打包时用这个 __ce.baseURL
-   return `${url}`; // 防止跨域，开发环境用这个代理
+    return `${__ce.baseURL}${url}`; // 打包时用这个 __ce.baseURL
+   // return `${url}`; // 防止跨域，开发环境用这个代理
   };
    //公共ajax;
   postServer(opt) {
