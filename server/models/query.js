@@ -1,5 +1,5 @@
 
-query = {
+var stationobj = {
     '一间堡': 'YJT',
     '一面坡': 'YPB',
     '一面山': 'YST',
@@ -2729,4 +2729,4 @@ query = {
     '龙镇': 'LZA',
     '龙骨甸': 'LGM'
 }
-module.exports = query;
+module.exports = stationobj;

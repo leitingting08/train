@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="less">
-.filter{background: #fff;position: fixed;bottom: 0;width: 100%;padding: 0.4rem 0 0.1rem;
+.filter{background: #fff;position: fixed;bottom: 0;width: 100%;padding: 0.5rem 0 0.2rem;
    .flex-demo{text-align: center;position: relative;
     i{position: absolute;bottom: 0.35rem;left: 45%}}
 }

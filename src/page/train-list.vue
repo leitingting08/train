@@ -5,7 +5,7 @@
             暂无列车信息
          </div>
          <div class="lists" v-if="trainList&&trainList.length!==0">
-            <scroller lock-x>
+            <!-- <scroller lock-x> -->
             <div class="list" v-for="item in trainList" @click="goBookTicket(item)">
                 <!-- <flexbox> -->
                   <div class="flex p20">
@@ -29,7 +29,7 @@
                   </div>
                 </div>
             </div>
-            </scroller>
+            <!-- </scroller> -->
          </div>
         <vFilter></vFilter>
     </div>
@@ -160,7 +160,7 @@ export default{
 .train-list{
     // .v-title{position: fixed;top: 0;width: 100%;z-index: 100;}
     .time-calender{position: fixed;top: 0.8rem;width: 100%;z-index:1;}
-  .lists{position: absolute;top: 1.6rem;width: 100%;
+  .lists{height: 100%;padding-top:1.6rem;padding-bottom: 1rem;
   .list{background: #fff;margin:0.1rem 0;
     .vux-flexbox{padding:0.2rem 0;
      .l{padding-left: 0.2rem}
