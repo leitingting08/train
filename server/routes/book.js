@@ -6,6 +6,7 @@ var stationobj = require('../models/query');
 
 router.post("/", function(req,res,next){
   var params = req.body
+  console.log(params);
 //获取查询参数
 var priceParams = {
     train_no:params.train_no, //车次代码
@@ -13,8 +14,6 @@ var priceParams = {
     to_station_no:params.to_station_no,
     train_date:params.train_date
 };
-console.log(priceParams)
-console.log(params)
 
 const priceUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no='+priceParams.train_no+'&from_station_no='+priceParams.from_station_no+'&to_station_no='+priceParams.to_station_no+'&seat_types='+priceParams.seat_types+'&train_date='+priceParams.train_date
 // const priceUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=6i0000D9060D&from_station_no=02&to_station_no=04&seat_types=FO2&train_date=2018-10-20'

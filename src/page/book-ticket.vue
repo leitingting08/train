@@ -58,9 +58,9 @@ export default{
 			seatInfo:this.$route.query,
       priceParams:{
         train_no:this.$route.query.train_id, 
-        from_station_no:'',
-        to_station_no:'',
-        train_date:this.$route.fromDate
+        from_station_no:this.$route.query.from_station_no,
+        to_station_no:this.$route.query.to_station_no,
+        train_date:this.$route.query.fromDate
       }
 		}
 	},
@@ -80,7 +80,7 @@ export default{
   methods:{
     loadTicketPrice(){
       tripServer.sendTrainBookUrlServer({
-            data:{},
+            data:this.priceParams,
             onSuccess: (res) => {
               console.log(res)
               // this.questCityData = res.tipsinfo;

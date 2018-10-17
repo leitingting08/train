@@ -54,8 +54,8 @@ superagent.get(url)
                 list.if_can_by = item.split('|')[11].toString()
                 list.leave_time = item.split('|')[13].toString()
                 list.seat_type = item.split('|')[15].toString()
-                list.from_station_no = item.split('|')[16].toString()
-                list.to_station_no = item.split('|')[17].toString()
+                list.from_station_no = item.split('|')[17].toString()
+                list.to_station_no = item.split('|')[16].toString()
   // 普通K：21：软卧、 24：无座  25：  26：硬卧  27：硬座  
   // 普通T：19:高级软  20：其它  21：软卧  24：无座  26：硬卧  27：硬座
   // 普通Z：19:高级软  21：软卧  24：无座  26：硬卧  27：硬座
