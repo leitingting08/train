@@ -38,8 +38,8 @@ superagent.get(url)
               ress.forEach((item,index)=>{
                 console.log(item.split('|'))
                 let list = {}
-                list.train_id = item.split('|')[2].toString()
-                list.train_no = item.split('|')[3].toString()
+                list.train_id = item.split('|')[2]
+                list.train_no = item.split('|')[3]
                 for(var key in stationobj){
                   if(stationobj[key]===item.split('|')[4]){
                     list.from_station_name = key
@@ -48,14 +48,15 @@ superagent.get(url)
                     list.to_station_name = key
                   }
                 }
-                list.start_time = item.split('|')[8].toString()
-                list.arrive_time = item.split('|')[9].toString()
+                list.start_time = item.split('|')[8]
+                list.arrive_time = item.split('|')[9]
                 list.duration = item.split('|')[10].split(':')[0]+'时'+item.split('|')[10].split(':')[1]+'分'
-                list.if_can_by = item.split('|')[11].toString()
-                list.leave_time = item.split('|')[13].toString()
-                list.seat_type = item.split('|')[15].toString()
-                list.from_station_no = item.split('|')[17].toString()
-                list.to_station_no = item.split('|')[16].toString()
+                list.if_can_by = item.split('|')[11]
+                list.leave_time = item.split('|')[13]
+                list.seat_type = item.split('|')[15]
+                list.seat_types = item.split('|')[35]
+                list.from_station_no = item.split('|')[16]
+                list.to_station_no = item.split('|')[17]
   // 普通K：21：软卧、 24：无座  25：  26：硬卧  27：硬座  
   // 普通T：19:高级软  20：其它  21：软卧  24：无座  26：硬卧  27：硬座
   // 普通Z：19:高级软  21：软卧  24：无座  26：硬卧  27：硬座

@@ -11,25 +11,25 @@
 	          <tr>
 	            <td>{{seatInfo.zc0}}</td>
 	            <td>{{seatInfo.num0}}</td>
-	            <td class="orange font30"><span>￥</span>24.5</td>
+	            <td class="orange font30">{{price0}}</td>
 	            <td><button>立即预定</button></td>
 	          </tr>
               <tr>
                 <td>{{seatInfo.zc1}}</td>
                 <td>{{seatInfo.num1}}</td>
-                <td class="orange font30"><span>￥</span>24.5</td>
+                <td class="orange font30">{{price1}}</td>
                 <td><button>立即预定</button></td>
               </tr>
               <tr>
                 <td>{{seatInfo.zc2}}</td>
                 <td>{{seatInfo.num2}}</td>
-                <td class="orange font30"><span>￥</span>24.5</td>
+                <td class="orange font30">{{price2}}</td>
                 <td><button>立即预定</button></td>
               </tr>
               <tr v-if="seatInfo.zc3&&seatInfo.num3">
                 <td>{{seatInfo.zc3}}</td>
                 <td>{{seatInfo.num3}}</td>
-                <td class="orange font30"><span>￥</span>24.5</td>
+                <td class="orange font30">{{price3}}</td>
                 <td><button>立即预定</button></td>
               </tr>
 	        </tbody>
@@ -60,8 +60,13 @@ export default{
         train_no:this.$route.query.train_id, 
         from_station_no:this.$route.query.from_station_no,
         to_station_no:this.$route.query.to_station_no,
+        seat_types:this.$route.query.seat_types,
         train_date:this.$route.query.fromDate
-      }
+      },
+      price0:'',
+      price1:'',
+      price2:'',
+      price3:'',
 		}
 	},
     beforeRouteEnter(to,from,next){
@@ -83,7 +88,11 @@ export default{
             data:this.priceParams,
             onSuccess: (res) => {
               console.log(res)
-              // this.questCityData = res.tipsinfo;
+              const data = res.data.data;
+              this.price0 = data.A4;
+              this.price1 = data.A3;
+              this.price2 = data.A1;
+              this.price3 = data.WZ;
             },
             onFalied: (error) => {
               console.log(error);

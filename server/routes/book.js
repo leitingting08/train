@@ -12,6 +12,7 @@ var priceParams = {
     train_no:params.train_no, //车次代码
     from_station_no:params.from_station_no,
     to_station_no:params.to_station_no,
+    seat_types:params.seat_types,
     train_date:params.train_date
 };
 
@@ -24,13 +25,13 @@ superagent.get(priceUrl)
               console.log(result.body)
               res.json({
                   status:true,
-                  msg:'加载坐席信息成功',
+                  msg:'加载坐席价格成功',
                   data:result.body.data
               });
            } else {
              res.json({
                   status:false,
-                  msg:'加载坐席信息失败',
+                  msg:'加载坐席价格失败',
                   data:{}
               });
            }
