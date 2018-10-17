@@ -98,6 +98,7 @@ export default{
             data:this.trainTripArg,
             onSuccess: (res) => {
               console.log(res)
+              this.trainList = res.data.data;
             },
             onFalied: (err) => {
               console.log(err);

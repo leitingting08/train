@@ -55,7 +55,13 @@ export default{
 	components:{vTitle,Flexbox, FlexboxItem,timeCalender,XTable,Cell,bookMenu,trainInfo},
 	data (){
 		return{
-			seatInfo:this.$route.query
+			seatInfo:this.$route.query,
+      priceParams:{
+        train_no:this.$route.query.train_id, 
+        from_station_no:'',
+        to_station_no:'',
+        train_date:this.$route.fromDate
+      }
 		}
 	},
     beforeRouteEnter(to,from,next){

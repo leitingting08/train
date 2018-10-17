@@ -5,7 +5,7 @@ var router = express.Router();
 var stationobj = require('../models/query');
 
 router.post("/", function(req,res,next){
-  var params = req.body.params
+  var params = req.body
   var fromsta = 'BJP';
   var tosta = 'HZH';
   var listrpage = params.listrpage?params.listrpage:1;
@@ -36,7 +36,7 @@ superagent.get(url)
 
               let priceParams = {}
               ress.forEach((item,index)=>{
-                // console.log(item.split('|'))
+                console.log(item.split('|'))
                 let list = {}
                 list.train_id = item.split('|')[2].toString()
                 list.train_no = item.split('|')[3].toString()
@@ -54,6 +54,8 @@ superagent.get(url)
                 list.if_can_by = item.split('|')[11].toString()
                 list.leave_time = item.split('|')[13].toString()
                 list.seat_type = item.split('|')[15].toString()
+                list.from_station_no = item.split('|')[16].toString()
+                list.to_station_no = item.split('|')[17].toString()
   // 普通K：21：软卧、 24：无座  25：  26：硬卧  27：硬座  
   // 普通T：19:高级软  20：其它  21：软卧  24：无座  26：硬卧  27：硬座
   // 普通Z：19:高级软  21：软卧  24：无座  26：硬卧  27：硬座
@@ -134,7 +136,7 @@ superagent.get(url)
               res.json({
                   status:true,
                   msg:'查询成功',
-                  data:{'result': lists}
+                  data: lists
               });
            } else {
              res.json({

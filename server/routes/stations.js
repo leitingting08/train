@@ -25,7 +25,7 @@ mongoose.connection.on("disconnected", function(){
     console.log("MongoDB connected disconnected.");
 });
 
-router.post("/", function(req,res,next){
+router.get("/", function(req,res,next){
     //res.send('hello,goods list .')
     //实现分页
     // let page = parseInt(req.param("page"));
@@ -40,14 +40,14 @@ router.post("/", function(req,res,next){
     Stations.find({}, function(err,doc){
         if(err){
             res.json({
-                status:'1',
+                status:false,
                 msg:err.message
             });
 
         }else{
             res.json({
-                status:'0',
-                msg:'',
+                status:true,
+                msg:'获取车站成功',
                 result:{
                     count:doc.length,
                     list:doc
