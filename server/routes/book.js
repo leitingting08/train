@@ -16,7 +16,7 @@ var priceParams = {
 console.log(priceParams)
 console.log(params)
 
-const priceUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryTicketPriceFL?train_no='+priceParams.train_no+'&from_station_no='+priceParams.from_station_no+'&to_station_no='+priceParams.to_station_no+'&seat_types='+priceParams.seat_types+'&train_date='+priceParams.train_date
+const priceUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no='+priceParams.train_no+'&from_station_no='+priceParams.from_station_no+'&to_station_no='+priceParams.to_station_no+'&seat_types='+priceParams.seat_types+'&train_date='+priceParams.train_date
 // const priceUrl = 'https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=6i0000D9060D&from_station_no=02&to_station_no=04&seat_types=FO2&train_date=2018-10-20'
 
 superagent.get(priceUrl)
