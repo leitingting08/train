@@ -15,7 +15,7 @@
         <!-- <router-link to="./trainList"> -->
           <x-button type="primary" action-type="button" @click.native="goListRouter('trainList')">开始搜索</x-button>
         <!-- </router-link> -->
-        <span class="history" v-for="(item,index) in historys">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
+        <span class="history" v-for="(item,index) in historys" @click="selectHistory(item)">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
     <vMenu></vMenu>
@@ -56,6 +56,10 @@ export default {
       this.setcalendarDayStr();
   },
   methods:{
+    selectHistory(item){
+      this.gocity = item.FromStation
+      this.tocity = item.ToStation
+    },
     onChange(val){
       this.setcalendarDayStr();
       console.log('on change', val)

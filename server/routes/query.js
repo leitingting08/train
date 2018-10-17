@@ -44,7 +44,7 @@ superagent.get(url)
                   if(stationobj[key]===item.split('|')[4]){
                     list.from_station_name = key
                   }
-                  if(stationobj[key]===item.split('|')[5]){
+                  if(stationobj[key]===item.split('|')[7]){
                     list.to_station_name = key
                   }
                 }
