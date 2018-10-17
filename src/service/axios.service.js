@@ -1,13 +1,14 @@
 import axios from 'axios'
 import Vue from 'vue'
-import  { ToastPlugin } from 'vux'
+import  { ToastPlugin,LoadingPlugin  } from 'vux'
 Vue.use(ToastPlugin)
+Vue.use(LoadingPlugin)
 let vm = new Vue;
 // 超时时间
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 200000
 // http请求拦截器
 axios.interceptors.request.use(config => { // 请求之前加loading
-  vm.$vux.toast.show({
+  vm.$vux.loading.show({
     text: 'Loading'
   })
   return config
@@ -17,11 +18,11 @@ axios.interceptors.request.use(config => { // 请求之前加loading
 })
 // http响应拦截器
 axios.interceptors.response.use(data => { // 响应成功关闭loading
-  vm.$vux.toast.hide()
+  vm.$vux.loading.hide()
   return data
 }, error => {
-  vm.$vux.toast.hide()
-  vm.$vux.toast.text('请求失败')
+  vm.$vux.loading.hide()
+  vm.$vux.toast.text('请求超时')
   return Promise.reject(error)
 })
 export default axios;
