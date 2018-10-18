@@ -2,30 +2,32 @@
   <div id="app">
       <vHeader/>
       <router-view></router-view>
-      <div v-transfer-dom><loading :show="vLoadingIsShow" :text="`加载中...`"></loading></div>
-      <toast v-model="toastMsg.isShow" type="text" :width="toastMsg.width" :time="toastMsg.time" is-show-mask :position="`middle`">{{toastMsg.text}}</toast>
+    </div>
   </div>
 </template>
 
 <script>
-import {Loading,TransferDomDirective as TransferDom,Toast} from 'vux';
 import vHeader from '@/components/header/v-header'
-import vFooter from '@/components/footer/v-footer';
-import { mapState } from 'vuex';
 export default {
   name: 'app',
   directives: {
-    TransferDom
   },
-  components:{Loading, Toast, vHeader, vFooter},
+  components:{vHeader},
   data (){
   	return {
-
   	}
   },
   computed:{
-    ...mapState(['vLoadingIsShow','toastMsg'])
-    // ...mapState(['vLoadingIsShow'])
   }
 }
 </script>
+
+<style lang="less">
+@import '~vux/src/styles/1px.less';
+// vux-1px-l 左边框
+// vux-1px-r 右边框
+// vux-1px-t 上边框
+// vux-1px-b 下边框
+// vux-1px-tb 上下边框
+// vux-1px 全边框
+</style>
