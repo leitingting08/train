@@ -111,6 +111,10 @@ export default{
             this.$router.push({name:'bookTicket',query:item})
         },
         clickbeforedate(date){
+          if(this.trainTripArg.FromDate<moment().format('YYYY-MM-DD')+1){
+            this.$vux.toast.text('所选日期不能早于今天！')
+            return;
+          }
           this.trainTripArg.FromDate = moment(this.trainTripArg.FromDate).add(-1, 'days').format('YYYY-MM-DD')
           console.log('前一天'+this.trainTripArg.FromDate)
           this.leavedate = this.trainTripArg.FromDate

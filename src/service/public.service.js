@@ -13,7 +13,7 @@ class PublicFn{
      return `${__ce.baseURL}${url}`; // 打包时用这个 __ce.baseURL
      // return `${url}`; // 防止跨域，开发环境用这个代理
   };
-  //公共ajax;
+  //公共ajax;post请求
   postServer(opt) {
     let data = {};
     if (opt.data) {
@@ -36,7 +36,7 @@ class PublicFn{
     });
   }
 
-  //公共ajax;
+  //公共ajax;get请求
   getServer(opt) {
     let data = {};
     if (opt.data) {

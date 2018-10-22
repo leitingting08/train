@@ -2,7 +2,7 @@
 <div class="time-calender">
     <flexbox>
         <flexbox-item><div class="flex-demo l" @click="beforedate"><i class="fa fa-angle-left"></i>前一天</div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"> {{leavedate}} | <i class="fa fa-calendar-o"></i></div></flexbox-item>
+        <flexbox-item><div class="flex-demo c"> {{leavedate | format('MM月DD日')}} | <i class="fa fa-calendar-o"></i></div></flexbox-item>
         <flexbox-item><div class="flex-demo r" @click="afterdate">后一天<i class="fa fa-angle-right"></i></div></flexbox-item>
     </flexbox>
 </div>
@@ -10,6 +10,8 @@
 
 <script>
 import {Flexbox, FlexboxItem} from 'vux'
+import moment from 'moment'
+let today = moment().format('YYYY-MM-DD')
 
 export default {
     components:{Flexbox, FlexboxItem},
@@ -21,7 +23,13 @@ export default {
     },
     methods:{
       beforedate(){
+
+        // if(this.leavedate<today){
+        //    this.$vux.toast.text('所选日期不能早于今天！')
+        //    return;
+        // }
         this.$emit('beforedate')
+        
       },
       afterdate(){
         this.$emit('afterdate')
