@@ -1,10 +1,9 @@
 <template>
 <div class="filter">
     <flexbox>
-        <flexbox-item><div class="flex-demo l"><i class="fa fa-calculator"></i>最早出发</div></flexbox-item>
-        <flexbox-item><div class="flex-demo c"><i class="fa fa-train"></i>全部车型</div></flexbox-item>
-        <flexbox-item><div class="flex-demo r"><i class="fa fa-filter"></i>综合筛选</div></flexbox-item>
+        <flexbox-item v-for="item in list"><div class="flex-demo"><i class="fa" :class="item.class"></i>{{item.name}}</div></flexbox-item>
     </flexbox>
+    <actionsheet></actionsheet>
 </div>
 </template>
 
@@ -15,7 +14,11 @@ export default {
     components:{Flexbox, FlexboxItem},
     data(){
         return{
-
+            list:[
+            {name:'最早出发',class:'fa-calculator'},
+            {name:'全部车型',class:'fa-train'},
+            {name:'综合筛选',class:'fa-filter'}
+            ]
         }
     }
 }

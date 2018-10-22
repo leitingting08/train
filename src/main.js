@@ -9,12 +9,12 @@ import 'font-awesome/css/font-awesome.css'
 import Vuex from 'vuex'
 import store from './store'
 import moment from 'moment'
-import  { AlertPlugin, ConfirmPlugin, ToastPlugin  } from 'vux'
+import  { AlertPlugin, ConfirmPlugin, ToastPlugin, Actionsheet  } from 'vux'
 
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
 Vue.use(ToastPlugin )
-
+Vue.component('actionsheet', Actionsheet)
 Vue.use(Vuex)
 fastclick.attach(document.body)
 Vue.config.productionTip = false

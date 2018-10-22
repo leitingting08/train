@@ -23,13 +23,7 @@ export default {
     },
     methods:{
       beforedate(){
-
-        // if(this.leavedate<today){
-        //    this.$vux.toast.text('所选日期不能早于今天！')
-        //    return;
-        // }
         this.$emit('beforedate')
-        
       },
       afterdate(){
         this.$emit('afterdate')
