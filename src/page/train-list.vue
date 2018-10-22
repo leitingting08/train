@@ -66,11 +66,11 @@ export default{
             },
             leavedate:'',
             trainTripArg: {
-            FromStation: '',
-            ToStation: '',
-            FromDate: '',
-            TrainType:'',
-            curpage:1
+              FromStation: '',
+              ToStation: '',
+              FromDate: '',
+              // TrainType:'',
+              isStudent:false
           }
 
         }
@@ -86,7 +86,8 @@ export default{
       this.trainTripArg.FromStation = this.$route.query.FromStation
       this.trainTripArg.ToStation = this.$route.query.ToStation
       this.trainTripArg.FromDate = this.$route.query.FromDate
-      this.trainTripArg.TrainType = this.$route.query.gaoDong
+      // this.trainTripArg.TrainType = this.$route.query.gaoDong
+      this.trainTripArg.isStudent = this.$route.query.isStudent
       this.leavedate = moment(this.trainTripArg.FromDate).format('MM月DD日');
       console.log(this.trainTripArg)
       console.log(tripServer)
@@ -98,7 +99,7 @@ export default{
             data:this.trainTripArg,
             onSuccess: (res) => {
               console.log(res)
-              this.trainList = res.data.data;
+              this.trainList = res.data;
             },
             onFalied: (err) => {
               console.log(err);

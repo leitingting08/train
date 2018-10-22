@@ -8,10 +8,10 @@
         <flexbox-item><div class="flex-demo c"><span class="change-icon" @click="changeCity"></span></div></flexbox-item>
         <flexbox-item><div class="flex-demo r"><trainCity :cityName="tocity" fromToType="to" @changeCityName="changeToCity"></trainCity></div></flexbox-item>
       </flexbox>
-      <calendar :title="(`周${calendarDay}`)" @on-change="onChange" v-model="calendarDate" show-popup-header :popup-header-title="('选择日期')" disable-past></calendar>
+      <calendar :title="(`周${calendarDay}`)" @on-change="onChange" v-model="calendarDate" disable-past></calendar>
       <div class="fi">
-        <check-icon :value.sync="studentTicket" type="plain">{{('学生票查询')}}</check-icon>
-        <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon>
+        <check-icon :value.sync="isStudent" type="plain">{{('学生票查询')}}</check-icon>
+        <!-- <check-icon :value.sync="onlySeeGD" type="plain">{{('只看高铁动车')}}</check-icon> -->
         <!-- <router-link to="./trainList"> -->
           <x-button type="primary" action-type="button" @click.native="goListRouter('trainList')">开始搜索</x-button>
         <!-- </router-link> -->
@@ -35,7 +35,7 @@ export default {
     return {
       calendarDate:'2018-10-17',
       calendarDay:'一',
-      studentTicket:false,
+      isStudent:false,
       onlySeeGD:false,
       title:'',
       gocity:'北京',
@@ -51,7 +51,7 @@ export default {
       this.calendarDate = queryinfo&&queryinfo.FromDate>today?queryinfo.FromDate:today;
       this.gocity = queryinfo&&queryinfo.FromStation?queryinfo.FromStation:'北京';
       this.tocity = queryinfo&&queryinfo.ToStation?queryinfo.ToStation:'杭州';
-      this.studentTicket = queryinfo&&queryinfo.studentTicket?queryinfo.studentTicket:false;
+      this.isStudent = queryinfo&&queryinfo.isStudent?queryinfo.isStudent:false;
       this.onlySeeGD = queryinfo&&queryinfo.gaoDong?queryinfo.gaoDong:false;
       this.setcalendarDayStr();
   },
@@ -98,7 +98,7 @@ export default {
         ToStation:this.tocity,
         FromDate:this.calendarDate,
         gaoDong:this.onlySeeGD,
-        studentTicket:this.studentTicket
+        isStudent:this.isStudent
       }
       console.log(option)
       localStorage.setItem('QUERY_INFO',JSON.stringify(option))

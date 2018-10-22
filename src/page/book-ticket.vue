@@ -88,7 +88,7 @@ export default{
             data:this.priceParams,
             onSuccess: (res) => {
               console.log(res)
-              const data = res.data.data;
+              const data = res.data;
               this.price0 = data.A4;
               this.price1 = data.A3;
               this.price2 = data.A1;

@@ -7,7 +7,7 @@ class TraintripServer{
 	sendStationListServer(opt){//车站列表
 		const data = PublicMethod.setData(opt)
         const url = PublicMethod.getUrl('/stations')
-        PublicMethod.getServer({url, data , onSuccess:opt.onSuccess, onFailed:opt.onFalied})
+        PublicMethod.postServer({url, data , onSuccess:opt.onSuccess, onFailed:opt.onFalied})
     }
 
 	sendTripListServer(opt){//车票查询

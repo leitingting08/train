@@ -25,7 +25,7 @@ mongoose.connection.on("disconnected", function(){
     console.log("MongoDB connected disconnected.");
 });
 
-router.get("/", function(req,res,next){
+router.post("/", function(req,res,next){
     //res.send('hello,goods list .')
     //实现分页
     // let page = parseInt(req.param("page"));
@@ -48,7 +48,7 @@ router.get("/", function(req,res,next){
             res.json({
                 status:true,
                 msg:'获取车站成功',
-                result:{
+                data:{
                     count:doc.length,
                     list:doc
                 }

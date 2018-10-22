@@ -100,9 +100,8 @@ export default{
 			tripServer.sendStationListServer({
 				data:{},
 		        onSuccess: (res) => {
-		          console.log(res)
-		          let citys=[];
-				citys.push(res.data.result.list);
+		        let citys=[];
+				citys.push(res.data.list);
 				this.Stations = citys[0]
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}

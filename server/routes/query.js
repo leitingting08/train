@@ -9,6 +9,7 @@ router.post("/", function(req,res,next){
   var fromsta = 'BJP';
   var tosta = 'HZH';
   var listrpage = params.listrpage?params.listrpage:1;
+  var Type = params.isStudent?'0X00':'ADULT'
   for(let i in stationobj){
     fromsta = stationobj[params.FromStation]
     tosta = stationobj[params.ToStation]
@@ -18,11 +19,12 @@ var config = {
     time:params.FromDate,//日期格式必须是这样
     from_station:fromsta,//始发站车站代码，这里是北京北
     end_station:tosta,//车次
+    passergerType:Type// 乘客类型(成儿&学生)，ADULT是成人，学生是0X00
 };
 // console.log(config)
 
 // https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date=2018-10-20&leftTicketDTO.from_station=HZH&leftTicketDTO.to_station=SHH&purpose_codes=ADULT
-const url = 'https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes=ADULT'
+const url = 'https://kyfw.12306.cn/otn/leftTicket/queryO?leftTicketDTO.train_date='+config.time+'&leftTicketDTO.from_station='+config.from_station+'&leftTicketDTO.to_station='+config.end_station+'&purpose_codes='+config.passergerType
 
 let lists = []
 
