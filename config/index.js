@@ -1,28 +1,28 @@
 'use strict'
-// Template version: 1.2.6
+// Template version: 1.2.3
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
 
 module.exports = {
   dev: {
-    proxyTable: {
-        // '/': {
-        //   target: 'http://192.168.5.174:88',  //目标接口域名
-        //   changeOrigin: true,  //是否跨域
-        //   pathRewrite: {
-        //     '^/api': '/'   //重写接口
-        //   }
-        // }
-    },
+
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-   
+    // proxyTable: {
+    //   '/api': {
+    //     target: 'http://192.168.1.222:8005',//http://192.168.1.56:8003设置你调用的接口域名和端口号 别忘了加http `${__ce.baseURL}`,//'
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': '/'//这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'http://192.168.1.210:8167/user/add'，直接写‘/api/user/add’即可
+    //     }
+    //   }
+    // },
 
     // Various Dev Server settings
     host: '192.168.1.98', // can be overwritten by process.env.HOST
-    port: 66, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 88,
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -62,7 +62,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'Content',
     assetsPublicPath: '/',
 
     /**
