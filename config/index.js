@@ -11,12 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     // proxyTable: {
-    //   '/api': {
-    //     target: 'http://192.168.1.222:8005',//http://192.168.1.56:8003设置你调用的接口域名和端口号 别忘了加http `${__ce.baseURL}`,//'
+    //   '/': {
+    //     target: 'http://192.168.1.98:66',//http://192.168.1.56:8003设置你调用的接口域名和端口号 别忘了加http `${__ce.baseURL}`,//'
     //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/api': '/'//这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'http://192.168.1.210:8167/user/add'，直接写‘/api/user/add’即可
-    //     }
+    //     // pathRewrite: {
+    //     //   '^/api': '/'//这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'http://192.168.1.210:8167/user/add'，直接写‘/api/user/add’即可
+    //     // }
     //   }
     // },
 

@@ -18,6 +18,7 @@
         <span class="history" v-for="(item,index) in historys" @click="selectHistory(item)">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory">清除历史记录</span>
       </div>
     </form>
+    
     <vMenu></vMenu>
   </div>
 </template>

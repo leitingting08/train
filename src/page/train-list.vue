@@ -64,7 +64,7 @@ export default{
                 name: true
               }
             },
-            leavedate:moment().format('YYYY-MM-DD'),
+            leavedate:'',
             trainTripArg: {
               FromStation: '',
               ToStation: '',
@@ -88,7 +88,7 @@ export default{
       this.trainTripArg.FromDate = this.$route.query.FromDate
       // this.trainTripArg.TrainType = this.$route.query.gaoDong
       this.trainTripArg.isStudent = this.$route.query.isStudent
-      this.leavedate = this.$route.query.FromDate?moment(this.$route.query.FromDate).format('MM月DD日'):moment().format('YYYY-MM-DD');
+      this.leavedate = this.$route.query.FromDate;
       this.loadTrainList();
     },
     methods:{
