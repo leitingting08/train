@@ -31,12 +31,11 @@ superagent.get(url)
 		  })
 
 		  monModel.find({},function(err,docs){
-		  	console.log(docs.length)
 		  	if(!docs.length){ // 如果数据库里有数据就不插入，否则就插入数据
 		  	  // 把车站信息写入数据库
 		      monModel.insertMany(stalists, function(err, docs){
 			        if(err) console.log(err);
-			        console.log('车站信息写入成功：' + docs);
+			        console.log('车站信息写入成功!');
 			  });
 		  	}
 		  })

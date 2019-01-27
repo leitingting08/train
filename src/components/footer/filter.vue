@@ -1,7 +1,7 @@
 <template>
 <div class="filter">
     <flexbox>
-        <flexbox-item v-for="item in list"><div class="flex-demo"><i class="fa" :class="item.class"></i>{{item.name}}</div></flexbox-item>
+        <flexbox-item v-for="(item,index) in list" :key="index"><div class="flex-demo"><i class="fa" :class="item.class"></i>{{item.name}}</div></flexbox-item>
     </flexbox>
     <actionsheet></actionsheet>
 </div>

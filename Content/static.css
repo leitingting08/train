@@ -28,6 +28,9 @@ div,ul,li{margin:0;padding:0;list-style: none;}
 html{width: 100%;}
 body{font-size:0.20rem;background-color: #eee;width:100%;}
 a{text-decoration: none;color: #333;}
+.relative{position: relative;}
+.absolute{position: absolute;}
+.fixed{position: fixed;}
 .clearfix:after{content: '.';display: block;height: 0;visibility: hidden;clear: both;}
 .clearfix{zoom:1;}/*IE6,7触发haslayout*/
 .flex{display: flex;align-items: center;box-sizing: border-box;justify-content: space-between;}
@@ -37,3 +40,20 @@ a{text-decoration: none;color: #333;}
 .center{text-align: center;}
 .p20{padding:0.2rem;}
 .m20{margin:0.2rem;}
+.container{margin-top: 1rem;width: 100%;}
+/*移动端1px解决方案*/
+/*bottom*/
+.v-b1px {position: relative;}
+.v-b1px:before {content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;background-color: #d8d8d8;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+/*top*/
+.v-t1px {position: relative;}
+.v-t1px:before {content: " ";position: absolute;left: 0;top: 0;width: 100%;height: 1px;background-color: #d8d8d8;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+/*right*/
+.v-r1px {position: relative;}
+.v-r1px:after {content: " ";position: absolute;right: 0;top: 0;width: 1px;height: 100%;background-color: #d8d8d8;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+/*left*/
+.v-l1px {position: relative;}
+.v-l1px:after {content: " ";position: absolute;left: 0;top: 0;width: 1px;height: 100%;background-color: #d8d8d8;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+/*四周边框*/
+.v1px{position: relative;}
+.v1px:after{content: " ";position: absolute;left: 0;top: 0;width: 200%;border: 1px solid #d8d8d8;border-radius:0.1rem;color: #d8d8d8;height: 200%;-webkit-transform-origin: left top;transform-origin: left top;-webkit-transform: scale(0.5);transform: scale(0.5);}

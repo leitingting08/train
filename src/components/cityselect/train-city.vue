@@ -11,8 +11,9 @@
 				</div>
 				<div class="city">
 					<!-- 搜索框 -->
-					<div class="search-wrapper">
+					<div class="search-wrapper relative">
 						 <input type="text"  placeholder="中文/拼音/首字母" @keyup="autoInput()"/>
+						 <i class="iconfont icon-sousuo"></i>
 					</div>
 					<!-- 搜索结果 -->
                     <div class="auto-list-con" v-if="autoIsShow">
@@ -21,17 +22,17 @@
 
 					<!-- 城市列表内容 -->
 					<div class="list-con" v-if="!autoIsShow">
-						<div class="tit">定位</div>
+						<!-- <div class="tit">定位</div>
 			            <div class="list-other">
 			                <span class="tag-name po" v-for="(city,index) in positions">{{city}}</span>
-			            </div>
+			            </div> -->
 						<div class="tit">历史</div>
 			            <div class="list-other">
-			                <span class="tag-name" v-for="(city,index) in citys" @click="selectCityName(city.searchcitys)">{{city.searchcitys}}</span>
+			                <span class="tag-name v1px" v-for="(city,index) in citys" @click="selectCityName(city.searchcitys)">{{city.searchcitys}}</span>
 			            </div>
 			            <div class="tit">热门城市</div>
 			            <div class="list-other">
-			                <span class="tag-name" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
+			                <span class="tag-name v1px" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
 			            </div>
 			            <div class="list-tit">
 			              <div class="tit" v-for="(item,index) in listData" @click="localCity(index)">{{index}}</div>
@@ -66,16 +67,15 @@ export default{
 	},
 	components:{TransferDom,Popup,InlineLoading},
 	created(){
-       // this.Stations = this.loadCityList(); //加载城市列表
-       this.loadCityList();
+       this.loadCityList(); //加载城市列表
 	},
 	data(){
 		return{
 			// name:this.cityName
 			cityIsShow:false,
-			positions:['杭州'],
+			// positions:['杭州'],
 			citys:[{'searchcitys':'杭州'}],
-			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','哈尔滨','合肥','南昌','南京','青岛','沈阳','深圳','苏州','太原','武汉','厦门','西安','郑州'],
+			hotcitys:['杭州','北京','广州','上海','重庆','天津','长沙','成都','大连','合肥','南昌','南京','沈阳','深圳','苏州','武汉','厦门','郑州'],
 			listData:{},
 			Stations: [],
 			autoData:[],
@@ -103,6 +103,7 @@ export default{
 		        let citys=[];
 				citys.push(res.data.list);
 				this.Stations = citys[0]
+
                 const arrA_Z = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 this.listData = {A:[],B:[],C:[],D:[],E:[],F:[],G:[],H:[],I:[],J:[],K:[],L:[],M:[],N:[],O:[],P:[],Q:[],R:[],S:[],T:[],U:[],V:[],W:[],X:[],Y:[],Z:[]}
 
@@ -119,15 +120,6 @@ export default{
 		          console.log(error);
 		        }
 		      });
-			// axios.get(stationListUrl)
-			// .then((res)=>{
-				
-   //               // console.log(citys[0]);
-   //               // console.log(this.listData);
-			// })
-			// .catch((err)=>{
-			// 	console.log(err);
-			// })
 		},
 		localCity(index){ //点击右边字母索引，跳到对应的位置
 	      const id = `v${index}`;
@@ -157,13 +149,16 @@ export default{
             if(str===''){//如果为空，不展示搜索结果面板
                 this.autoIsShow=false;
                 return;
-            }
+            }            
             this.Stations.forEach((item,index)=>{ //模糊匹配
-            	const name=item.sta_name;
-            	const ename=item.sta_ename || 's';
-            	if(name.indexOf(str)>=0||ename.indexOf(str)>=0){
-            		this.autoData.push(item);
+            	if(item.sta_name&&item.sta_ename){
+            		const name=item.sta_name;
+	            	const ename=item.sta_ename || 's';
+	            	if(name.indexOf(str)>=0||ename.indexOf(str)>=0){
+	            		this.autoData.push(item);
+	            	}
             	}
+            	
             })
             if(this.autoData.length===0){
             	this.autoData.push({sta_name:"暂不支持该城市"});
@@ -186,14 +181,15 @@ export default{
        .title{margin-left:2.8rem;}
     }
     .city{font-size: 0.28rem;
-         .search-wrapper{
-         	input{width: 91%;height: 0.5rem;border:1px solid #eee;padding-left: 0.2rem;border-radius: 3px;margin:0.2rem;}
+         .search-wrapper{padding:0.2rem;
+         	.icon-sousuo{position: absolute;top: 0.36rem;left:0.33rem;}
+         	input{width: 100%;border:1px solid #eee;padding: 0.2rem 0.5rem;box-sizing:border-box;border-radius: 3px;}
          }
          .list-con{
          	.list-tit{position: fixed;right: 0;top: 2rem;overflow-y: scroll;height: 76%;color: @yellow;}
          	.tit{padding-left: 0.2rem;margin: 0.2rem 0;}
          	.list-other{margin-bottom: 0.2rem;
-         		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;border:1px solid #d8d8d8;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
+         		.tag-name{display:inline-block;width:1.8rem;height:0.6rem;line-height:0.6rem;text-align:center;background: #fff;border-radius: 2px;margin:0.05rem 0.2rem;}
          		.po{border:1px solid @yellow;color: @yellow;}
          	}
          	.name{background:#fff;width: 100%;height: 0.8rem;line-height:0.8rem;padding-left:0.2rem;
