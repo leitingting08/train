@@ -117,20 +117,19 @@
 </script>
 
 <style lang="less">
-@import "../../assets/css/base.less";
-@yellow:#FFC300;
-.yellow{color: @yellow;}
-.stop-list-wrapper{
-.weui-dialog{height: 5rem!important;top:43%!important;background: #fff;
-.stop-list{width:6.6rem;height:5rem;margin:0 auto;background: #fff;color:#333;overflow-y: auto;
-  .title{position:relative;padding:0.3rem 0;text-align: center;font-size: 0.3rem;
-   &:after{.top1px(#d9d9d9);top: 1rem;}
-  }
-  table{width:100%;padding:0.2rem 0.2rem;text-align: left;font-size: .24rem;color:#333;}
-    th{font-weight: 100;line-height: 0.5rem;text-align: center;
-    td{line-height: 0.5rem;text-align: center;}
-  }
-  }
- }
-}
+// @yellow:#FFC300;
+// .yellow{color: @yellow;}
+// .stop-list-wrapper{
+// .weui-dialog{height: 5rem!important;top:43%!important;background: #fff;
+// .stop-list{width:6.6rem;height:5rem;margin:0 auto;background: #fff;color:#333;overflow-y: auto;
+//   .title{position:relative;padding:0.3rem 0;text-align: center;font-size: 0.3rem;
+//    &:after{.top1px(#d9d9d9);top: 1rem;}
+//   }
+//   table{width:100%;padding:0.2rem 0.2rem;text-align: left;font-size: .24rem;color:#333;}
+//     th{font-weight: 100;line-height: 0.5rem;text-align: center;
+//     td{line-height: 0.5rem;text-align: center;}
+//   }
+//   }
+//  }
+// }
 </style>

@@ -1,31 +1,32 @@
 <template>
     <div class="menu">
-      <flexbox>
-        <flexbox-item><div class="flex-demo l"><i class="fa fa-bullseye"></i>12306</div></flexbox-item>
-        <flexbox-item><div class="flex-demo c1"><i class="fa fa-clock-o"></i>预约购票</div></flexbox-item>
-        <flexbox-item><div class="flex-demo c2"><i class="fa fa-commenting-o"></i>在线客服</div></flexbox-item>
-        <flexbox-item><router-link to="./orderList"><div class="flex-demo r"><i class="fa fa-file-text-o"></i>我的订单</div></router-link></flexbox-item>
-      </flexbox>
+        <div class="flex">
+            <div class="flexitem" v-for="item in menus">
+                <div class="center"><i class="iconfont" :class="item.icon"></i></div>
+                <div class="center">{{item.name}}</div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import {Flexbox, FlexboxItem} from 'vux'
-
-export default {
-    components:{Flexbox, FlexboxItem},
-    data(){
-        return{
-
+    export default {
+        data(){
+            return{
+                menus:[
+                {name:'12306',icon:'icon-icon-test'},
+                {name:'预约购票',icon:'icon-naozhong'},
+                {name:'在线客服',icon:'icon-kefu'},
+                {name:'我的订单',icon:'icon-dingdan'}]
+            }
         }
     }
-}
 </script>
 
 <style lang="less">
-.menu{background: #fff;position: fixed;bottom: 0;width: 100%;padding: 0.4rem 0 0.1rem;
-   .flex-demo{text-align: center;position: relative;font-size: 0.26rem;
-    i{position: absolute;bottom: 0.35rem;left: 45%}}
-
+.menu{background: #fff;position: fixed;
+    bottom: 0;width: 100%;padding: 0.1rem 0;
+    i{font-size: 0.4rem;}
+    .center{font-size: 0.24rem;}
 }
 </style>

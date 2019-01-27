@@ -28,19 +28,79 @@ div,ul,li{margin:0;padding:0;list-style: none;}
 html{width: 100%;}
 body{font-size:0.20rem;background-color: #eee;width:100%;}
 a{text-decoration: none;color: #333;}
+*{margin:0;padding:0;box-sizing: border-box;}
+.iconfont{font-size: 0.4rem;}
+/*布局*/
 .relative{position: relative;}
 .absolute{position: absolute;}
 .fixed{position: fixed;}
 .clearfix:after{content: '.';display: block;height: 0;visibility: hidden;clear: both;}
 .clearfix{zoom:1;}/*IE6,7触发haslayout*/
-.flex{display: flex;align-items: center;box-sizing: border-box;justify-content: space-between;}
+.flex{display: flex;align-items: center;justify-content: space-between;}
 .flexitem{flex:1;text-align: center;}
 .left{text-align: left;}
 .right{text-align: right;}
 .center{text-align: center;}
+/*内外边距*/
 .p20{padding:0.2rem;}
+.pt20{padding-top:0.2rem;}
+.pl20{padding-left:0.2rem;}
+.pr20{padding-right:0.2rem;}
+.pb20{padding-bottom:0.2rem;}
 .m20{margin:0.2rem;}
-.container{margin-top: 1rem;width: 100%;}
+.mt20{margin-top:0.2rem;}
+.ml20{margin-left:0.2rem;}
+.mr20{margin-right:0.2rem;}
+.mb20{margin-bottom:0.2rem;}
+/*颜色*/
+.col333{color: #333;}
+.col666{color: #666;}
+.col888{color: #888;}
+.col999{color: #999;}
+.yellow{color: #ff6600;} /*黄色*/
+.orange{color: #ff6600;} /*橙色*/
+/*字体*/
+.font20{font-size: 0.2rem;}
+.font22{font-size: 0.22rem;}
+.font24{font-size: 0.24rem;}
+.font26{font-size: 0.26rem;}
+.font28{font-size: 0.28rem;}
+.font30{font-size: 0.3rem;}
+.font32{font-size: 0.32rem;}
+.font34{font-size: 0.34rem;}
+.font36{font-size: 0.36rem;}
+.font38{font-size: 0.38rem;}
+.font40{font-size: 0.40rem;}
+.font42{font-size: 0.42rem;}
+.font44{font-size: 0.44rem;}
+.font46{font-size: 0.46rem;}
+.font48{font-size: 0.48rem;}
+/*宽度*/
+.w10{width: 10%;}
+.w10{width: 10%;}
+.w10{width: 10%;}
+.w20{width: 20%;}
+.w30{width: 30%;}
+.w40{width: 40%;}
+.w50{width: 50%;}
+.w60{width: 60%;}
+.w70{width: 70%;}
+.w80{width: 80%;}
+.w90{width: 90%;}
+.w100{width: 100%;}
+/*美化checkicon*/
+input[type="radio"]{visibility: hidden;} 
+input[type="radio"]::before{
+content: "";visibility: visible;display:inline-block;
+width: 0.36rem;height: 0.36rem; 
+background: url(../src/assets/img/icon/nocheck_icon.png) no-repeat center;
+background-size:contain; }
+input[type="radio"]:checked::before{
+content: "";visibility: visible;display:inline-block;
+width: 0.36rem;height: 0.36rem;
+background: url(../src/assets/img/icon/checked_icon.png) no-repeat center; 
+background-size:contain; 
+}
 /*移动端1px解决方案*/
 /*bottom*/
 .v-b1px {position: relative;}

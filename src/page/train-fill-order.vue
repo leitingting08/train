@@ -91,62 +91,53 @@ export default{
 </script>
 
 <style lang="less" scoped>
-@import "../assets/css/base.less";
-@yellow:#FFC300;
-@orange:#ff6600;
-@bg-grey:#fcf8e3;
-@border-grey:#faebcc;
-.col999{color: #999;}
-.orange{color: @orange;}
-.font20{font-size: 0.2rem;}
-.font26{font-size: 0.26rem;}
-.font30{font-size: 0.3rem;}
-.train-fill-order{margin-top: 1rem;overflow-x: hidden;padding-bottom: 1rem;
-	.weui-cells{margin-top: 0.2rem;}
-   .seatType{background-color: #fff;position: relative;padding:0.2rem;
-   	&:before{.top1px(#d9d9d9)}
-   	// &:after{.bottom1px(#d9d9d9)}
-   	.type{width: 69%;display: inline-block;
-   		.price{margin-left: 0.2rem;
-   		&:after{.arrow-right}}
-   	}
-   	.accept-no-seat{width: 20%;display: inline-block;
-      .weui-icon{position: absolute;right: 0.5rem;}
-   	}
-   }
-   .link12306{background-color: #fff;
-   	&:before{left:0}
-   	p{margin:0;}
-   }
-   .passenger-info{background-color: #fff;margin-top: 0.2rem;padding:0.1rem 0.2rem;font-size: 0.26rem;position: relative;
-   	.add{padding:0.2rem 0;
-   		span{display: inline-block;width: 49.5%;text-align: center;}
-   	}
-   	.certi-info{padding:0.2rem 0;
-   		// i{position: relative;top: .15rem;}
-   		svg{position: relative;top: .3rem;}
-   		.vux-x-icon {fill: #F70968;}
-   		&:before{.top1px(#d9d9d9);top: 0.85rem;}
-       &:after{.bottom1px(#d9d9d9);bottom:0.85rem;}
-     }
-     .vux-x-input{
-     	input{padding-left: 0.5rem;}
-     }
-     // .connect{
-     // 	input{border:none;padding-left: 0.2rem;}
-     // }
-   }
-   .select-seat{background-color: #fff;margin-top: 0.2rem;
-     .explain{background-color:@bg-grey;padding:0.1rem; }
-     .title{text-align: center;padding:0.1rem 0;}
-     .seat-wraper{padding:0.2rem 0;
-     	.seat{background:url(../assets/img/icon/seat.png) no-repeat center;display:inline-block;width:0.52rem;height:0.48rem;background-size:contain}
-     	.seat.active{background:url(../assets/img/icon/seat_selectd.png) no-repeat center;display:inline-block;width:0.52rem;height:0.48rem;background-size:contain}
-     	label{margin:0 0.1rem;}
-     }
-   }
-   .weui-cell{&:before{border:none;}}
-   .tips{padding: 0.2rem;}
-}
+
+// .train-fill-order{margin-top: 1rem;overflow-x: hidden;padding-bottom: 1rem;
+// 	.weui-cells{margin-top: 0.2rem;}
+//    .seatType{background-color: #fff;position: relative;padding:0.2rem;
+//    	&:before{.top1px(#d9d9d9)}
+//    	// &:after{.bottom1px(#d9d9d9)}
+//    	.type{width: 69%;display: inline-block;
+//    		.price{margin-left: 0.2rem;
+//    		&:after{.arrow-right}}
+//    	}
+//    	.accept-no-seat{width: 20%;display: inline-block;
+//       .weui-icon{position: absolute;right: 0.5rem;}
+//    	}
+//    }
+//    .link12306{background-color: #fff;
+//    	&:before{left:0}
+//    	p{margin:0;}
+//    }
+//    .passenger-info{background-color: #fff;margin-top: 0.2rem;padding:0.1rem 0.2rem;font-size: 0.26rem;position: relative;
+//    	.add{padding:0.2rem 0;
+//    		span{display: inline-block;width: 49.5%;text-align: center;}
+//    	}
+//    	.certi-info{padding:0.2rem 0;
+//    		// i{position: relative;top: .15rem;}
+//    		svg{position: relative;top: .3rem;}
+//    		.vux-x-icon {fill: #F70968;}
+//    		&:before{.top1px(#d9d9d9);top: 0.85rem;}
+//        &:after{.bottom1px(#d9d9d9);bottom:0.85rem;}
+//      }
+//      .vux-x-input{
+//      	input{padding-left: 0.5rem;}
+//      }
+//      // .connect{
+//      // 	input{border:none;padding-left: 0.2rem;}
+//      // }
+//    }
+//    .select-seat{background-color: #fff;margin-top: 0.2rem;
+//      .explain{background-color:@bg-grey;padding:0.1rem; }
+//      .title{text-align: center;padding:0.1rem 0;}
+//      .seat-wraper{padding:0.2rem 0;
+//      	.seat{background:url(../assets/img/icon/seat.png) no-repeat center;display:inline-block;width:0.52rem;height:0.48rem;background-size:contain}
+//      	.seat.active{background:url(../assets/img/icon/seat_selectd.png) no-repeat center;display:inline-block;width:0.52rem;height:0.48rem;background-size:contain}
+//      	label{margin:0 0.1rem;}
+//      }
+//    }
+//    .weui-cell{&:before{border:none;}}
+//    // .tips{padding: 0.2rem;}
+// }
 
 </style>

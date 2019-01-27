@@ -75,53 +75,52 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../assets/css/base.less";
-@yellow:#FFC300;
-@orange:#ff6600;
-@light-orange:#f7d977;
-.col999{color: #999;}
-.orange{color: @orange;}
-.font20{font-size: 0.2rem;}
-.font26{font-size: 0.26rem;}
-.font28{font-size: 0.28rem;}
-.font30{font-size: 0.3rem;}
-.order-datail{
-	.v-title{position: fixed;top: 0;width: 100%;}
-.train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;margin-top: 1.1rem;
-    .l{text-align: left;}
-    .c{text-align: center;
-      .time-table{display: inline-block;width: 1.5rem;height: 0.55rem;background: url(../assets/img/icon/arrow.png) no-repeat center;background-size: contain;
-         .time{border:1px solid #666;border-radius: 2em;padding:0 0.1rem;background: @light-orange;display: inline-block;margin-top: 0.1rem;}
-      }
-    }
-    .r{text-align: right;}
+// @yellow:#FFC300;
+// @orange:#ff6600;
+// @light-orange:#f7d977;
+// .col999{color: #999;}
+// .orange{color: @orange;}
+// .font20{font-size: 0.2rem;}
+// .font26{font-size: 0.26rem;}
+// .font28{font-size: 0.28rem;}
+// .font30{font-size: 0.3rem;}
+// .order-datail{
+// 	.v-title{position: fixed;top: 0;width: 100%;}
+// .train-info{background-color:rgba(255, 195, 0, 0.5);margin: 0rem 0.2rem 0rem;border-radius: 3px;padding:0.2rem;margin-top: 1.1rem;
+//     .l{text-align: left;}
+//     .c{text-align: center;
+//       .time-table{display: inline-block;width: 1.5rem;height: 0.55rem;background: url(../assets/img/icon/arrow.png) no-repeat center;background-size: contain;
+//          .time{border:1px solid #666;border-radius: 2em;padding:0 0.1rem;background: @light-orange;display: inline-block;margin-top: 0.1rem;}
+//       }
+//     }
+//     .r{text-align: right;}
     
-  }
-  .certi-info{background: #fff;margin: 0rem 0.2rem 0.2rem;padding: 0.2rem;border-radius: 3px;line-height: 0.5rem;
-  	.name{overflow: hidden;
-      .ticket-type{border:1px solid #d8d8d8;border-radius: 3px;padding: 0 0.06rem;margin-left: 0.2rem;}}
-    .price{float: right;}
-  }
-  .problem{background: #fff;padding: 0.2rem 0;
-  	.title{padding-left: 0.2rem;font-size: 0.28rem;color: #999;}
-    .issus{padding:0.1rem 0;
-    	span{display: inline-block;background: #eee;padding:0.1rem 0.3rem;margin:0.1rem;border-radius: 2em;width: 2.8rem;text-align: center;}}
-    .contact{text-align: center;position: relative;padding-top: 0.2rem;font-size: 0.26rem;
-    	&:before{.top1px;}
-    	i{margin-right: 0.12rem;}
-    }
-  }
-  .sales{background: #fff;padding: 0.2rem 0;margin-top: 0.2rem;
-    table{padding: 0 0.2rem 0.2rem;
-      tr td:nth-child(1){width: 1.5rem;color: #999;}
-    }
-    .contact{text-align: center;position: relative;padding-top: 0.2rem;font-size: 0.26rem;
-    	&:before{.top1px;}
-    	i{margin-right: 0.12rem;}
-    }
-  }
-  .weui-btn {margin: 0.2rem 3%;width: 94%;}
-  .con-service{color: @yellow;border:1px solid @yellow;margin-bottom: 1.1rem;}
-  .goto-pay{position: fixed;bottom: 0;width: 100%;background: @orange;height: 0.9rem;line-height: 0.9rem;text-align: center;color: #fff;}
-}
+//   }
+//   .certi-info{background: #fff;margin: 0rem 0.2rem 0.2rem;padding: 0.2rem;border-radius: 3px;line-height: 0.5rem;
+//   	.name{overflow: hidden;
+//       .ticket-type{border:1px solid #d8d8d8;border-radius: 3px;padding: 0 0.06rem;margin-left: 0.2rem;}}
+//     .price{float: right;}
+//   }
+//   .problem{background: #fff;padding: 0.2rem 0;
+//   	.title{padding-left: 0.2rem;font-size: 0.28rem;color: #999;}
+//     .issus{padding:0.1rem 0;
+//     	span{display: inline-block;background: #eee;padding:0.1rem 0.3rem;margin:0.1rem;border-radius: 2em;width: 2.8rem;text-align: center;}}
+//     .contact{text-align: center;position: relative;padding-top: 0.2rem;font-size: 0.26rem;
+//     	&:before{.top1px;}
+//     	i{margin-right: 0.12rem;}
+//     }
+//   }
+//   .sales{background: #fff;padding: 0.2rem 0;margin-top: 0.2rem;
+//     table{padding: 0 0.2rem 0.2rem;
+//       tr td:nth-child(1){width: 1.5rem;color: #999;}
+//     }
+//     .contact{text-align: center;position: relative;padding-top: 0.2rem;font-size: 0.26rem;
+//     	&:before{.top1px;}
+//     	i{margin-right: 0.12rem;}
+//     }
+//   }
+//   .weui-btn {margin: 0.2rem 3%;width: 94%;}
+//   .con-service{color: @yellow;border:1px solid @yellow;margin-bottom: 1.1rem;}
+//   .goto-pay{position: fixed;bottom: 0;width: 100%;background: @orange;height: 0.9rem;line-height: 0.9rem;text-align: center;color: #fff;}
+// }
 </style>
