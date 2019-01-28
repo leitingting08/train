@@ -37,7 +37,7 @@
      <trainCity :fromToType="selectCity.type" @changeCityName="changeThisCity" @closePop="closePopup"></trainCity>
     </my-popup>
     <!-- 日历弹层 -->
-    <my-popup v-show="calendar.show">
+    <my-popup v-if="calendar.show">
       <myCalendar @cancelBtn="calendar.show=false"  :modal="dateModalData" @selectDate="selectDateEvent" ref="selectdate"></myCalendar>
     </my-popup>
     <vMenu></vMenu>

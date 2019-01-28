@@ -1,6 +1,6 @@
 <template>
   <div>
-    <title-back @backEvent="cancelBtn" homehidden="true" :title="`选择日期`">
+    <title-back @backEvent="cancelBtn" homehidden="true" :title="`出发日期`">
     </title-back>
     <div class="select-date">
       <ul class="week-tit">
@@ -17,12 +17,8 @@
         <ul>
           <li v-for="day in item.date" :class="day.classname"
               @click="(day.classname.indexOf('day')!==-1? dayClickEvent(day): null)">
+              <!-- <div v-show="day.classname.indexOf('today')">今天</div> -->
             {{day.day}}
-            <i v-for="tag in day.tags" :class="tag[0]">
-              {{tag[1]}}<span v-show="tag[0]==='price'">元</span>
-            </i>
-            <!--<span class="rd">入店</span>-->
-            <!--<span class="ld">离店</span>-->
           </li>
         </ul>
       </div>
@@ -50,40 +46,42 @@
       }
     },
     created() {
-      this.pullDate = this.getAll(this.startDate, this.endDate)
+      let today = moment().format('YYYY-MM-DD')
+      this.pullDate = this.getAll(today, this.endDate)
+      console.log(this.pullDate);
     },
     methods: {
       dayClickEvent(data){ // 一天的日期
         this.clickStartDate = `${data.year}-${data.month}-${data.day}`;
         this.$emit('selectDate',{'startDate':this.clickStartDate}); // 发射出去
       },
-      dayClickdoubleEvent(data) { // 入店离店
-        let endDate = '';
-        if(this.clickNum!==0){
-          endDate = `${data.year}-${data.month}-${data.day}`;
-          const v = moment(endDate).diff(moment(this.clickStartDate));
-          if(v<0){ // 如果小于于0，就是start大于end,那么就重头开始
-            this.clickNum = 0;
-          }
-        }
+      // dayClickdoubleEvent(data) { // 入店离店
+      //   let endDate = '';
+      //   if(this.clickNum!==0){
+      //     endDate = `${data.year}-${data.month}-${data.day}`;
+      //     const v = moment(endDate).diff(moment(this.clickStartDate));
+      //     if(v<0){ // 如果小于于0，就是start大于end,那么就重头开始
+      //       this.clickNum = 0;
+      //     }
+      //   }
 
-        for(let key in this.pullDate){
-          this.pullDate[key].date.forEach(item => {
-            if(!item.classname){return;}
-            (item.classname.indexOf('rudian') !== -1 || item.classname.indexOf('lidian') !== -1)&&this.clickNum === 0 ? item.classname = item.classname.replace(/ lidian| rudian/,''):item.classname = item.classname; // 如果是第一次点击就是清空入店离店，重新选择入店，
-            item.classname.indexOf('lidian')&&this.clickNum !== 0 ? item.classname = item.classname.replace(/ lidian| rudian /,''):item.classname = item.classname; // 如果是第二次点击，就清空离店，重新选择离店
-          })
-        }
-        if(this.clickNum === 0){
-          this.clickStartDate = `${data.year}-${data.month}-${data.day}`;
-          data.classname+=' rudian';
-          this.clickNum++; // 累加
-        }else{
-          data.classname+=' lidian';
-          this.clickNum = 0;
-          this.$emit('selectDate',{'startDate':this.clickStartDate,'endDate':endDate}); // 发射出去
-        }
-      },
+      //   for(let key in this.pullDate){
+      //     this.pullDate[key].date.forEach(item => {
+      //       if(!item.classname){return;}
+      //       (item.classname.indexOf('rudian') !== -1 || item.classname.indexOf('lidian') !== -1)&&this.clickNum === 0 ? item.classname = item.classname.replace(/ lidian| rudian/,''):item.classname = item.classname; // 如果是第一次点击就是清空入店离店，重新选择入店，
+      //       item.classname.indexOf('lidian')&&this.clickNum !== 0 ? item.classname = item.classname.replace(/ lidian| rudian /,''):item.classname = item.classname; // 如果是第二次点击，就清空离店，重新选择离店
+      //     })
+      //   }
+      //   if(this.clickNum === 0){
+      //     this.clickStartDate = `${data.year}-${data.month}-${data.day}`;
+      //     data.classname+=' rudian';
+      //     this.clickNum++; // 累加
+      //   }else{
+      //     data.classname+=' lidian';
+      //     this.clickNum = 0;
+      //     this.$emit('selectDate',{'startDate':this.clickStartDate,'endDate':endDate}); // 发射出去
+      //   }
+      // },
       pushTag(yearMonthDay) { // 添加 价格信息，是否休息等。。。
         let tags = [];
         for (let i = 0; i < this.dateJson.length; i++) {
@@ -123,7 +121,6 @@
         let dataObject = {};
 
         dataObject[sd] = {title: moment(start).format('YYYY年MM月'), date: []} // 初始第一个月
-       // console.log( moment(sd).weekday())
         for (let w = 0; w < moment(sd).weekday(); w++) { // 对本月一号之前的周几补全。
           dataObject[sd].date.push({year: '', month: '', day: '', week: w});// 如果当前月份没有存储当前天数用的数组,就创建一个空数组，如果有，就向里面添加一个空对象; (空对象是用来占位置的，用来填充月份前面的空白)
         }
@@ -144,8 +141,7 @@
 
           //根据日期给div设置样式
           let className = this.setClass(start, end, i);
-
-          const tag = this.pushTag(moment(i).format('YYYY-MM-DD')); // 折扣，休息等信息
+          const tag = this.pushTag(moment(i).format('YYYY-MM-DD')); 
 
           const option = {
             year: moment(i).format('YYYY'),

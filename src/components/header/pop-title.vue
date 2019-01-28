@@ -31,7 +31,7 @@ export default {
 <style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
-.v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;
+.v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;z-index: 10;
   .vux-header{background: @yellow;
     .vux-header-title{color: #333;}
     .vux-header-left .left-arrow:before{content: "";
