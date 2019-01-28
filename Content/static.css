@@ -94,12 +94,12 @@ input[type="radio"]::before{
 content: "";visibility: visible;display:inline-block;
 width: 0.36rem;height: 0.36rem; 
 background: url(../src/assets/img/icon/nocheck_icon.png) no-repeat center;
-background-size:contain; }
+background-size:contain;margin-top: -0.05rem; }
 input[type="radio"]:checked::before{
 content: "";visibility: visible;display:inline-block;
 width: 0.36rem;height: 0.36rem;
 background: url(../src/assets/img/icon/checked_icon.png) no-repeat center; 
-background-size:contain; 
+background-size:contain;margin-top: -0.05rem; 
 }
 /*移动端1px解决方案*/
 /*bottom*/
