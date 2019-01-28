@@ -12,10 +12,10 @@
               {{selectCity.toCity}}
           </div>
       </div>
-      <div class="row flex v-b1px">
+      <div class="row flex v-b1px" @click="calendar.show=true">
         <div class="w90">
-          <span class="font36">{{calendarDate}}</span>
-        &nbsp;<span class="font28">周{{calendarDay}}</span></div>
+          <span class="font36">{{calendar.calendarDate}}</span>
+        &nbsp;<span class="font28">周{{calendar.calendarDay}}</span></div>
         <div class="w10 right"><i class="arrow iconfont icon-jinrujiantou1"></i></div>
       </div>
       <div class="row flex" style="height: 0.8rem;line-height:0.8rem;">
@@ -28,12 +28,17 @@
       </div>
       <div class="btn-wrap">
           <button class="btn" @click="goListRouter('trainList')">开始搜索</button>
-        <span class="history font26" v-for="(item,index) in historys" @click="selectHistory(item)">{{item.FromStation}}-{{item.ToStation}}</span>  <span class="clearHistory font26">清除历史记录</span>
+        <span class="history font26 mr20 col666" v-for="(item,index) in historys" @click="selectHistory(item)" v-if="historys">{{item.FromStation}}-{{item.ToStation}}</span>
+        <span class="clearHistory font26" v-if="historys.length">清除历史记录</span>
       </div>
     </form>
-
+    <!-- 城市选择弹层 -->
     <my-popup v-show="selectCity.show">
      <trainCity :fromToType="selectCity.type" @changeCityName="changeThisCity" @closePop="closePopup"></trainCity>
+    </my-popup>
+    <!-- 日历弹层 -->
+    <my-popup v-show="calendar.show">
+      <myCalendar @cancelBtn="calendar.show=false"  :modal="dateModalData" @selectDate="selectDateEvent" ref="selectdate"></myCalendar>
     </my-popup>
     <vMenu></vMenu>
   </div>
@@ -44,6 +49,7 @@ import moment from 'moment';
 import vMenu from '@/components/footer/v-menu';
 import trainCity from '@/components/cityselect/train-city';
 import myPopup from '@/components/pop/my-popup';
+import myCalendar from '@/components/mycalendar/mycalendar';
 import {setHistory,getHistory} from '@/assets/js/storage_historySearch';
 
 export default {
@@ -57,26 +63,32 @@ export default {
         toCity: '杭州',//到达城市
         type:'go'
       },
-      goCityShow: false,
-      toCityShow: false,
-      calendarDate:'2018-10-17',
-      calendarDay:'一',
+      calendar:{
+        calendarDate:'2018-10-17',
+        calendarDay:'一',
+        show:false
+      },
+      dateModalData: {
+        startDate: moment().format('YYYY-MM-DD'),
+        endDate: moment().add(60, 'day').format('YYYY-MM-DD'), // 默认今天往后3个月
+        currentDate: [moment().format('YYYY-MM-DD')] // 默认今天和明天
+      },
       isStudent:false,
       onlySeeGD:false,
-      historys:null
+      historys:[]
     }
   },
-  components:{vMenu,trainCity,myPopup},
+  components:{vMenu,trainCity,myPopup,myCalendar},
   created(){
       this.historys = getHistory();
       let queryinfo = JSON.parse(localStorage.getItem('QUERY_INFO'))
       const today = moment(new Date()).format('YYYY-MM-DD');
-      this.calendarDate = queryinfo&&queryinfo.FromDate>today?queryinfo.FromDate:today;
+      this.calendar.calendarDate = queryinfo&&queryinfo.FromDate>today?queryinfo.FromDate:today;
       this.selectCity.goCity = queryinfo&&queryinfo.FromStation?queryinfo.FromStation:'北京';
       this.selectCity.toCity = queryinfo&&queryinfo.ToStation?queryinfo.ToStation:'杭州';
       this.isStudent = queryinfo&&queryinfo.isStudent?queryinfo.isStudent:false;
       this.onlySeeGD = queryinfo&&queryinfo.gaoDong?queryinfo.gaoDong:false;
-      this.setcalendarDayStr();
+      this.calendarDayStr();
   },
   methods:{
     closePopup(){  // 关闭选择城市面板
@@ -90,51 +102,48 @@ export default {
         this.selectCity.hackReset = true
       })
     },
-    selectHistory(item){
+    selectHistory(item){ // 选择历史记录里的城市
       this.selectCity.goCity = item.FromStation
       this.selectCity.toCity = item.ToStation
     },
-    onChange(val){
-      this.setcalendarDayStr();
-      console.log('on change', val)
-    },
-    changeThisCity(val){
+    changeThisCity(val){ // 选择城市
       if(val.type==='go'){
         this.selectCity.goCity = val.name
       }
       if(val.type==='to'){
         this.selectCity.toCity = val.name
       }
-
       this.selectCity.show = false;
     },
-    changeCity(){//交换城市
+    changeCity(){// 交换城市
       let temp = this.selectCity.goCity;
       this.selectCity.goCity = this.selectCity.toCity;
       this.selectCity.toCity = temp;
     },
-    beginSearch(){
-      let option = {
-        FromStation:this.gocity,
-        ToStation:this.tocity
-      }
+    calendarDayStr(){ // 选择的对应的日期是周几
+      this.calendar.calendarDay = moment(this.calendar.calendarDate).day();
+      this.calendar.calendarDay===1?this.calendar.calendarDay='一':'';
+      this.calendar.calendarDay===2?this.calendar.calendarDay='二':'';
+      this.calendar.calendarDay===3?this.calendar.calendarDay='三':'';
+      this.calendar.calendarDay===4?this.calendar.calendarDay='四':'';
+      this.calendar.calendarDay===5?this.calendar.calendarDay='五':'';
+      this.calendar.calendarDay===6?this.calendar.calendarDay='六':'';
+      this.calendar.calendarDay===0?this.calendar.calendarDay='日':'';
     },
-    setcalendarDayStr(){
-      this.calendarDay = moment(this.calendarDate).day();
-      this.calendarDay===1?this.calendarDay='一':'';
-      this.calendarDay===2?this.calendarDay='二':'';
-      this.calendarDay===3?this.calendarDay='三':'';
-      this.calendarDay===4?this.calendarDay='四':'';
-      this.calendarDay===5?this.calendarDay='五':'';
-      this.calendarDay===6?this.calendarDay='六':'';
-      this.calendarDay===0?this.calendarDay='日':'';
+    selectDateEvent(data) { // 选择日期
+      console.log(data);
+      this.calendar.calendarDate = moment(data.startDate).format('YYYY-MM-DD');
+      this.calendarDayStr();
+      this.dateModalData.startDate = moment(data.startDate).format('YYYY-MM-DD');
+      this.dateModalData.currentDate = [moment(data.startDate).format('YYYY-MM-DD')];
+      this.calendar.show = false;
     },
-    goListRouter(url){
+    goListRouter(url){ // 搜索查询车次
       console.log(url)
       const option = {
-        FromStation:this.gocity,
-        ToStation:this.tocity,
-        FromDate:this.calendarDate,
+        FromStation:this.selectCity.goCity,
+        ToStation:this.selectCity.toCity,
+        FromDate:this.calendar.calendarDate,
         gaoDong:this.onlySeeGD,
         isStudent:this.isStudent
       }
@@ -144,7 +153,7 @@ export default {
       setHistory(option);
     }
   },
-  beforeRouteEnter(to,from,next){
+  beforeRouteEnter(to,from,next){ // 路由进来之前渲染头部轮播图
     let option={
       headSwiper:true,
       headTitle:false

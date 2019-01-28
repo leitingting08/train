@@ -1,41 +1,29 @@
 <template>
 	<div class="v-title">
-		<x-header :left-options="{backText: ''}" :right-options="{showMore: true}" class="btn btn-default">{{title}}</x-header>
-		<popover placement="bottom" style="margin: 20px;">
-          <div slot="content" class="popover-demo-content">
-             <li><i class="fa fa-commenting-o"></i>消息</li>
-             <router-link to="./"><li><i class="fa fa-home"></i>首页</li></router-link>
-             <li><i class="fa fa-headphones"></i>联系飞猪</li>
-             <li><i class="fa fa-file-text-o"></i>我要反馈</li>
-             <li><i class="fa fa-user"></i>我的飞猪</li>
-         </div>
-          <button class="btn right-options">{{ ('') }}</button>
-    </popover>
+		<x-header :left-options="{backText: '',preventGoBack:true}" @on-click-back="backEvent" class="btn btn-default" @on-click-more="rightEvent">{{title}}
+    </x-header>
 	</div>
 </template>
 
 <script>
-import { XHeader,Popover} from 'vux'
+import { XHeader} from 'vux'
 
 export default {
   name:'vTitle',
   props:['title'],
-  components: {XHeader,Popover},
+  components: {XHeader},
   data(){
     return{
       // title:'杭州-北京'
     }
   },
   methods: {
-    onShow () {
-      console.log('on show')
+    backEvent(){
+      this.$emit('backEvent')
     },
-    onHide () {
-      console.log('on hide')
+    rightEvent(){
+      this.$emit('rightEvent')
     },
-    // goRouter(url){
-    //     this.$router.push(url);
-    // }
   }
 }
 </script>
@@ -43,7 +31,7 @@ export default {
 <style lang="less">
 @yellow:#FFC300;
 @orange:#ff6600;
-.v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;z-index: 10;
+.v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;
   .vux-header{background: @yellow;
     .vux-header-title{color: #333;}
     .vux-header-left .left-arrow:before{content: "";
