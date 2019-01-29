@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="btn-wrap">
-          <button class="btn" @click="goListRouter('trainList')">开始搜索</button>
+          <button class="btn" @click="goListRouter">开始搜索</button>
         <span class="history font26 mr20 col666" v-for="(item,index) in historys" @click="selectHistory(item)" v-if="historys">{{item.FromStation}}-{{item.ToStation}}</span>
         <span class="clearHistory font26" v-if="historys.length">清除历史记录</span>
       </div>
@@ -138,8 +138,7 @@ export default {
       this.dateModalData.currentDate = [moment(data.startDate).format('YYYY-MM-DD')];
       this.calendar.show = false;
     },
-    goListRouter(url){ // 搜索查询车次
-      console.log(url)
+    goListRouter(){ // 搜索查询车次
       const option = {
         FromStation:this.selectCity.goCity,
         ToStation:this.selectCity.toCity,
@@ -149,7 +148,8 @@ export default {
       }
       console.log(option)
       localStorage.setItem('QUERY_INFO',JSON.stringify(option))
-      this.$router.push({name:url,query:option});//在点击查询按钮的时候把查询参数放到浏览器url里
+      this.$router.push({path:'/trainList',query:option});
+      //在点击查询按钮的时候把查询参数放到浏览器url里
       setHistory(option);
     }
   },
