@@ -1,25 +1,21 @@
 <template>
   <div id="app">
-      <vHeader/>
-      <router-view></router-view>
-    </div>
+    <vHeader/>
+    <router-view/>
   </div>
 </template>
 <script src="Content/environment.js"></script>
 <script>
-import vHeader from '@/components/header/v-header'
+import vHeader from "@/components/header/v-header";
 export default {
-  name: 'app',
-  directives: {
+  name: "app",
+  directives: {},
+  components: { vHeader },
+  data() {
+    return {};
   },
-  components:{vHeader},
-  data (){
-  	return {
-  	}
-  },
-  computed:{
-  }
-}
+  computed: {}
+};
 </script>
 
 <style lang="less">
