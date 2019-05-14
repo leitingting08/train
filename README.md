@@ -24,7 +24,7 @@ npm run build --report
 ```
 ## 运行server端
 
-### 由于用到了MongoDB数据库，在运行之前请安装启动MongoDB
+##### 由于用到了MongoDB数据库，在运行之前请安装启动MongoDB
 
 ``` bash
 # 到项目目录下运行
@@ -33,6 +33,9 @@ node server/bin/www
 ```
 # 推荐 nodemon 安装，可以实时监测文件的改动，不用重复启动服务端
 npm install nodemon -g
+
+# 上一步安装完成之后运行
+nodemon server/bin/www
 ```
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
