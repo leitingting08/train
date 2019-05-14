@@ -28,7 +28,7 @@ div,ul,li{margin:0;padding:0;list-style: none;}
 html{width: 100%;}
 body{font-size:0.20rem;background-color: #eee;width:100%;}
 a{text-decoration: none;color: #333;}
-*{margin:0;padding:0;box-sizing: border-box;}
+*{margin:0;padding:0;box-sizing: border-box;color: #333;}
 .iconfont{font-size: 0.4rem;}
 /*布局*/
 .relative{position: relative;}
@@ -36,6 +36,8 @@ a{text-decoration: none;color: #333;}
 .fixed{position: fixed;}
 .clearfix:after{content: '.';display: block;height: 0;visibility: hidden;clear: both;}
 .clearfix{zoom:1;}/*IE6,7触发haslayout*/
+.fl{float: left;}
+.fr{float: right;}
 .flex{display: flex;align-items: center;justify-content: space-between;}
 .flexitem{flex:1;text-align: center;}
 .left{text-align: left;}
@@ -60,21 +62,21 @@ a{text-decoration: none;color: #333;}
 .yellow{color: #ff6600;} /*黄色*/
 .orange{color: #ff6600;} /*橙色*/
 /*字体*/
-.font20{font-size: 0.2rem;}
-.font22{font-size: 0.22rem;}
-.font24{font-size: 0.24rem;}
-.font26{font-size: 0.26rem;}
-.font28{font-size: 0.28rem;}
-.font30{font-size: 0.3rem;}
-.font32{font-size: 0.32rem;}
-.font34{font-size: 0.34rem;}
-.font36{font-size: 0.36rem;}
-.font38{font-size: 0.38rem;}
-.font40{font-size: 0.40rem;}
-.font42{font-size: 0.42rem;}
-.font44{font-size: 0.44rem;}
-.font46{font-size: 0.46rem;}
-.font48{font-size: 0.48rem;}
+.font20{font-size: 0.2rem!important;}
+.font22{font-size: 0.22rem!important;}
+.font24{font-size: 0.24rem!important;}
+.font26{font-size: 0.26rem!important;}
+.font28{font-size: 0.28rem!important;}
+.font30{font-size: 0.3rem!important;}
+.font32{font-size: 0.32rem!important;}
+.font34{font-size: 0.34rem!important;}
+.font36{font-size: 0.36rem!important;}
+.font38{font-size: 0.38rem!important;}
+.font40{font-size: 0.40rem!important;}
+.font42{font-size: 0.42rem!important;}
+.font44{font-size: 0.44rem!important;}
+.font46{font-size: 0.46rem!important;}
+.font48{font-size: 0.48rem!important;}
 /*宽度*/
 .w10{width: 10%;}
 .w10{width: 10%;}
