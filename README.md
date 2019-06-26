@@ -3,7 +3,7 @@
 > A Vue.js project
 
 这个项目是基于vue+node.js+MongoDB来完成的。目前完成了部分页面及功能，涉及到12306登录的部分功能未完成
-完成了server端的环境搭建，以及车站接口/stations，查询接口/query, 票价查询/book, 后续待完善...
+完成了server端的环境搭建，以及车站接口/stations，查询接口/query, 票价查询/book，需要登录相关的下单和订单部分未完成
 
 ## Build Setup 运行项目
 
