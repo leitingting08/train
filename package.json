@@ -29,6 +29,7 @@
     "jsonp": "^0.2.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "lodash": "^4.17.14",
     "moment": "^2.22.1",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.12",
