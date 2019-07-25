@@ -14,25 +14,25 @@
 			</div>
 			<!-- 搜索结果 -->
             <div class="auto-list-con" v-if="autoIsShow">
-            	<div class="list-name" v-for="item in autoData" @click="selectCityName(item.sta_name)">{{item.sta_name}}</div>
+            	<div class="list-name" v-for="(item,index) in autoData" @click="selectCityName(item.sta_name)" :key="index">{{item.sta_name}}</div>
             </div>
 
 			<!-- 城市列表内容 -->
 			<div class="list-con" v-if="!autoIsShow">
 				<div class="tit">历史</div>
 	            <div class="list-other">
-	                <span class="tag-name v1px" v-for="(city,index) in citys" @click="selectCityName(city.searchcitys)">{{city.searchcitys}}</span>
+	                <span class="tag-name v1px" v-for="(city,index) in citys" @click="selectCityName(city.searchcitys)" :key="index">{{city.searchcitys}}</span>
 	            </div>
 	            <div class="tit">热门城市</div>
 	            <div class="list-other">
-	                <span class="tag-name v1px" v-for="(item,index) in hotcitys" @click="selectCityName(item)">{{item}}</span>
+	                <span class="tag-name v1px" v-for="(item,index) in hotcitys" @click="selectCityName(item)" :key="index">{{item}}</span>
 	            </div>
 	            <div class="list-tit">
-	              <div class="tit" v-for="(item,index) in listData" @click="localCity(index)">{{index}}</div>
+	              <div class="tit" v-for="(item,index) in listData" @click="localCity(index)" :key="index">{{index}}</div>
 	            </div>
-	            <div v-for="(item,index) in listData" :id="index">
+	            <div v-for="(item,index) in listData" :id="index" :key="index">
 		            <div>{{index}}</div>
-                    <div class="name" v-for="city in item" @click="selectCityName(city.sta_name)">{{city.sta_name}}</div>
+                    <div class="name" v-for="(city,subindex) in item" @click="selectCityName(city.sta_name)" :key="subindex">{{city.sta_name}}</div>
 				</div>
 			</div>
 		</div>

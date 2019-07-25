@@ -4,7 +4,7 @@
     <router-view/>
   </div>
 </template>
-<script src="Content/environment.js"></script>
+
 <script>
 import vHeader from "@/components/header/v-header";
 export default {
@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="less">
-// @import '/Content/static.css';
+@import '~@/assets/css/variable.less';
 </style>

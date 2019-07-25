@@ -12,9 +12,11 @@
       </span>
     </div>
     <div class="passenger-info">
-      <div class="add flex v-b1px">
-        <span class="add-person flexitem v-r1px">添加/修改乘机人</span>
-        <span class="add-children flexitem">添加儿童票</span>
+      <div class="add v-b1px center font38 themeColor">
+        <i class="iconfont icon-jia"></i>
+        <span class="pl10">选择乘客</span>
+        <!-- <span class="add-person flexitem v-r1px">添加/修改乘车人</span>
+        <span class="add-children flexitem">添加儿童票</span> -->
       </div>
       <div class="certi-info flex v-b1px">
         <div class="w10">

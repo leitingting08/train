@@ -229,10 +229,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@yellow: #ffc300;
-@orange: #ff6600;
-@grey: #d9d9d9;
-
+@themeColor:#FF6E00;
 .train-query {
   font-size: 0.3rem;
   margin-top: 2.5rem;
@@ -264,7 +261,7 @@ export default {
       .btn {
         width: 100%;
         height: 0.8rem;
-        background: #ff6e00;
+        background: @themeColor;
         color: #fff;
         border: 0;
         border-radius: 0.05rem;

@@ -43,7 +43,7 @@ router.post("/", function (req, res, next) {
           list.train_id = item.split('|')[2]
           list.train_no = item.split('|')[3]
           for (var key in stationobj) {
-            if (stationobj[key] === item.split('|')[4]) {
+            if (stationobj[key] === item.split('|')[6]) {
               list.from_station_name = key
             }
             if (stationobj[key] === item.split('|')[7]) {

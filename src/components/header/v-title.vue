@@ -3,11 +3,8 @@
 		<x-header :left-options="{backText: ''}" :right-options="{showMore: true}" class="btn btn-default">{{title}}</x-header>
 		<popover placement="bottom" style="margin: 20px;">
           <div slot="content" class="popover-demo-content">
-             <li><i class="fa fa-commenting-o"></i>消息</li>
-             <router-link to="./"><li><i class="fa fa-home"></i>首页</li></router-link>
-             <li><i class="fa fa-headphones"></i>联系飞猪</li>
-             <li><i class="fa fa-file-text-o"></i>我要反馈</li>
-             <li><i class="fa fa-user"></i>我的飞猪</li>
+             <li><i class="iconfont icon-pinglun"></i>消息</li>
+             <li><i class="iconfont icon-shouye"></i>首页</li>
          </div>
           <button class="btn right-options">{{ ('') }}</button>
     </popover>
@@ -41,8 +38,7 @@ export default {
 </script>
 
 <style lang="less">
-@yellow:#FFC300;
-@orange:#ff6600;
+
 .v-title{font-size: 0.33rem;height:.9rem;position: fixed;top: 0;width: 100%;z-index: 10;
   .vux-header{background: @yellow;
     .vux-header-title{color: #333;}
@@ -59,14 +55,13 @@ export default {
    .vux-header-left a,.vux-header-left button,.vux-header-right a, .vux-header-right button{color: #333;}
   }
   .right-options{position: absolute;top: 0.2rem;right: 0.2rem;width: 0.8rem;height: 0.52rem;background: transparent;border: transparent;&:active{border-style: none;border:none;}}
-  .vux-popover{left: 4.8rem!important;width: 2.2rem;z-index: 11;
-    .vux-popover-arrow-up{left:83%;}
-   .popover-demo-content{background-color: rgba(0,0,0,0.3);
-    li{padding:0.1rem 0.2rem;font-size: 0.26rem;
-      i{margin-right:0.2rem;}
-      }}
-  }
+ 
   a{color: #fff;}
 }
-
+ .popover-demo-content{background-color: rgba(0,0,0,0.3);
+    li{padding:0.1rem 0.2rem;font-size: 0.26rem;box-sizing:border-box;
+      i{margin-right:0.2rem;}
+      }
+    }
+ .vux-popover{z-index: 11;min-width:1.5rem;left:auto!important;right:0.2rem!important;}
 </style>
